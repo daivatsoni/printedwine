@@ -548,10 +548,13 @@ ul.usermenuList li .sidebar_cart a:hover:before{ background:transparent!importan
     width: 50px;
     text-align: center;
 }
+.menuStyleFixed #header.fixedTopMenuShow .menuFixedWrap .wrapTopMenu .topMenu {
+    margin: 0;
+}
 .buttonScrollUp {
     position: fixed;
     width: 50px!important;
-    height: 30px!important;
+    height: 40px!important;
     bottom: -100px;
     right: 40px;
     z-index: 999;
@@ -562,15 +565,35 @@ ul.usermenuList li .sidebar_cart a:hover:before{ background:transparent!importan
 .home .sliderHeader {
     margin: 0 0 0; 
 }
-#mainmenu li a:first-child {
+#mainmenu li:first-child  a{
     margin-left: 0!important;
     padding-left: 0!important;
 }
 
-
-
-@media (max-width: 766px) {
-
+.menuStyleFixed .fixedTopMenuShow .wrapTopMenu .topMenu > ul > li > a:before {
+    background-color:transparent;
+}
+#mainmenu li a:hover{  color: #00aeef!important;}
+.hesperiden .tp-bullet:hover, .hesperiden .tp-bullet.selected {
+    background: #12adef!important;
+}
+.tparrows {
+    cursor: pointer!important;;
+    background: #000!important;;
+    background: rgba(0,0,0,0.5)!important;;
+    width: 40px!important;;
+    height: 40px!important;;
+    position: absolute;
+    display: block;
+    z-index: 1000;
+}
+.tparrows.tp-leftarrow::before {
+    content: " ";
+}
+.tparrows.tp-rightarrow::before{
+    content: " ";
+}
+@media (max-width: 766px) { 
 .top_nav ul.top_nav_link {
     float: left;
     margin: 0;
