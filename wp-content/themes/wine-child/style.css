@@ -1,0 +1,31 @@
+@charset 'utf-8';
+/*
+ Theme Name:   Wine Child
+ Theme URI:    http://Wine.themerex.net/
+ Version:      1.4.2
+ Author:       ThemeREX
+ Author URI:   http://themerex.net
+ Template:     wine
+ Description:  Wine is an up-to-date flat WordPress Template with modern metro layout for Blog, Magazine, Review site, Art Portfolio & so on. 
+Wine has clean modern design, big functional options and it is very easy to modify & expand. 
+We are confident that you will be more than pleased by your purchase!
+*/
+
+
+@import url("../wine/style.css");
+
+
+/* =Theme customization starts here
+-------------------------------------------------------------- */
+
+.copyright {
+    float: left;
+}
+.footer-credit {
+    float: right;
+    font-size: 14px;
+    padding: 30px 0;
+}
+.login_slot {
+    border-bottom: 1px solid #e5e5e5;
+}

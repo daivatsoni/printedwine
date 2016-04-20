@@ -1,0 +1,703 @@
+@font-face {
+    font-family: 'proxima_nova_altRgIt';
+    src: url('../fonts/mark_simonson_-_proxima_nova_alt_regular_italic-webfont.eot');
+    src: url('../fonts/mark_simonson_-_proxima_nova_alt_regular_italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/mark_simonson_-_proxima_nova_alt_regular_italic-webfont.woff2') format('woff2'),
+         url('../fonts/mark_simonson_-_proxima_nova_alt_regular_italic-webfont.woff') format('woff'),
+         url('../fonts/mark_simonson_-_proxima_nova_alt_regular_italic-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'proxima_nova_alt_rgregular';
+    src: url('../fonts/mark_simonson_-_proxima_nova_alt_regular-webfont.eot');
+    src: url('../fonts/mark_simonson_-_proxima_nova_alt_regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/mark_simonson_-_proxima_nova_alt_regular-webfont.woff2') format('woff2'),
+         url('../fonts/mark_simonson_-_proxima_nova_alt_regular-webfont.woff') format('woff'),
+         url('../fonts/mark_simonson_-_proxima_nova_alt_regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'proxima_nova_altthin';
+    src: url('../fonts/mark_simonson_-_proxima_nova_alt_thin-webfont.eot');
+    src: url('../fonts/mark_simonson_-_proxima_nova_alt_thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/mark_simonson_-_proxima_nova_alt_thin-webfont.woff2') format('woff2'),
+         url('../fonts/mark_simonson_-_proxima_nova_alt_thin-webfont.woff') format('woff'),
+         url('../fonts/mark_simonson_-_proxima_nova_alt_thin-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'proxima_nova_rgregular';
+    src: url('../fonts/mark_simonson_-_proxima_nova_regular-webfont.eot');
+    src: url('../fonts/mark_simonson_-_proxima_nova_regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/mark_simonson_-_proxima_nova_regular-webfont.woff2') format('woff2'),
+         url('../fonts/mark_simonson_-_proxima_nova_regular-webfont.woff') format('woff'),
+         url('../fonts/mark_simonson_-_proxima_nova_regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'proxima_nova_altlight';
+    src: url('../fonts/mark_simonson_-_proxima_nova_alt_light-webfont.eot');
+    src: url('../fonts/mark_simonson_-_proxima_nova_alt_light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/mark_simonson_-_proxima_nova_alt_light-webfont.woff2') format('woff2'),
+         url('../fonts/mark_simonson_-_proxima_nova_alt_light-webfont.woff') format('woff'),
+         url('../fonts/mark_simonson_-_proxima_nova_alt_light-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'proxima_nova_ltsemibold';
+    src: url('../fonts/mark_simonson_-_proxima_nova_semibold-webfont.eot');
+    src: url('../fonts/mark_simonson_-_proxima_nova_semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/mark_simonson_-_proxima_nova_semibold-webfont.woff2') format('woff2'),
+         url('../fonts/mark_simonson_-_proxima_nova_semibold-webfont.woff') format('woff'),
+         url('../fonts/mark_simonson_-_proxima_nova_semibold-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body{background:#ffffff;}
+a:hover{  color: #00aeef!important;}
+.clear{margin:0px; padding:0px; clear:both;}
+.loago_slot_left{margin:25px 0px 0px; padding:0px; width:20%; float:left;}
+.menu_slot_right{margin:0px; padding:0px; width:79%; float:left;}
+.top_nav{margin:0px; padding:0px; float:left;width:87.9%;}
+.top_nav ul.top_nav_link{margin: 0px 0px 0px; padding:0px 0px; float:left; width:45%;}
+.top_nav ul.top_nav_link li{margin:0px 24px 0px 0px; padding:5px 0px;   font-family: 'proxima_nova_altthin'; font-size:14px;color:#000000; list-style:none; float:left;}
+.top_nav ul.top_nav_link li a{margin:0px; padding:0px; display:block; text-decoration:none;color:#000000; }
+.top_nav ul.log_nav{margin:0px 0px 0px 20px; padding:0px 0px; float:right; }
+.top_nav ul.log_nav li{margin:0px 8px 0px 0px; padding:5px;   font-family: 'proxima_nova_altthin'; font-size:14px;color:#000000; list-style:none; float:left;}
+.top_nav ul.log_nav li a{margin:0px; padding:0px; display:block; text-decoration:none;color:#000000;  }
+.top_nav ul.log_nav li.wish_back{background:#e5e5e5;padding:5px 24px 5px 44px; position:relative;margin:0px;}
+.top_nav ul.log_nav li.wish_back a{font-family:arial; font-size:11px;}
+.top_nav ul.log_nav li.wish_back .icon{margin:0px; padding:0px; position:absolute;left:12px; background:url(../images/cart_icon.png) left top no-repeat; width:16px; height:14px; top:8px; }
+.main_nav ul.nav_slot{margin:15px 0px 0px ; padding:0px;}
+.main_nav ul.nav_slot li{margin:0px; padding:0px; float:left; list-style:none;}
+.main_nav ul.nav_slot li a{margin:0px; padding:0px 15px 0px ; display:block;font-family: 'proxima_nova_altthin'; font-size:18px;color:#000000; text-decoration:none;}
+.search_bg{background:url(../images/manu_bg.png) center 5px no-repeat; height:80px;}
+.text_slot{margin:0px; padding:0px; float:left; width:60%;}
+.search_slot{ padding:0px; float:right;  padding: 11px 0; margin: 0 52px 0 0;}
+.text_text{float:left;font-family: 'proxima_nova_altlight'; font-size:20px;color:#000000;line-height: 60px;}
+.text_text2{float:right;font-family: 'proxima_nova_ltsemibold'; font-size:16px;color:#726e6d;line-height: 60px;}
+.search_btn{background:url(../images/search_bg.png) left top no-repeat; width:16px; height:16px; float:left; margin: 6px 0 0;border: medium none; cursor: pointer;}
+.search_inner{width:231px; height:30px; border-radius:6px;border:2px solid #e8e8e8; float:right;}
+.input_search_area{width:88%; float:left;}
+.input_search_area input[type="text"]{padding:4px 10px; border:none; outline:none;font-family: 'proxima_nova_altlight';color:#726e6d;border-radius:8px;}
+.checkout_slot{background:#333333; float: right;margin:0px; outline:none; width: 10%;padding:10px 10px 0 10px;}
+.item_cart{font-family: 'proxima_nova_altlight'; font-size:14px;color:#cbcbcb;   font-weight: 600;display:block; padding:0px 0px 0px;}	
+.check_text{font-family: 'proxima_nova_altlight'; font-size:13px;color:#fff; display:block; padding:0px 0px 10px;}
+.check_text b{font-family: 'proxima_nova_ltsemibold';font-size:14px;}	
+.topMenu.main { margin: 10px 20px 0 0 ; float: left;  width: auto;}
+footer.footerWidget{border:none;}
+h5.heading{  font-family: arial; font-size:12px;color:#65666b; border-bottom:7px solid #ededed;padding:0px 0px 11px; margin: 0 0 10px;}
+h6.heading{  font-family: arial; font-size:12px;color:#00aeef; border-bottom:7px solid #ededed;padding:0px 0px 11px;}
+ul.footer_nav{padding:0px;}
+ul.footer_nav li{margin:0px !important; padding:0px !important; display:block; list-style:none;font-family: arial;font-size:13px;line-height: 16px;}
+.wpb_text_column.wpb_content_element  strong { font-weight: 600;}
+ul.footer_nav li::before{display:none;}
+ul.footer_nav li a{margin:0px; padding:0px; color:#9e9e9e; font-size:13px; text-decoration:none;font-family: arial;}
+ul.form_slot{margin:0px; padding:0px;}
+ul.form_slot li{display:block; margin:0px 0px 0px !important; padding:0px; list-style:none; font-family: arial;color:#9e9e9e; font-size:13px;}
+ul.form_slot li::before{display:none;}
+ul.form_slot li input[type="text"]{background:#e0e0e0; border-radius:5px; width:100%;padding:5px; border:none;font-family: arial;color:#fff; font-size:13px;}
+.sub_btn{float:right;background:#bbbbbb url(../images/arrow.png) 72px 9px no-repeat;padding:5px 32px 5px 12px; color:#fff; font-size:14px;border-radius:5px;border:none; outline:none;margin:7px 0px 0px; cursor: pointer; font-family: 'proxima_nova_ltsemibold';}
+ul.social_link{margin:0px; padding:0px 0px 0px;}
+ul.social_link li{margin:0px 9px 0px 0px !important; padding:0px; float:left; list-style:none;width:32px; height:32px;}
+ul.social_link li:last-child{margin-right:0px !important;}
+ul.social_link li::before{display:none;}
+ul.social_link li.fb{background:url(../images/fb.png) left top no-repeat;}
+ul.social_link li.ins{background:url(../images/inst.png) left top no-repeat;}
+ul.social_link li.in{background:url(../images/in.png) left top no-repeat;}
+ul.social_link li.tw{background:url(../images/tw.png) left top no-repeat;}
+ul.social_link li.pin{background:url(../images/pin.png) left top no-repeat;}
+ul.social_link li a{margin:0px; padding:0px; display:block;width:32px; height:32px; background-color:transparent!important;}
+.logoFooter{padding:10px 0px;}
+.text_sub{margin:0px; padding:0px; font-size:11px; color:#9e9e9e;font-family: arial; line-height:14px;}
+.copyright_text{text-align:right;font-size:11px; color:#9e9e9e;font-family: arial; line-height:14px;}
+.copyright_text a{margin:0px; padding:0 20px 0px 0px; font-size:11px; color:#9e9e9e;font-family: arial; line-height:14px;text-align:right; width:50%;}
+.margin_top{margin-top:-5px;}
+.copy_text_left{padding:0px 0px; font-size:11px; color:#a3a3a5;font-family: arial; float:left; width:50%;}
+footer .widget_area{border-bottom:none !important;}
+.login_slot {
+    border-bottom: 1px solid #e5e5e5;
+}
+.sign_text{margin:0px; padding:5px 0px 0px; font-size:16px;font-family: 'proxima_nova_ltsemibold'; color:#00aeef;}
+.sassy-textfiald {
+    float: left;
+    margin: 0;
+    
+    padding: 0;
+    width: 100%;
+}
+.sassy-textfiald input[type="email"] {
+    background: #ffffff none repeat scroll 0 0;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    color: #868686;
+    float: left;
+    
+    font-size: 16px;
+   font-family: 'proxima_nova_altthin';
+    margin: 0;
+    padding: 5px 0 5px 14px;
+    text-transform: inherit !important;
+    width: 100%;
+}
+.sassy-textfiald input[type="text"] {
+    background: #ffffff none repeat scroll 0 0;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    color: #868686;
+    float: left;
+    
+    font-size: 16px;
+    font-family: 'proxima_nova_altthin';
+    margin: 0;
+    padding: 5px 0 5px 14px;
+    text-transform: inherit !important;
+    width: 100%;
+}
+.sassy-submitfiald input[type="submit"] {
+    background: #ffffff none repeat scroll 0 0;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    color: #868686;
+    float: left;
+    font-family: 'proxima_nova_altthin';
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0;
+    padding: 5px; cursor:pointer;
+    text-transform: uppercase;
+}
+.footer_top_ext{margin:0px 0px 15px; padding:40px 0px; background:#3867ad; text-align:center;}
+.footer_top_ext h2{margin:0px; padding:0px; color:#ffffff; font-size:39px;font-family: 'proxima_nova_altthin';}
+footer .widget_area{padding: 0 0 5px !important;}
+#mainmenu li a{ color: #000000 !important;
+    display: block;
+    font-family: "proxima_nova_altthin" !important; 
+    font-weight:normal !important;
+    padding:2px 20px; margin:0px;
+	font-size: 18px;
+	letter-spacing: normal;
+    text-decoration: none;}
+	.topMenu.main{width:100%;}
+	.widget_socials .copy_descr {
+    font-size: 12px;
+    line-height: 16px !important;
+}
+.footerWidget .sc_columns_5.sc_columns_indent .sc_columns_item{ width: 16.6378%;margin: 0 3.3622% 30px 0;}
+.wrapTopMenu .topMenu > ul{float:left; text-align:left;}
+.smartScrollDown .wrapTopMenu .topMenu > ul{ float: inherit; text-align:center;} 
+.check_text > i { font-style: normal; font-weight: 600; float: right; }
+.sc_parallax .sc_parallax_content { height: 100%; }
+.middleBannerSection .sc_columns_1.sc_columns_indent .sc_columns_item {
+    width: 50%;
+    float: left;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+}
+.homePageTagLine.wpb_column.vc_column_container .sc_content.mainWrap {
+    max-width: 1060px;
+}
+.homePageTagLine .wpb_wrapper {
+    color: #ffffff;
+} 
+.headerIcon li {
+    list-style: none;
+    display: inline;
+    padding: 10px;
+    margin: 20px;
+}	
+.headerIcon > ul {
+    margin: 0;
+    padding: 0;
+}
+.headerIcon {
+   display: inline-block;
+    width: 100%;
+    text-align: center;
+	   margin: 5px 0 40px;
+}
+.headerIcon a {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    LINE-HEIGHT: 22PX;
+    DISPLAY: inline-block;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+	   position: relative;
+}
+.headerIcon a .fa {
+    font-size: 41px;
+    margin: 0 10px 0 0;
+}
+.comingsoon {
+    display: block;
+    font-size: 11px;
+    position: absolute;
+    right: 0;
+    text-align: right;
+	color: #92b5e8;
+}
+.sc_section.middleBannerSection.sc_align_center {
+    margin: 30px 0;
+}
+.sc_section.artistsBlock.sc_align_center p {
+ font-size: 2.8em;
+    font-weight: 600;
+    color: #343640;
+	font-family: 'proxima_nova_altthin';
+}
+.user-popUp { 
+    background: rgba(255,255,255,1);
+}
+.hesperiden.tp-bullets{left: 90%!important;}
+.sc_section.artistsBlock.sc_align_center p .btnSignUp {
+    background: #00aeef none repeat scroll 0 0;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    margin: 0 30px 0px 0;
+    padding: 12px 37px;
+    position: relative;
+    top: -5px;
+    font-family: 'proxima_nova_alt_rgregular';
+	  cursor: pointer;
+}
+.sc_section.artistsBlock.sc_align_center p .btnSignUp:hover {
+    background: #333!important;
+    color: #fff!important;
+}
+.widget_area.sidebar_cart.sidebar {
+    display: none;
+    width: 510px;
+}
+.sc_parallax_overlay.texture_bg_14 {
+    color: #000 !important;
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 32px;
+    margin-top: 17%;
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'proxima_nova_ltsemibold';
+}
+aside.widget_socials ul li {
+    margin: 0 4px!important;
+}
+.vc_column_container .sc_title.sc_title_center {
+    display: block;
+    font-family: "proxima_nova_ltsemibold";
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 36px;
+} 
+.footerWidget .sc_columns_5.sc_columns_indent .sc_columns_item.widget-number-4 .sassy-textfiald input[type="text"] {
+    background: #e0e0e0;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+    color: #868686;
+    float: left;
+    font-family: "proxima_nova_altthin";
+    font-size: 16px;
+    margin: 0;
+    padding: 5px 0 5px 14px;
+    text-transform: inherit !important;
+    width: 100%;
+}
+.footerWidget .sc_columns_5.sc_columns_indent .sc_columns_item label {
+    color: #9e9e9e;
+    display: block;
+    height: 20px;
+    line-height: 14px;
+    font-size: 13px;
+}
+.sassy-textfiald {
+    float: left;
+    margin: 0 0 10px;
+    padding: 0;
+    width: 100%;
+} 
+.footerWidget .sc_columns_5.sc_columns_indent .sassy-submitfiald input[type="submit"] {
+    background: #bbbbbb;
+    border:none;
+    border-radius: 5px;
+	 float: right;
+    color: #fff;
+    cursor: pointer;
+    float: left;
+    font-family: "proxima_nova_altthin";
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0;
+    padding: 5px;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+.middleBannerSection  h5 {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: normal!important;
+    letter-spacing: -0.01em;
+    line-height: 120%;
+    text-transform: capitalize;
+    font-family: 'proxima_nova_ltsemibold';
+}
+.middleBannerSection h3 {
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 120%;
+    text-transform: capitalize;
+    font-family: 'proxima_nova_altthin';
+    margin: 0;
+}
+.middleBannerSection ul.sc_list.sc_list_style_iconed li {
+    padding: 2px 0 2px 25px;
+    position: relative;
+    font-size: 20px;
+    font-family: 'proxima_nova_altthin';
+    color: #666;
+}
+.middleBannerSection .vc_general.vc_btn3 {
+    -moz-user-select: none;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid white!important;
+    box-sizing: border-box;
+    color: #5472d2;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 22px!important;
+    line-height: normal;
+    margin-bottom: 0;
+    padding: 14px 20px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    top: 0;
+    transition: all 0.2s ease-in-out 0s;
+    vertical-align: middle;
+    word-wrap: break-word;
+    font-family: 'proxima_nova_ltsemibold';
+    background: #00aeef!important;
+    margin: 0!important;
+    padding: 10px 40px!important;
+}
+.middleBannerSection  .wpb_text_column.wpb_content_element {
+	color: #3867ad;
+    font-family: "proxima_nova_rgregular";
+    font-size: 18px;
+	 margin: 0 0 0 40px!important;
+}
+.middleBannerSection  ul.sc_list.sc_list_style_iconed {
+    margin: 0 0 20px 40px;
+    padding: 0;
+}
+.middleBannerSection .sc_image img {
+    display: block;
+    width: 80% !important;
+    float: right;
+}
+.homepageBottomImg { background:url(../images/bottomBgImg.jpg) left top repeat-x;}
+.homepageBottomImg .sc_image img {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+.login_slot .main .sc_columns_indent[class^="sc_columns_"] .sc_columns_item,.login_slot .main .sc_columns_indent[class*=" sc_columns_"] .sc_columns_item {
+    margin: 0 2.3622% 3px 0;
+}
+.middleBannerSection .sc_columns_item.sc_columns_item_coun_1.odd.first {
+    width: 30%;
+    margin-right: 20%;
+}
+.wrapTopMenu .topMenu > ul > li > a:before {
+    background-color: transparent;
+	} 
+.check_text{ position: relative;}
+.check_text ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.check_text ul.usermenuList li {
+    list-style: none;
+}
+.check_text ul.usermenuList {
+ 
+} 
+.check_text:hover ul.usermenuList li .sidebar_cart .widget.woocommerce.widget_shopping_cart{ display: block !important;}
+ .check_text:hover ul.usermenuList li .sidebar_cart{
+    background: white none repeat scroll 0 0 !important;
+    border: 1px solid #ccc;
+    border-radius:0 1px 2px gray;
+    box-shadow: 0 0 2px gray;
+    display: block !important;
+    margin-top: 48px;
+    position: absolute;
+    right: 20px;
+	margin-right: 32px;
+    top: 10px !important;
+    width: 340px;
+}
+ .check_text:hover ul.usermenuList li .sidebar_cart a, .check_text:hover ul.usermenuList  { color:#000!important;font-family: 'proxima_nova_altthin'!important;}
+.check_text .cart_list.product_list_widget {
+    background: transparent!important;
+    color: black;
+}
+  .check_text:hover ul.usermenuList li .sidebar_cart p{ margin:0!important;}
+  .check_text:hover ul.usermenuList li .sidebar_cart img {
+    border: 1px solid gray;
+    float: left;
+    margin: 0 10px;
+}
+ .check_text:hover ul.usermenuList li .sidebar_cart .cart_list.product_list_widget li , .check_text:hover ul.usermenuList li .sidebar_cart .cart_list.product_list_widget ul { position:relative;    margin: 0!important;     padding: 0 !important;}
+  .check_text:hover ul.usermenuList li .sidebar_cart a.remove {
+    left: 92%;
+    position: absolute;
+    right: 10px !important;
+    top: 22px;
+}   .check_text:hover ul.usermenuList li .sidebar_cart .quantity {
+    border: medium none;
+    height: 50px;
+}
+.check_text:hover ul.usermenuList li .sidebar_cart p { 
+    margin: 0 !important;
+    padding: 0 10px;
+    text-align: right;
+}
+.check_text:hover ul.usermenuList li .sidebar_cart p.total {
+    border-style: solid;
+    border-width: 1px 0 0;
+}
+ul.usermenuList li .sidebar_cart a:hover:before{ background:transparent!important;}
+.check_text:hover ul.usermenuList li .sidebar_cart p.buttons:first-child .button{ display:none;}
+ .check_text:hover ul.usermenuList li .sidebar_cart a.button {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: transparent none repeat scroll 0 0 !important;
+    border-color: -moz-use-text-color -moz-use-text-color -moz-use-text-color gray;
+    border-image: none;
+    border-style: none none none solid;
+    border-width: medium medium medium 1px;
+    letter-spacing: initial;
+    padding: 0 0 0 4px;
+    text-transform: none;
+}
+ .check_text:hover ul.usermenuList li .sidebar_cart ul.product_list_widget li .total {
+    border-top: 1px solid gray;
+    box-sizing: padding-box;
+    clear: none !important;
+    color: black;
+    float: right;
+    margin: 0;
+    padding: 4px 10px 0;
+    text-align: right;
+    width: 100%;
+}
+ .check_text:hover ul.usermenuList li .sidebar_cart ul.product_list_widget li .buttons {
+    display: inline-block;
+    margin: 7px 0;
+    text-align: center;
+    width: 100%;
+}
+.menuStyleFixed #header.fixedTopMenuShow .menuFixedWrap{position: fixed;top: 0;left: 0;right: 0;z-index: 200;background-color: rgba(42, 42, 42, 0.89)!important;}
+.menuStyleFixed #header.fixedTopMenuShow .menuFixedWrap .wrapTopMenu .topMenu > ul > li > a{ color: #fff!important; } 
+.menuStyleFixed #header.fixedTopMenuShow .menuFixedWrap .wrapTopMenu .topMenu.main {
+    width: 100%;
+    text-align: center;
+}
+.menuStyleFixed #header.fixedTopMenuShow .menuFixedWrap .wrapTopMenu .topMenu > ul {
+    float: none;
+	}
+.buttonScrollUp.upToScroll:before {
+    color: #fff;
+    font-size: 50px;
+    line-height: 30px;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 3px;
+    height: 30px;
+    z-index: 2;
+    width: 50px;
+    text-align: center;
+}
+.buttonScrollUp {
+    position: fixed;
+    width: 50px!important;
+    height: 30px!important;
+    bottom: -100px;
+    right: 40px;
+    z-index: 999;
+    cursor: pointer;
+    background-color: rgba(42, 42, 42, 0.26)!important;;
+}
+.buttonScrollUp:after{border:none!important;}
+.home .sliderHeader {
+    margin: 0 0 0; 
+}
+@media (max-width: 766px) {
+
+.top_nav ul.top_nav_link {
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.checkout_slot,.top_nav ul.top_nav_link,.search_bg .text_text,.search_bg .text_slot {
+    display: none;
+}
+
+.search_slot {
+    float: right;
+    margin: 0 52px 0 0;
+    padding: 11px 0;
+    width: 86%;
+}
+.search_inner {
+    border: 2px solid #e8e8e8;
+    border-radius: 6px;
+    float: right;
+    height: 30px;
+    width: 100%;
+}
+.input_search_area {
+    float: left;
+    width: 92%;
+}
+.wrapTopMenu .topMenu > ul {
+    height: 100%;
+    padding: 0;
+    text-align: center;
+}
+.menu_slot_right {
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.vc_column_container .sc_title.sc_title_center {
+    display: block;
+    font-family: "proxima_nova_ltsemibold";
+    font-size: 18px;
+    text-align: center;
+    text-transform: capitalize;
+}
+.headerIcon li {
+    display: inline-block;
+    list-style: outside none none;
+    margin: 0;
+    padding: 5px;
+    float: left;
+}
+.headerIcon a {
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 22px;
+    margin: 0 6px;
+    padding: 0;
+    position: relative;
+}
+.sc_section.artistsBlock.sc_align_center p {
+    color: #343640;
+    font-family: "proxima_nova_altthin";
+    font-size: 22px;
+    font-weight: 600;
+}
+.sc_section.artistsBlock.sc_align_center p .btnSignUp {
+    background: #00aeef none repeat scroll 0 0;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "proxima_nova_alt_rgregular";
+    font-size: 18px;
+    line-height: 22px;
+    margin: 20px 0 0 0;
+    padding: 12px 37px;
+    position: relative;
+    top: 0;
+}
+.sc_parallax_overlay.texture_bg_14 {
+    color: #000 !important;
+    font-family: "proxima_nova_ltsemibold";
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 32px;
+    margin-top: 37%;
+    text-align: center;
+    vertical-align: middle;
+}
+.headerIcon a .fa {
+    font-size: 23px;
+    margin: 0 10px 0 0;
+}
+.log_nav {
+    position: absolute;
+    right: 60px;
+    top: 3px !important;
+}
+.wrapTopMenu {
+ 
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 9;
+}
+.loago_slot_left {
+    float: left;
+    margin: 12px 0 0;
+    padding: 0;
+    width: 32%;
+}
+.wrapTopMenu .topMenu > ul {
+    border: medium none;
+    width: 100%;
+	   background:#202020 !important;
+}
+#mainmenu li a {
+    color: #ffffff !important;
+	  text-align: left;
+	}
+	.search_slot {
+    float: right;
+    margin: 0;
+    padding: 11px 0;
+    width: 100%;
+}
+.top_nav ul.log_nav li:first-child,.top_nav ul.log_nav li:nth-child(2){display:none;}
+.search_bg {
+    background: transparent none repeat scroll 0 0;
+    height: 100%;
+}
+}
