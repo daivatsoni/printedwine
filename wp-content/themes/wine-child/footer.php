@@ -37,6 +37,7 @@ global $logo_footer;
 	$copyright = sc_param_is_on(get_custom_option('show_copyright'));
 	if( $footer_widget || $copyright){
 	?>
+	 test
 		 <div class="login_slot">
 	           <div class="footer_top_ext"><h2>Your best prints will tell lasting stories</h2></div>
 	
