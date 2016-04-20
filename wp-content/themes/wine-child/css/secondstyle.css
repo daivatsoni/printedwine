@@ -562,6 +562,13 @@ ul.usermenuList li .sidebar_cart a:hover:before{ background:transparent!importan
 .home .sliderHeader {
     margin: 0 0 0; 
 }
+#mainmenu li a:first-child {
+    margin-left: 0!important;
+    padding-left: 0!important;
+}
+
+
+
 @media (max-width: 766px) {
 
 .top_nav ul.top_nav_link {

@@ -36,8 +36,9 @@ global $logo_footer;
 	$footer_widget = (get_custom_option('show_sidebar_footer') == 'yes' && is_active_sidebar( get_custom_option('sidebar_footer')));
 	$copyright = sc_param_is_on(get_custom_option('show_copyright'));
 	if( $footer_widget || $copyright){
-	?>
-	 test 
+	?>  
+	<?php if( is_front_page() ) : ?> 
+}
 		 <div class="login_slot">
 	           <div class="footer_top_ext"><h2>Your best prints will tell lasting stories</h2></div>
 	
@@ -61,8 +62,7 @@ global $logo_footer;
 				</div>
 			</div>	
 	</div> 
-   
-   
+      <?php endif;?>   
         <footer <?php echo $footer_widget ? 'class="footerWidget"' : '' ?>>
             <div class="main">
                 <div class="sc_columns_5 sc_columns_indent">
