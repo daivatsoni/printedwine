@@ -1,0 +1,31 @@
+Version 1.0
+	Release
+Version 1.1	
+	Fixed CUBE layout.
+	Fixed shortcode emailer.
+	Various code fixes and optimization.
+	One click Dummy data import implemented.
+Version 1.2		
+	Various code fixes.
+	Added logo link to the Homepage.
+	Improved compatibility with Visual composer.
+	Updated plugins.
+Version 1.2.1		
+	WP Booking calendar issue fixed.
+Version 1.3	
+	Improved compatibility with Visual composer.
+	Improved compatibility with Woocommerce.
+	User menu appearance fixed.
+	Various code fixes.
+	Updated plugins.
+Version 1.3.1
+	Issue with Google fonts fixed.
+Version 1.4
+	Fixed issue with Woocommerce filter.
+    Fixed notice related with deprecated function TribeEvents.
+    Compatibility with WP 4.3 is improved.
+    Google map latlng detection is fixed.
+    Title and description for the Google map markers is added.
+	Visual composer updated to the 4.7.1
+Version 1.4.2
+	Visual composer updated to the 4.7.4

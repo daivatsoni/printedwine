@@ -1,0 +1,62 @@
+@charset 'utf-8';
+@import url(http://fonts.googleapis.com/css?family=Ruda:400,700,900);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:100,100italic,300,300italic,400,400italic,500,500italic,700,700italic,900,900italic&#038;subset=latin,cyrillic-ext,latin-ext,cyrillic);
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	font-family: 'Source Sans Pro', sans-serif; 
+	border: 0;
+	font-size: 100%;
+	font-style: inherit;
+	font-weight: inherit;
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+body{ padding: 10px 20px !important;}
+
+
+a{ color: #eb413e}
+
+.sc_quote, blockquote{ font-size: 18px; line-height: 20px; color: #eb413e; min-height: 32px; margin: 0; font-style: italic; padding: 0 0 0 50px;;}
+.sc_quote p, blockquote p{ padding: 0;}
+.sc_quote p + p, blockquote p + p{ padding: 10px 0 0 0;}
+.sc_quote .sc_quote_title, blockquote .sc_quote_title{ font-size: 14px; text-transform: uppercase; font-weight: 700; color: #000; font-style: normal;}
+
+
+
+h1, h2, h3, h4, h5, h6 { font-family: 'Ruda','Source Sans Pro', sans-serif; } 
+h1{ letter-spacing:-2px; font-size:30px; text-transform: uppercase; font-style:normal; font-weight:900; line-height:36px; padding: 0 0 20px 0; } 
+h2{ letter-spacing:-2px; font-size:25px; text-transform: uppercase; font-style:normal; font-weight:900; line-height:30px; padding: 0 0 15px 0; } 
+h3{ letter-spacing:3px; font-size:20px; text-transform: uppercase; font-style:normal; font-weight:400; line-height:24px; padding: 0 0 10px 0; } 
+h4{ letter-spacing:3px; font-size:18px; text-transform: uppercase; font-style:normal; font-weight:400; line-height:21px; padding: 0 0 10px 0; } 
+h5{ letter-spacing:0px; font-size:16px; text-transform: uppercase; font-style:normal; font-weight:700; line-height:19px; padding: 0 0 9px 0; } 
+h6{ letter-spacing:0px; font-size:14px; text-transform: uppercase; font-style:normal; font-weight:300; line-height:16px; padding: 0 0 9px 0; } 
+
+.wp-caption .wp-caption-dd{
+	-webkit-transition: all 0.3s ease-out;
+	   -moz-transition: all 0.3s ease-out;
+	    -ms-transition: all 0.3s ease-out;
+	     -o-transition: all 0.3s ease-out;
+	        transition: all 0.3s ease-out; }
+
+.wp-caption{ position: relative; overflow: hidden; padding: 0; margin: 0; border: none; background: none;}
+.wp-caption img{ display: block; width: 100% !important;}
+.wp-caption a{ display: block;  }
+.wp-caption .wp-caption-dd{ margin: 0; padding: 12px; position: absolute; left: 0; right: 0; bottom: -100%; font-size: 14px; background-color: rgba(0,0,0,0.6); color: #fff;}
+.wp-caption:hover .wp-caption-dd{ bottom: 0;}
+
+.alignleft{ float: left; margin: 0 20px 10px 0;}
+.alignright{ float: right; margin: 0 0 10px 20px;}
+.aligncenter{ margin: 20px auto; clear: both; }
+.alignnone{ margin: 10px 0;}
+
+
+

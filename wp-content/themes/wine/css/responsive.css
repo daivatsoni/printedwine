@@ -1,0 +1,167 @@
+@media (max-width: 1299px) { 
+	body{ min-width: 1160px; }
+	.bodyStyleBoxed .wrapBox,
+	.wrapWide,
+	.fullWidth .isotopeWrap .fullContent article,
+	.main,
+	.mainWrap{ width: 1100px; }
+
+	.wrapTopMenu .topMenu > ul > li > a{ padding: 0 10px;}
+	
+	.isotopeWrap.portfolio_mini .isotopeItem { width:20%;}
+	.isotopeWrap.portfolio_mini .isotopeItem[data-incw="2"]{ width:40%; }
+	
+	.isotopeWrap.portfolio_medium .isotopeItem { width:33.3333%; }
+	.isotopeWrap.portfolio_medium .isotopeItem[data-incw="2"]{ width:66.6666%;}
+	
+	.isotopeWrap.portfolio_big .isotopeItem { width:50%; }
+	.isotopeWrap.portfolio_big .isotopeItem[data-incw="2"] { width:100%; }
+}
+/*===========================================*/
+@media (max-width: 1170px) { 
+	body{ min-width: 1000px; }
+	.bodyStyleBoxed .wrapBox,
+	.wrapWide,
+	.fullWidth .isotopeWrap .fullContent article,
+	.main,
+	.mainWrap{ width: 940px; }
+
+	.logoSeparator .wrapTopMenu .topMenu{ text-align: center; }
+	.logoSeparator .wrapTopMenu .topMenu #mainmenu,
+	.logoSeparator .wrapTopMenu .topMenu #mainmenu_right{ padding: 0; display: inline-block; float: none; width: auto; }
+	.logoSeparator .wrapTopMenu .topMenu > ul > li > a{ padding: 0 20px; }
+	.logoSeparator .logoWrap .logoHeader .logoImg{ margin: 0 auto; z-index: 199;}
+	
+	.isotopeWrap.portfolio_mini .isotopeItem { width:25%;}
+	.isotopeWrap.portfolio_mini .isotopeItem[data-incw="2"]{ width:50%; }
+}
+/*===========================================*/
+@media (max-width: 1015px) { 
+	body{ min-width: 700px; }
+	p { margin:0 0 15px 0;}
+
+	[class^="sc_columns_"].sc_columns_indent .sc_columns_item,
+	[class*=" sc_columns_"].sc_columns_indent .sc_columns_item{ margin-bottom: 15px; }
+	.bodyStyleBoxed .wrapBox,
+	.wrapWide,
+	.fullWidth .isotopeWrap .fullContent article,
+	.main,
+	.mainWrap{ width: 640px; }
+	.wrap{ padding: 0; }
+	.post + .post{ padding: 30px 0 15px 0 } 
+	.sideBarLeft .sideBar,
+	.sideBarRight .sideBar{ width: 100%; border: none; padding: 0; margin: 0;}
+	.sideBar .widgetWrap{ width: 50%; display: inline-block; vertical-align: top;}
+
+	.sideBarLeft .content,
+	.sideBarRight .content{ width: 100%; border: none; padding: 0; margin: 0;}
+
+	.reviewBlock { width: 400px;}
+
+	.wrapTopMenu .topMenu > ul > li > a{ padding: 0 10px; }
+	.menuStyleFixed #header.fixedTopMenuShow .menuFixedWrap{ left: 0; right: 0;}
+	.sideBar .widgetWrap + .widgetWrap ,
+	.sideBar .widgetWrap { border-top: 1px solid #ddd; padding: 30px 0 0 0; margin: 30px 0 0 0; }
+	.widget_area .sc_columns_item{ width: 47.6378% !important;}
+	footer.footerWidget{ padding: 30px 0 0 0} 
+	
+  	.woocommerce-page.columns-3 ul.products li.product,
+	.woocommerce.columns-3 ul.products li.product{ width:48%}
+	
+	.isotopeWrap.portfolio_mini .isotopeItem { width:33.3333%;}
+	.isotopeWrap.portfolio_mini .isotopeItem[data-incw="2"]{ width:66.6666%; }
+	
+	.isotopeWrap.portfolio_medium .isotopeItem { width:50%; }
+	.isotopeWrap.portfolio_medium .isotopeItem[data-incw="2"]{ width:100%;}
+}
+
+@media (max-width: 800px) {
+	.logoSeparator .wrapTopMenu{ background-color: #b4bb6b; }
+	.logoSeparator .wrapTopMenu .topMenu{ padding: 45px 0 0 0; text-align: center;}
+	.logoSeparator .wrapTopMenu .topMenu:after{ content: ''; height: 0; display: block; clear: both;}
+	.logoSeparator .wrapTopMenu .topMenu #mainmenu{  width: 50%; display: none; height: auto; float: left; clear: none;}
+	.logoSeparator .wrapTopMenu .topMenu #mainmenu_right{ width: 50%; display: none; height: auto; float: right;  clear: none; }
+
+	.logoSeparator .wrapTopMenu .topMenu #mainmenu  ul li{ text-align: right; }
+	.menuStyle2 #header ul > li > ul li a{ color: #fff;}
+	.wrapTopMenu .topMenu > ul > li > a:before{ background-color: #fff;}
+	
+	.isotopeWrap.portfolio_mini .isotopeItem { width:50%;}
+	.isotopeWrap.portfolio_mini .isotopeItem[data-incw="2"]{ width:100%; }
+	
+	.isotopeWrap.portfolio_big .isotopeItem { width:100%; }
+	.isotopeWrap.portfolio_big .isotopeItem[data-incw="2"] { width:100%; }
+
+}
+
+/*===========================================*/
+@media (max-width: 669px) { 
+	body{ min-width: 460px; font-size:15px; }
+	p { margin:0 0 10px 0;}
+	[class^="sc_columns_"].sc_columns_indent .sc_columns_item,
+	[class*=" sc_columns_"].sc_columns_indent .sc_columns_item{ margin-bottom: 10px; }
+
+	.bodyStyleBoxed .wrapBox,
+	.wrapWide,
+	.fullWidth .isotopeWrap .fullContent article,
+	.main,
+	.mainWrap{ width: 420px; }
+	.blogStreampageColumns .sc_columns_item{ width: 97.6378% !important;}
+	.sideBar .widgetWrap{ width: 100%; }
+	
+	.reviewBlock { width: 100%;}
+	
+	.sc_emailer{ width:300px;}
+	.sc_eform_form.sc_eform_opened{ width:300px;}
+	
+	.sc_section .woocommerce ul.products li.product a img,
+	.sc_section .woocommerce-page ul.products li.product a img{ width:100px; margin-left:auto !important; margin-right: auto !important;}
+	
+	.sc_emailer{ width:250px;}
+	.sc_eform_form.sc_eform_opened{ width:250px;}
+	
+	.isotopeWrap.portfolio_mini .isotopeItem { width:100%;}
+	.isotopeWrap.portfolio_mini .isotopeItem[data-incw="2"]{ width:100%; }
+	
+	.isotopeWrap.portfolio_medium .isotopeItem { width:100%; }
+	.isotopeWrap.portfolio_medium .isotopeItem[data-incw="2"]{ width:100%;}
+}
+
+/*===========================================*/
+@media (max-width: 449px) { 
+	body{ min-width: 280px; }
+	.bodyStyleBoxed .wrapBox,
+	.wrapWide,
+	.fullWidth .isotopeWrap .fullContent article,
+	.main,
+	.mainWrap{ width: 280px; margin-left: auto; margin-right: auto;}
+	
+	[class^="sc_columns_"].sc_columns_indent,
+	[class*=" sc_columns_"].sc_columns_indent{ margin: 0 !important;}
+	
+	.widget_area .sc_columns_item,
+	.sc_columns_item{ width: 100% !important; margin:0 0 20px 0 !important;}
+	
+	
+	.woocommerce-page.columns-3 ul.products li.product,
+	.woocommerce.columns-3 ul.products li.product{ width:96%; margin:0; float:none; margin: 0 auto 1em auto; padding: 1em 0 0 0 ;}
+	
+	.home_img_icon a{ display:block; }
+	.home_img_icon a + a{ margin:20px 0 0 0;}
+	.home_img_icon img { width: 200px; margin: 0 auto; display:block; }
+}
+
+
+/*================ isotope nav ==============*/
+
+@media (max-width: 1500px) { 
+	.isotopeWrap .fullItemWrap .fullItemClosed{ right: 10px;}
+	.isotopeWrap .fullItemWrap .isotopeNav{ width: 30px; height: 30px; top: 30px; margin: 0; font-size: 20px; line-height: 30px; }
+	.isotopeWrap .fullItemWrap .isotopeNav:before{ width: 30px; height: 30px; }
+	.isotopeWrap .fullItemWrap .isotopeNav.isoNext{ right: 50px; }
+	.isotopeWrap .fullItemWrap .isotopeNav.isoPrev{ right: 90px; left: auto;}
+
+	.home_img_icon{ padding:0;}
+	
+	footer.footerWidget{ padding:30px 0 0 0;}
+}

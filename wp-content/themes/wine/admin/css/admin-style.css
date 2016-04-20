@@ -1,0 +1,92 @@
+
+/* Attachment folders
+-----------------------------------------------------------------*/
+.compat-attachment-fields .field .media_folder_selector {
+	max-height:200px;
+	overflow:auto;
+}
+
+
+/* Internal Colorpicker "More Colors" button
+-----------------------------------------------------------------*/
+.iColorPicker_moreColors {
+	display:inline-block;
+    width: 14px;
+    height: 14px;
+	margin-left:2px;
+    background: url(../images/colorpicker_morecolors.png);
+	vertical-align:middle;
+}
+
+
+.reviewBlock { width: 500px;  background-color: #fff; padding: 26px 30px;}
+.reviewBlock .revWrap{ position: relative; }
+.reviewBlock .revWrap + .revWrap{ padding: 15px 0 0 0; margin: 15px 0 0 0; border-top: 1px solid #ddd; }
+.reviewBlock .revWrap:after{ content: ''; height: 0; display: block; clear: both; }
+.reviewBlock .revWrap .revItem{ float: right; 
+  -khtml-user-select: none;
+    -moz-user-select: none;
+       -o-user-select:none;
+  
+  -webkit-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.reviewBlock .revWrap .revItem{  }
+.reviewBlock .revWrap .revName{ overflow: hidden; }
+
+
+
+.reviewBlock .revWrap .revInfo{ padding: 0 10px 0 0; vertical-align: middle; font-size: 14px; }
+.reviewBlock .revWrap .revBlock.revStyle5{ width: 150px;  height: 24px; display: inline-block; position: relative; }
+.reviewBlock .revWrap .revBlock.revStyle5 .revData{ width: 27px; height: 24px;}
+.reviewBlock .revWrap .revBlock.revStyle5 .revData:before{ line-height: 23px; font-size: 24px; }
+.reviewBlock .revWrap .revBlock.revStyle5 .ratingDefault{ height: 24px; }
+.reviewBlock .revWrap .revBlock.revStyle5 .ratingValue{  height: 24px; }
+
+
+.reviewBlock .revWrap .revBlock.revStyle10{ width: 147px; height: 12px; display: inline-block; position: relative; }
+.reviewBlock .revWrap .revBlock.revStyle10 .revData{ width: 12px; height: 12px;}
+.reviewBlock .revWrap .revBlock.revStyle10 .revData:before{ line-height: 11px; font-size: 12px; }
+.reviewBlock .revWrap .revBlock.revStyle10 .ratingDefault{ height: 12px; }
+.reviewBlock .revWrap .revBlock.revStyle10 .ratingValue{  height: 12px; }
+
+.reviewBlock .revWrap .revBlock{ vertical-align: middle; position: relative;}
+.reviewBlock .revWrap .revBlock.reviewEdit{ cursor: pointer; }
+.reviewBlock .revWrap .revBlock .revData{ display: inline-block; vertical-align: top; }
+.reviewBlock .revWrap .revBlock .revData + .revData { margin: 0 0 0 3px; }
+.reviewBlock .revWrap .revBlock .revData:before{ text-align: center; display: block; }
+.reviewBlock .revWrap .revBlock .ratingDefault{ position: absolute; left: 0; top: 0; z-index: 1; white-space: nowrap; color: #ededed; }
+.reviewBlock .revWrap .revBlock .ratingValue{ position: absolute; left: 0; top: 0; z-index: 2; overflow: hidden; color: #444; white-space: nowrap; 
+	-webkit-transition: width 0.3s ease-out;
+	   -moz-transition: width 0.3s ease-out;
+	    -ms-transition: width 0.3s ease-out;
+	     -o-transition: width 0.3s ease-out;
+	        transition: width 0.3s ease-out;}
+
+.reviewBlock .revWrap .revBlock.revStyle100{ width: 150px; height: 6px; display: inline-block; position: relative; }
+.reviewBlock .revWrap .revBlock.revStyle100 .ratingDefault{ position: absolute; left: 0; top: 0; height: 6px;  width: 100%; background-color: #ededed;}
+.reviewBlock .revWrap .revBlock.revStyle100 .ratingValue{ position: absolute; left: 0; top: 0; height: 6px; background-color: #444; }
+
+.reviewBlock .revWrap .revBlock .revTooltip{ position: absolute; display: block; display: block; width: 50px; text-align: center; height: 25px; background-color: #fff; left: 0; top: -30px; pointer-events: none; line-height: 25px; font-size: 14px; border: 1px solid #ddd; z-index: 3; margin: 0 0 0 -25px; opacity: 0;
+	-webkit-transition: opacity 0.3s ease-out;
+	   -moz-transition: opacity 0.3s ease-out;
+	    -ms-transition: opacity 0.3s ease-out;
+	     -o-transition: opacity 0.3s ease-out;
+	        transition: opacity 0.3s ease-out;}
+.reviewBlock .revWrap .revBlock .revTooltip:before{ content: ''; pointer-events: none; display: block; position: absolute; left: 50%; bottom: -3px; width: 6px; height: 6px; background-color: #fff; border-width: 0 1px 1px 0 ; border-style: solid; border-color: #ddd; margin: 0 0 0 -3px;
+	-webkit-transform: rotate(45deg);
+	   -moz-transform: rotate(45deg);
+	    -ms-transform: rotate(45deg);
+	     -o-transform: rotate(45deg); }
+.reviewBlock .revWrap .revItem:hover .revTooltip{ opacity: 1; }
+
+
+
+
+.reviewBlock .revTotalWrap{ border-top: 1px solid #ddd; margin: 15px 0 0 0;}
+.reviewBlock .revTotalWrap:after{ content: ''; height: 0; display: block; clear: both; }
+.reviewBlock .revTotalWrap .revDesc{ overflow: hidden; padding: 20px; border-right: 1px solid #ddd; font-size: 12px; line-height: 16px; }
+.reviewBlock .revTotalWrap .revTotal{ float: right; width: 140px; text-align: center; padding: 30px 0; border-left: 1px solid #ddd; margin: 0 0 0 -1px;}
+.reviewBlock .revTotalWrap .revTotal .revRating{ font-size: 60px; color: #444; }
+
