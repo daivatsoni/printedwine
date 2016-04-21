@@ -295,8 +295,8 @@ footer .widget_area{padding: 0 0 5px !important;}
     color: #fff;
     font-size: 18px;
     line-height: 22px;
-    margin: 0 30px 0 0;
-    padding: 12px 57px 12px 37px;
+    margin: 0 30px 0 30px;
+    padding: 12px 47px 12px 27px;
     position: relative;
     top: -5px;
     font-family: 'proxima_nova_alt_rgregular';
@@ -309,6 +309,9 @@ footer .widget_area{padding: 0 0 5px !important;}
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  right: 20px;
+    top: 7px;
+	position: absolute;
 
 }
 .sc_blogger_content p {
