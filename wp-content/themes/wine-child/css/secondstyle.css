@@ -219,8 +219,24 @@ footer .widget_area{padding: 0 0 5px !important;}
     max-width: 1060px;
 }
 .homePageTagLine .wpb_wrapper {
-    color: #ffffff;
+     color: #ffffff;
+    font-family: "proxima_nova_rgregular" !important;
 } 
+.headerIcon a i {
+    position: relative;
+    top: 8px;
+}
+.headerIcon p {
+    margin: 0 0 10px;
+    padding: 0;
+}
+.vc_btn3.vc_btn3-size-md .vc_btn3-icon {
+    font-size: 33px;
+    height: 14px;
+    line-height: 12px;
+    margin: 0 0 0 30px!important;
+     : ;
+}
 .headerIcon li {
     list-style: none;
     display: inline;
@@ -264,10 +280,10 @@ footer .widget_area{padding: 0 0 5px !important;}
     margin: 30px 0;
 }
 .sc_section.artistsBlock.sc_align_center p {
- font-size: 2.8em;
-    font-weight: 600;
     color: #343640;
-	font-family: 'proxima_nova_altthin';
+    font-family: 'proxima_nova_altthin';
+    font-size: 2.2em;
+    font-weight: 600;
 }
 .user-popUp { 
     background: rgba(255,255,255,1);
@@ -279,16 +295,41 @@ footer .widget_area{padding: 0 0 5px !important;}
     color: #fff;
     font-size: 18px;
     line-height: 22px;
-    margin: 0 30px 0px 0;
-    padding: 12px 37px;
+    margin: 0 30px 0 0;
+    padding: 12px 57px 12px 37px;
     position: relative;
     top: -5px;
     font-family: 'proxima_nova_alt_rgregular';
 	  cursor: pointer;
 }
+.sc_section.artistsBlock.sc_align_center p .btnSignUp:before{
+ font: normal normal normal 14px/1 FontAwesome;
+   content: "\f105";
+    font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+.sc_blogger_content p {
+    font-size: 16px;
+}
+.sc_section .woocommerce * {
+    color: #666;
+    font-family: 'proxima_nova_alt_rgregular';
+}
+.middleBannerSection .wpb_text_column.wpb_content_element a {
+    color: #00aeef;
+    font-family: 'proxima_nova_ltsemibold';
+}
 .sc_section.artistsBlock.sc_align_center p .btnSignUp:hover {
     background: #333!important;
     color: #fff!important;
+}
+
+.wpb_text_column.wpb_content_element strong {
+    font-weight: 600;
+    font-family: 'proxima_nova_ltsemibold';
 }
 .widget_area.sidebar_cart.sidebar {
     display: none;
@@ -309,11 +350,14 @@ aside.widget_socials ul li {
 }
 .vc_column_container .sc_title.sc_title_center {
     display: block;
-    font-family: "proxima_nova_ltsemibold";
+    font-family:"proxima_nova_ltsemibold";
     text-align: center;
     text-transform: capitalize;
     font-size: 36px;
 } 
+.mainWrap .wpb_wrapper p {
+    font-size: 19px;
+}
 .footerWidget .sc_columns_5.sc_columns_indent .sc_columns_item.widget-number-4 .sassy-textfiald input[type="text"] {
     background: #e0e0e0;
     border: 1px solid #e1e1e1;
@@ -410,7 +454,7 @@ aside.widget_socials ul li {
 .middleBannerSection  .wpb_text_column.wpb_content_element {
 	color: #3867ad;
     font-family: "proxima_nova_rgregular";
-    font-size: 18px;
+    font-size: 20px;
 	 margin: 0 0 0 40px!important;
 }
 .middleBannerSection  ul.sc_list.sc_list_style_iconed {
@@ -587,11 +631,12 @@ ul.usermenuList li .sidebar_cart a:hover:before{ background:transparent!importan
     display: block;
     z-index: 1000;
 }
-.tparrows.tp-leftarrow::before {
-    content: " ";
-}
-.tparrows.tp-rightarrow::before{
-    content: " ";
+.sliderHeader.slider_engine_revo .tparrows {
+    background: transparent!important;
+	}
+.tparrows.tp-leftarrow:before,.tparrows.tp-rightarrow:before { 
+    font-size: 102px!important; 
+    font-family: "revicons" !important; 
 }
 @media (max-width: 766px) { 
 .top_nav ul.top_nav_link {
@@ -634,8 +679,8 @@ ul.usermenuList li .sidebar_cart a:hover:before{ background:transparent!importan
 }
 .vc_column_container .sc_title.sc_title_center {
     display: block;
-    font-family: "proxima_nova_ltsemibold";
-    font-size: 18px;
+    font-family: "proxima_nova_alt_rgregular";
+    font-size: 30px;
     text-align: center;
     text-transform: capitalize;
 }
