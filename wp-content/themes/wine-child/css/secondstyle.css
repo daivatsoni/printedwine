@@ -94,7 +94,8 @@ a:hover{  color: #00aeef!important;}
 .search_bg{background:url(../images/manu_bg.png) center 5px no-repeat; height:80px;}
 .text_slot{margin:0px; padding:0px; float:left; width:60%;}
 .search_slot{ padding:0px; float:right;  padding: 11px 0; margin: 0 52px 0 0;}
-.text_text{float:left;font-family: 'proxima_nova_altlight'; font-size:20px;color:#000000;line-height: 60px;}
+.text_text{float:left;font-family: 'proxima_nova_alt_rgregular'; font-size:20px;color:#000000;line-height: 60px;}
+.check_text .amount { color: white;}
 .text_text2{float:right;font-family: 'proxima_nova_ltsemibold'; font-size:16px;color:#726e6d;line-height: 60px;}
 .search_btn{background:url(../images/search_bg.png) left top no-repeat; width:16px; height:16px; float:left; margin: 6px 0 0;border: medium none; cursor: pointer;}
 .search_inner{width:231px; height:30px; border-radius:6px;border:2px solid #e8e8e8; float:right;}
@@ -680,7 +681,7 @@ ul.usermenuList li .sidebar_cart a:hover:before{ background:transparent!importan
     padding: 0;
     width: 100%;
 }
-.vc_column_container .sc_title.sc_title_center {
+.homePageTagLine.vc_column_container .sc_title.sc_title_center {
     display: block;
     font-family: "proxima_nova_alt_rgregular";
     font-size: 30px;
