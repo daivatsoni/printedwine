@@ -231,7 +231,7 @@ footer .widget_area{padding: 0 0 5px !important;}
     margin: 0 0 10px;
     padding: 0;
 }
-.vc_btn3.vc_btn3-size-md .vc_btn3-icon {
+.middleBannerSection .vc_btn3.vc_btn3-size-md .vc_btn3-icon {
     font-size: 33px;
     height: 14px;
     line-height: 12px;
@@ -313,6 +313,7 @@ footer .widget_area{padding: 0 0 5px !important;}
   right: 20px;
     top: 7px;
 	position: absolute;
+	  font-size: 30px;
 
 }
 .sc_blogger_content p {
@@ -360,7 +361,34 @@ aside.widget_socials ul li {
     font-size: 36px;
 } 
 .mainWrap .wpb_wrapper p {
-    font-size: 19px;
+	font-size: 19px;
+    margin: 0 0 15px!important;
+}
+.vc_btn3.vc_btn3-size-md.vc_btn3-icon-right:not(.vc_btn3-o-empty) {
+    padding-right: 48px!important;
+}
+ul.sc_list.sc_list_style_iconed li:first-child:before {
+    color: #ef4036!important;
+}
+ul.sc_list.sc_list_style_iconed li:nth-child(2):before{
+	 color: #ef4036!important;
+}
+ul.sc_list.sc_list_style_iconed li:nth-child(3):before{
+	 color: #00aeef!important;
+}
+ul.sc_list.sc_list_style_iconed li:nth-child(4):before{
+	 color: #39b54a!important;
+}
+ul.sc_list.sc_list_style_iconed li:last-child:before {
+    color: #ed217c!important;
+}
+
+ul.sc_list.sc_list_style_iconed li:before{
+	 top: -8px!important;;
+}
+ul.sc_list.sc_list_style_iconed .icon-right-open-micro::before {
+    content: ".";
+    font-size: 52px!important;
 }
 .footerWidget .sc_columns_5.sc_columns_indent .sc_columns_item.widget-number-4 .sassy-textfiald input[type="text"] {
     background: #e0e0e0;
