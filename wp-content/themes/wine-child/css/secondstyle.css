@@ -147,6 +147,10 @@ footer .widget_area{border-bottom:none !important;}
     padding: 0;
     width: 100%;
 }
+aside.widget_socials ul li:first-child {
+    margin: 0 4px 0 0!important;
+    padding: 0;
+}
 .sassy-textfiald input[type="email"] {
     background: #ffffff none repeat scroll 0 0;
     border: 1px solid #e1e1e1;
