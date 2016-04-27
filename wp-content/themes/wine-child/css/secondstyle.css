@@ -94,7 +94,7 @@ a:hover{  color: #00aeef!important;}
 .search_bg{background:url(../images/manu_bg.png) center 5px no-repeat; height:80px;}
 .text_slot{margin:0px; padding:0px; float:left; width:60%;}
 .search_slot{ padding:0px; float:right;  padding: 11px 0; margin: 0 52px 0 0;}
-.text_text{float:left;font-family: 'proxima_nova_alt_rgregular'; font-size:20px;color:#000000;line-height: 60px;}
+.text_text{float:left;font-family: "proxima_nova_rgregular"; font-size:20px;color:#000000;line-height: 60px;}
 .check_text .amount { color: white;}
 .text_text2{float:right;font-family: 'proxima_nova_ltsemibold'; font-size:16px;color:#726e6d;line-height: 60px;}
 .search_btn{background:url(../images/search_bg.png) left top no-repeat; width:16px; height:16px; float:left; margin: 6px 0 0;border: medium none; cursor: pointer;}
@@ -107,7 +107,7 @@ a:hover{  color: #00aeef!important;}
 .check_text b{font-family: 'proxima_nova_ltsemibold';font-size:14px;}	
 .topMenu.main { margin: 10px 20px 0 0 ; float: left;  width: auto;}
 footer.footerWidget{border:none;}
-h5.heading{  font-family: arial; font-size:12px;color:#65666b; border-bottom:7px solid #ededed;padding:0px 0px 11px; margin: 0 0 10px;}
+h5.heading{  font-family: arial; font-size:12px;color:#65666b; border-bottom:5px solid #ededed;padding:0px 0px 11px; margin: 0 0 10px;}
 h6.heading{  font-family: arial; font-size:12px;color:#00aeef; border-bottom:7px solid #ededed;padding:0px 0px 11px;}
 ul.footer_nav{padding:0px;}
 ul.footer_nav li{margin:0px !important; padding:0px !important; display:block; list-style:none;font-family: arial;font-size:13px;line-height: 16px;}
@@ -303,6 +303,9 @@ footer .widget_area{padding: 0 0 5px !important;}
     font-family: 'proxima_nova_alt_rgregular';
 	  cursor: pointer;
 }
+.sc_blogger_title.sc_title > a,.sc_blogger_content {
+    font-family: 'proxima_nova_alt_rgregular';
+}
 .sc_section.artistsBlock.sc_align_center p .btnSignUp:before{
  font: normal normal normal 14px/1 FontAwesome;
    content: "\f105";
@@ -311,7 +314,7 @@ footer .widget_area{padding: 0 0 5px !important;}
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   right: 20px;
-    top: 7px;
+    top: 10px;
 	position: absolute;
 	  font-size: 30px;
 
@@ -361,8 +364,9 @@ aside.widget_socials ul li {
     font-size: 36px;
 } 
 .mainWrap .wpb_wrapper p {
-	font-size: 19px;
+	font-size: 16px;
     margin: 0 0 15px!important;
+	 font-family: 'proxima_nova_alt_rgregular';
 }
 .vc_btn3.vc_btn3-size-md.vc_btn3-icon-right:not(.vc_btn3-o-empty) {
     padding-right: 48px!important;
@@ -433,7 +437,7 @@ ul.sc_list.sc_list_style_iconed .icon-right-open-micro::before {
     font-weight: 700;
 }
 .middleBannerSection  h5 {
-    font-size: 24px;
+    font-size: 22px;
     font-style: normal;
     font-weight: normal!important;
     letter-spacing: -0.01em;
@@ -691,7 +695,7 @@ ul.usermenuList li .sidebar_cart a:hover:before{ background:transparent!importan
     border: 2px solid #e8e8e8;
     border-radius: 6px;
     float: right;
-    height: 30px;
+    height: 27px;
     width: 100%;
 }
 .input_search_area {
@@ -709,7 +713,7 @@ ul.usermenuList li .sidebar_cart a:hover:before{ background:transparent!importan
     padding: 0;
     width: 100%;
 }
-.homePageTagLine.vc_column_container .sc_title.sc_title_center {
+.homePageTagLine .vc_column_container .sc_title.sc_title_center {
     display: block;
     font-family: "proxima_nova_alt_rgregular";
     font-size: 30px;
@@ -738,22 +742,21 @@ ul.usermenuList li .sidebar_cart a:hover:before{ background:transparent!importan
 .sc_section.artistsBlock.sc_align_center p {
     color: #343640;
     font-family: "proxima_nova_altthin";
-    font-size: 22px;
-    font-weight: 600;
+    font-size: 39px; 
 }
 .sc_section.artistsBlock.sc_align_center p .btnSignUp {
-    background: #00aeef none repeat scroll 0 0;
+	background: #00aeef none repeat scroll 0 0;
     border-radius: 5px;
     color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    font-family: "proxima_nova_alt_rgregular";
-    font-size: 18px;
+    font-size: 22px;
     line-height: 22px;
-    margin: 20px 0 0 0;
-    padding: 12px 37px;
+    margin: 0 30px 0 30px;
+    padding: 12px 47px 12px 27px;
     position: relative;
-    top: 0;
+    top: -5px;
+    font-family: 'proxima_nova_alt_rgregular';
+    cursor: pointer;
+    font-weight: bold;
 }
 .sc_parallax_overlay.texture_bg_14 {
     color: #000 !important;
