@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Theme functions and definitions
  *
@@ -16,25 +17,25 @@ if (!function_exists('themerex_scripts')) {
 
         //custom fonts
         /*
-        $fonts = getThemeFontsList(false);
+          $fonts = getThemeFontsList(false);
 
-        $fontArray = array('theme_font', 'header_font', 'logo_font');
-        $fontUsed = array();
-        foreach ($fontArray as $fnt) {
-            $fnt = get_custom_option($fnt);
-            if (!in_array($fnt, $fontUsed)) {
-                $fontUsed[] = $fnt;
+          $fontArray = array('theme_font', 'header_font', 'logo_font');
+          $fontUsed = array();
+          foreach ($fontArray as $fnt) {
+          $fnt = get_custom_option($fnt);
+          if (!in_array($fnt, $fontUsed)) {
+          $fontUsed[] = $fnt;
 
-                if (isset($fonts[$fnt]) && isset($fonts[$fnt]['ext'])) {
-                    // do code for custom fonts.
-                    
-                } else {
-                    $theme_font_link = !empty($fonts[$fnt]['link']) ? $fonts[$fnt]['link'] : str_replace(' ', '+', $fnt) . '		:100,100italic,300,300italic,400,400italic,500,500italic,700,700italic,900,900italic';
-                    themerex_enqueue_style('theme-font-' . str_replace(' ', '_', $fnt), 'http://fonts.googleapis.com/css?family=' . $theme_font_link . '&subset=latin,cyrillic-ext,latin-ext,cyrillic', array(), null);
-                }
-            }
-        }
-        */
+          if (isset($fonts[$fnt]) && isset($fonts[$fnt]['ext'])) {
+          // do code for custom fonts.
+
+          } else {
+          $theme_font_link = !empty($fonts[$fnt]['link']) ? $fonts[$fnt]['link'] : str_replace(' ', '+', $fnt) . '		:100,100italic,300,300italic,400,400italic,500,500italic,700,700italic,900,900italic';
+          themerex_enqueue_style('theme-font-' . str_replace(' ', '_', $fnt), 'http://fonts.googleapis.com/css?family=' . $theme_font_link . '&subset=latin,cyrillic-ext,latin-ext,cyrillic', array(), null);
+          }
+          }
+          }
+         */
 
         themerex_enqueue_style('fontello', get_template_directory_uri() . '/includes/fontello/css/fontello.css', array(), null);
         themerex_enqueue_style('animation', get_template_directory_uri() . '/includes/fontello/css/animation.css', array(), null);
@@ -207,5 +208,193 @@ if (!function_exists('themerex_widgets_init')) {
 
 }
 
+
+function getMyCategoryChildsFull( $parent_id, $pos, $array, $level, &$dropdown ) {
+
+    for ( $i = $pos; $i < count( $array ); $i ++ ) {
+        if ( $array[ $i ]->category_parent == $parent_id ) {
+            $name = str_repeat( "- ", $level ) . $array[ $i ]->name;
+            $value = $array[ $i ]->slug;
+            $dropdown[] = array( 'label' => $name, 'value' => $value );
+            getMyCategoryChildsFull( $array[ $i ]->term_id, $i, $array, $level + 1, $dropdown );
+        }
+    }
+}
+
+$order_by_values = array(
+    '',
+    __( 'Date', 'js_composer' ) => 'date',
+    __( 'ID', 'js_composer' ) => 'ID',
+    __( 'Author', 'js_composer' ) => 'author',
+    __( 'Title', 'js_composer' ) => 'title',
+    __( 'Modified', 'js_composer' ) => 'modified',
+    __( 'Random', 'js_composer' ) => 'rand',
+    __( 'Comment count', 'js_composer' ) => 'comment_count',
+    __( 'Menu order', 'js_composer' ) => 'menu_order',
+);
+
+$order_way_values = array(
+    '',
+    __( 'Descending', 'js_composer' ) => 'DESC',
+    __( 'Ascending', 'js_composer' ) => 'ASC',
+);
+
+
+if (taxonomy_exists('product_cat')) {
+    $categories1 = get_terms( 'product_cat', array(
+        'orderby'    => 'count',
+        'hide_empty' => 0
+    ) );
+} else {
+    register_taxonomy("product_cat", "product");
+    $categories1 = get_terms( 'product_cat', array(
+        'orderby'    => 'count',
+        'hide_empty' => 0
+    ) );
+}
+
+$product_categories_dropdown = array();
+getMyCategoryChildsFull( 0, 0, $categories1, 0, $product_categories_dropdown );
+
+vc_map(array(
+    'name' => __('Product Slider', 'js_composer'),
+    'base' => 'product_slider',
+    'icon' => 'icon-wpb-woocommerce',
+    'category' => __('WooCommerce', 'js_composer'),
+    'description' => __('Show slider of multiple products in a category', 'js_composer'),
+    'params' => array(
+        array(
+            'type' => 'textfield',
+            'heading' => __('Total products', 'js_composer'),
+            'value' => 12,
+            'save_always' => true,
+            'param_name' => 'per_page',
+            'description' => __('How many items to show', 'js_composer'),
+        ),
+        array(
+            'type' => 'dropdown',
+            'heading' => __('Order by', 'js_composer'),
+            'param_name' => 'orderby',
+            'value' => $order_by_values,
+            'save_always' => true,
+            'description' => sprintf(__('Select how to sort retrieved products. More at %s.', 'js_composer'), '<a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">WordPress codex page</a>')
+        ),
+        array(
+            'type' => 'dropdown',
+            'heading' => __('Sort order', 'js_composer'),
+            'param_name' => 'order',
+            'value' => $order_way_values,
+            'save_always' => true,
+            'description' => sprintf(__('Designates the ascending or descending order. More at %s.', 'js_composer'), '<a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">WordPress codex page</a>')
+        ),
+        array(
+            'type' => 'dropdown',
+            'heading' => __('Category', 'js_composer'),
+            'value' => $product_categories_dropdown,
+            'param_name' => 'category',
+            'save_always' => true,
+            'description' => __('Product category list', 'js_composer'),
+        ),
+    )
+));
+
+add_shortcode("product_slider", "product_slider", 1);
+
+function product_slider( $atts ) {
+    
+    wp_enqueue_style("owl-carousel", get_stylesheet_directory_uri()."/css/owl.carousel.css");
+    wp_enqueue_script("owl-carousel", get_stylesheet_directory_uri()."/js/owl.carousel.min.js", array('jquery'));
+    
+    $atts = shortcode_atts( array(
+            'per_page' => '12',
+            'orderby'  => 'title',
+            'order'    => 'desc',
+            'category' => '',  // Slugs
+            'operator' => 'IN' // Possible values are 'IN', 'NOT IN', 'AND'.
+    ), $atts );
+
+    if ( ! $atts['category'] ) {
+            return '';
+    }
+
+    $ordering_args = WC()->query->get_catalog_ordering_args( $atts['orderby'], $atts['order'] );
+    $meta_query    = WC()->query->get_meta_query();
+    $query_args = array(
+        'post_type' => 'product',
+        'post_status' => 'publish',
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'product_cat',
+                'field' => 'slug',
+                'terms' => $atts['category']
+            )
+        ),
+        'orderby'             => $ordering_args['orderby'],
+        'order'               => $ordering_args['order'],
+        'ignore_sticky_posts' => 1,
+        'posts_per_page'      => $atts['per_page'],
+        'meta_query'          => $meta_query
+    );
+    $loop = new WP_Query($query_args);
+    
+    ob_start();
+    
+    if ($loop->have_posts()) {
+        
+        do_action( "woocommerce_shortcode_before_product_cat_loop" );
+
+        woocommerce_product_loop_start();
+
+            while ( $loop->have_posts() ) : $loop->the_post();
+
+                wc_get_template_part( 'content', 'product' );
+
+            endwhile; // end of the loop.
+
+        woocommerce_product_loop_end();
+
+        do_action( "woocommerce_shortcode_after_product_cat_loop" );
+
+    } else {
+        
+        echo __('No products found');
+        
+    }
+    woocommerce_reset_loop();
+    wp_reset_postdata();
+
+    ?>
+    <script type="text/javascript">
+    jQuery(document).ready(function(){
+        jQuery(".product-slider .products").owlCarousel({
+            items: 3,
+            loop: true,
+            center: true,
+            nav: true,
+            autoplay: true,
+            responsive: {
+                0 : {
+                    items: 1
+                },
+                // breakpoint from 480 up
+                480 : {
+                    items: 1
+                },
+                // breakpoint from 768 up
+                768 : {
+                    items: 2
+                },
+                1024 : {
+                    items: 3
+                }
+            }
+        });
+    });
+    </script>
+    <?php
+    return '<div class="woocommerce product-slider">' . ob_get_clean() . '</div>';
+//    return WC_Shortcodes::product_category($atts);
+
+}
 
 ?>
