@@ -207,6 +207,7 @@ footer .widget_area{padding: 0 0 5px !important;}
 	.widget_socials .copy_descr {
     font-size: 12px;
     line-height: 16px !important;
+	font-family: "proxima_nova_alt_rgregular";
 }
 .footerWidget .sc_columns_5.sc_columns_indent .sc_columns_item{ width: 16.6378%;margin: 0 3.3622% 30px 0;}
 .wrapTopMenu .topMenu > ul{float:left; text-align:left;}
@@ -717,7 +718,7 @@ ul.usermenuList li .sidebar_cart a:hover:before{ background:transparent!importan
     padding: 0;
     width: 100%;
 }
-.homePageTagLine .vc_column_container .sc_title.sc_title_center {
+.homePageTagLine.vc_column_container .sc_title.sc_title_center {
     display: block;
     font-family: "proxima_nova_alt_rgregular";
     font-size: 30px;
