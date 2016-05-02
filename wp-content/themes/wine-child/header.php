@@ -99,12 +99,12 @@ themerex_init_template(); // Init theme template - prepare global variables
                                 <li><a href="javascript:void(0)">Sell your Art here</a></li>
                             </ul>
                             <ul class="log_nav">
-                                <?php if(is_user_logged_in()) { ?>
-                                <li><a href="javascript:void(0)">Welcome Dan</a></li>
+                                <?php if(is_user_logged_in()) { global $current_user; get_currentuserinfo();?>
+                                <li><a href="javascript:void(0)">Welcome <?php echo $current_user->display_name ?></a></li>
                                 <li>|</li>
                                 <li><a href="javascript:void(0)">Logout</a></li>
                                 <?php } else { ?> 
-                                <li><a href="javascript:void(0)">Welcome to PrintedWine</a></li>
+                                <li><a href="#user-popUp" onclick="jQuery('.user-popUp .registerFormTab').trigger('click');" class="user-popup-link">Signup</a></li>
                                 <li>|</li>
                                 <li><a href="#user-popUp" class="user-popup-link">Login</a></li>
                                 <?php } ?>
@@ -174,12 +174,29 @@ themerex_init_template(); // Init theme template - prepare global variables
                         </div>
                         <div class="checkout_slot">
                             <span class="item_cart">Items in Cart</span>
-                            <span class="check_text">[1] Items <i><?php
-                                            global $THEMEREX_usermenu_show;
-                                            $THEMEREX_usermenu_show = false;
-                                            get_template_part('/templates/page-part-user-panel');
-                                            ?></i> <b>Checkout</b></span>
-							 
+                            <?php
+                            global $THEMEREX_usermenu_show;
+                            $THEMEREX_usermenu_show = false;
+                            if (function_exists('is_woocommerce') && (is_woocommerce_page() && get_custom_option('show_cart')=='shop' || get_custom_option('show_cart')=='always') && !(is_checkout() || is_cart() || defined('WOOCOMMERCE_CHECKOUT') || defined('WOOCOMMERCE_CART'))) { 
+                                global $THEMEREX_usermenu_show; ?>
+                            <span class="check_text"><?php echo (WC()->cart->is_empty())?"[0] Item":"[".WC()->cart->get_cart_contents_count()."] Items"; ?> <i>
+                                    <ul class="usermenuList daivat">
+                                        <li class="usermenuCart">
+                                            <a href="#" class="cart_button"><span><?php if ($THEMEREX_usermenu_show) _e('Cart', 'themerex'); ?></span> <b class="cart_total"><?php echo WC()->cart->get_cart_subtotal(); ?></b></a>
+                                            <ul class="widget_area sidebar_cart sidebar"><li>
+                                                <?php
+                                                do_action( 'before_sidebar' );
+                                                global $THEMEREX_CURRENT_SIDEBAR;
+                                                $THEMEREX_CURRENT_SIDEBAR = 'cart';
+                                                if ( ! dynamic_sidebar( 'sidebar-cart' ) ) { 
+                                                        the_widget( 'WC_Widget_Cart', 'title=&hide_if_empty=1' );
+                                                }
+                                                ?>
+                                            </li></ul>
+                                        </li>
+                                    </ul>
+                                </i> <b>Checkout</b></span>
+                            <?php } ?>
                         </div>
                     </div>
                     <div class="clear"></div>
