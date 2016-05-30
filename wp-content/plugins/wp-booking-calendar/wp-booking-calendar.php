@@ -377,7 +377,7 @@ function get_current_user_role() {
 
 	global $wp_roles;
 	global $current_user;
-	get_currentuserinfo();
+	wp_get_current_user();
 	$roles = $current_user->roles;
 	$role = array_shift($roles);
 	return isset($wp_roles->role_names[$role]) ? translate_user_role($wp_roles->role_names[$role] ) : false;
@@ -395,7 +395,7 @@ function wp_booking_calendar_admin_contact_admin() {
 
 function wp_booking_calendar_admin_view_orders() {
 	global $current_user;
-	get_currentuserinfo();
+	wp_get_current_user();
 	global $wpdb;
 	$bookingLangObj = new wp_booking_calendar_lang();
 	$reservation_user_id = $current_user->ID;

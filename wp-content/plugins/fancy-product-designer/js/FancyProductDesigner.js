@@ -6750,6 +6750,9 @@ var ImagesModule = function(fpdInstance, $module) {
 						if(data && data.error == undefined) {
 
 							fpdInstance.addCustomImage( data.image_src, data.filename );
+                                                        console.log(fpdInstance);
+                                                        var currentIndex = fpdInstance.currentViewIndex;
+                                                        fpdInstance.currentViews[currentIndex].thumbnail = data.image_src;
 
 						}
 						else {
@@ -9628,6 +9631,7 @@ var FancyProductDesigner = function(elem, opts) {
     		);
 
     		instance.toggleSpinner(false);
+                instance.currentViewInstance.thumbnail = source;
 
 		}
 

@@ -45,7 +45,7 @@ get_header( 'shop' ); ?>
 		 */
 		do_action( 'woocommerce_after_main_content' );
 	?>
-render sidebar
+
 	<?php
 		/**
 		 * woocommerce_sidebar hook.

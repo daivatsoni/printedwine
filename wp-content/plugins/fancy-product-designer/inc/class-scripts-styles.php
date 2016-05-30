@@ -24,12 +24,12 @@ if(!class_exists('FPD_Scripts_Styles')) {
 			//only local testing
 			if($local_test) {
 				wp_enqueue_style( 'fpd-test-webfont', 'http://radykal.dev/fpd4/src/FontFPD/style.css', false, Fancy_Product_Designer::VERSION );
-				wp_enqueue_style( 'fpd-test-plugins', 'http://radykal.dev/fpd4/dist/css/plugins.min.css', false, Fancy_Product_Designer::FPD_VERSION );
+				wp_enqueue_style( 'fpd-test-plugins', plugins_url('/css/plugins.min.css', FPD_PLUGIN_ROOT_PHP), false, Fancy_Product_Designer::FPD_VERSION );
 			}
 
-			$fpd_css_url = $local_test ? 'http://radykal.dev/fpd4/dist/css/FancyProductDesigner.css' : plugins_url('/css/FancyProductDesigner-all.min.css', FPD_PLUGIN_ROOT_PHP);
-			$fpd_js_url = $local_test ? 'http://radykal.dev/fpd4/dist/js/FancyProductDesigner.js' : plugins_url('/js/FancyProductDesigner-all.min.js', FPD_PLUGIN_ROOT_PHP);
-			$fpd_js_plugins_url = $local_test ? 'http://radykal.dev/fpd4/dist/js/plugins.js' : plugins_url('/js/plugins.js', FPD_PLUGIN_ROOT_PHP);
+			$fpd_css_url = $local_test ? plugins_url('/css/FancyProductDesigner.css', FPD_PLUGIN_ROOT_PHP) : plugins_url('/css/FancyProductDesigner-all.min.css', FPD_PLUGIN_ROOT_PHP);
+			$fpd_js_url = $local_test ? plugins_url('/js/FancyProductDesigner-all.js', FPD_PLUGIN_ROOT_PHP) : plugins_url('/js/FancyProductDesigner-all.js', FPD_PLUGIN_ROOT_PHP);
+			$fpd_js_plugins_url = $local_test ? plugins_url('/js/plugins.js', FPD_PLUGIN_ROOT_PHP) : plugins_url('/js/plugins.js', FPD_PLUGIN_ROOT_PHP);
 			$fpd_js_url = get_option('fpd_debug_mode') == 'yes' ?  plugins_url('/js/FancyProductDesigner.js', FPD_PLUGIN_ROOT_PHP) : $fpd_js_url;
 
 			//register css files
