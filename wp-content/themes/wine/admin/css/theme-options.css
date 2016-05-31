@@ -1409,3 +1409,12 @@
 	.themerex_options_body .themerex_options_field_label .themerex_options_button_inherit.themerex_options_inherit_off:before {
 		content: '\e91b';
 	}
+	
+@media (min-width: 768px) and (max-width: 1439px) {
+	.taxonomy-category #col-right, #col-left {
+		min-width: 100%;
+	}
+	form#addtag .themerex_options_body .themerex_options_partition > ul {
+		width: 180px; 
+	}
+}

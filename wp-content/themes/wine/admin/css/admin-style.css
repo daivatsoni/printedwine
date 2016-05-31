@@ -90,3 +90,8 @@
 .reviewBlock .revTotalWrap .revTotal{ float: right; width: 140px; text-align: center; padding: 30px 0; border-left: 1px solid #ddd; margin: 0 0 0 -1px;}
 .reviewBlock .revTotalWrap .revTotal .revRating{ font-size: 60px; color: #444; }
 
+.trx_sc_title .admin_label_content, .trx_sc_text .admin_label_content {
+    color: #3E3D3D !important;
+    font-weight: 600;
+    font-style: normal;
+}

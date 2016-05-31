@@ -80,6 +80,17 @@ class wp_booking_calendar_calendar {
 		if($blog_id==1) {
 			$blog_prefix="";
 		}
+		//loop on calendars to see if there is a default one here
+		$category_id = 0;
+		$default = 0;
+		$calendarsQry=$wpdb->get_results("SELECT * FROM ".$wpdb->base_prefix.$blog_prefix."booking_calendars WHERE calendar_id IN (".$listIds.")");
+		for($i=0;$i<count($calendarsQry);$i++) {
+			$category_id = $calendarsQry[$i]->category_id;
+			if($calendarsQry[$i]->calendar_order == 0) {
+				$default = 1;
+			}
+		}
+		
 		$wpdb->query("DELETE FROM ".$wpdb->base_prefix.$blog_prefix."booking_calendars WHERE calendar_id IN (".$listIds.")");
 		//delete holidays
 		$wpdb->query("DELETE FROM ".$wpdb->base_prefix.$blog_prefix."booking_holidays WHERE calendar_id IN (".$listIds.")");
@@ -99,6 +110,11 @@ class wp_booking_calendar_calendar {
 			} else {
 				mysql_query("DELETE FROM ".$wpdb->base_prefix.$blog_prefix."booking_slots  WHERE slot_id =".$slotRow["slot_id"]);
 			}*/
+		}
+		
+		//set a new default calendar if the default one has been deleted
+		if($default == 1) {
+			$wpdb->query($wpdb->prepare("UPDATE ".$wpdb->base_prefix.$blog_prefix."booking_calendars SET calendar_order = 0 WHERE calendar_order != 0 AND category_id = ".$category_id." ORDER BY calendar_order ASC LIMIT 1"));
 		}
 		
 		

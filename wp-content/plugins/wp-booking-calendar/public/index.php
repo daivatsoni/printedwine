@@ -891,7 +891,13 @@ if((!isset($_GET["calendar_id"]) || $_GET["calendar_id"] == 0) && (!isset($_GET[
             
                 <ul class="tabs_login">
                     <li class="active_login"><a href="#tab1_login"><?php echo $bookingLangObj->getLabel("INDEX_LOGIN_TAB"); ?></a></li>
-                    <li><a href="#tab2_login"><?php echo $bookingLangObj->getLabel("INDEX_REGISTER_TAB"); ?></a></li>
+                    <?php
+					//if ( get_option( 'users_can_register' ) ) {
+						?>
+                    	<li><a href="#tab2_login"><?php echo $bookingLangObj->getLabel("INDEX_REGISTER_TAB"); ?></a></li>
+                    	<?php
+					//}
+					?>
                    
                 </ul>
                 <div class="tab_container_login">
@@ -962,42 +968,48 @@ if((!isset($_GET["calendar_id"]) || $_GET["calendar_id"] == 0) && (!isset($_GET[
                             </div>
                         </form>
                     </div>
-                    <div id="tab2_login" class="tab_content_login" style="display:none;">
-                        <h3><?php echo $bookingSettingObj->getRegistrationText(); ?></h3>
-                        <div class="booking_font_10 booking_mark_567" style="margin-top:-10px"><?php echo $bookingLangObj->getLabel("INDEX_REGISTER_MANDATORY"); ?></div>
-                        <form method="post" action="<?php echo plugins_url('wp-booking-calendar/public');?>/ajax/registerUser.php" class="wp-user-form" target="iframe_submit" tmt:validate="true" name="registration_form">
-                            <div class="username">
-                                <label for="user_login"><?php echo $bookingLangObj->getLabel("INDEX_REGISTER_USERNAME"); ?>: </label>
-                                <input type="text" name="user_login" value="<?php echo esc_attr(stripslashes($user_login)); ?>" size="20" id="user_login" tabindex="101" tmt:required="true" tmt:pattern="alphanumeric" tmt:message="<?php echo $bookingLangObj->getLabel("INDEX_REGISTER_USERNAME_ALERT"); ?>" />
-                            </div>
-                            <div class="password">
-                                <label for="user_email"><?php echo $bookingLangObj->getLabel("INDEX_REGISTER_EMAIL"); ?>: </label>
-                                <input type="text" name="user_email" value="<?php echo esc_attr(stripslashes($user_email)); ?>" size="25" id="user_email" tabindex="102" tmt:required="true" tmt:pattern="email" tmt:message="<?php echo $bookingLangObj->getLabel("INDEX_REGISTER_EMAIL_ALERT"); ?>" />
-                            </div>
-                            <div class="password">
-                                <label for="user_password"><?php echo $bookingLangObj->getLabel("INDEX_REGISTER_PASSWORD"); ?>: </label>
-                                <input type="password" name="user_password" value="" size="25" id="user_password" tabindex="103" tmt:required="true" tmt:pattern="alphanumeric" tmt:message="<?php echo $bookingLangObj->getLabel("INDEX_REGISTER_PASSWORD_ALERT"); ?>" />
-                            </div>
-                            <div class="password">
-                                <label for="user_confirm_password"><?php echo $bookingLangObj->getLabel("INDEX_REGISTER_CONFIRM_PASSWORD"); ?>: </label>
-                                <input type="password" name="user_confirm_password" value="" size="25" id="user_confirm_password" tabindex="104" tmt:required="true" tmt:pattern="alphanumeric" tmt:equalto="user_password" tmt:message="<?php echo $bookingLangObj->getLabel("INDEX_REGISTER_CONFIRM_PASSWORD_ALERT"); ?>" />
-                            </div>
-                             <!-- google capthca -->
-                            <div class="booking_margin_t_10">
-                                <div id="booking_captcha_error" style="display:none !important"><?php echo $bookingLangObj->getLabel("INDEX_INVALID_CODE");?></div>
-                                <div id="captcha"></div>
-                            </div>
-                            
-                            <div class="booking_cleardiv"></div>
-                            <div class="login_fields">
-                                <?php do_action('register_form'); ?>
-                                <input type="submit" id="reg_button" name="user-submit" value="<?php echo $bookingLangObj->getLabel("INDEX_REGISTER_BUTTON"); ?>" class="user-submit" tabindex="105" />
+                    <?php
+					//if ( get_option( 'users_can_register' ) ) {
+						?>
+                        <div id="tab2_login" class="tab_content_login" style="display:none;">
+                            <h3><?php echo $bookingSettingObj->getRegistrationText(); ?></h3>
+                            <div class="booking_font_10 booking_mark_567" style="margin-top:-10px"><?php echo $bookingLangObj->getLabel("INDEX_REGISTER_MANDATORY"); ?></div>
+                            <form method="post" action="<?php echo plugins_url('wp-booking-calendar/public');?>/ajax/registerUser.php" class="wp-user-form" target="iframe_submit" tmt:validate="true" name="registration_form">
+                                <div class="username">
+                                    <label for="user_login"><?php echo $bookingLangObj->getLabel("INDEX_REGISTER_USERNAME"); ?>: </label>
+                                    <input type="text" name="user_login" value="<?php echo esc_attr(stripslashes($user_login)); ?>" size="20" id="user_login" tabindex="101" tmt:required="true" tmt:pattern="alphanumeric" tmt:message="<?php echo $bookingLangObj->getLabel("INDEX_REGISTER_USERNAME_ALERT"); ?>" />
+                                </div>
+                                <div class="password">
+                                    <label for="user_email"><?php echo $bookingLangObj->getLabel("INDEX_REGISTER_EMAIL"); ?>: </label>
+                                    <input type="text" name="user_email" value="<?php echo esc_attr(stripslashes($user_email)); ?>" size="25" id="user_email" tabindex="102" tmt:required="true" tmt:pattern="email" tmt:message="<?php echo $bookingLangObj->getLabel("INDEX_REGISTER_EMAIL_ALERT"); ?>" />
+                                </div>
+                                <div class="password">
+                                    <label for="user_password"><?php echo $bookingLangObj->getLabel("INDEX_REGISTER_PASSWORD"); ?>: </label>
+                                    <input type="password" name="user_password" value="" size="25" id="user_password" tabindex="103" tmt:required="true" tmt:pattern="alphanumeric" tmt:message="<?php echo $bookingLangObj->getLabel("INDEX_REGISTER_PASSWORD_ALERT"); ?>" />
+                                </div>
+                                <div class="password">
+                                    <label for="user_confirm_password"><?php echo $bookingLangObj->getLabel("INDEX_REGISTER_CONFIRM_PASSWORD"); ?>: </label>
+                                    <input type="password" name="user_confirm_password" value="" size="25" id="user_confirm_password" tabindex="104" tmt:required="true" tmt:pattern="alphanumeric" tmt:equalto="user_password" tmt:message="<?php echo $bookingLangObj->getLabel("INDEX_REGISTER_CONFIRM_PASSWORD_ALERT"); ?>" />
+                                </div>
+                                 <!-- google capthca -->
+                                <div class="booking_margin_t_10">
+                                    <div id="booking_captcha_error" style="display:none !important"><?php echo $bookingLangObj->getLabel("INDEX_INVALID_CODE");?></div>
+                                    <div id="captcha"></div>
+                                </div>
                                 
-                                <input type="hidden" name="redirect_to" value="<?php echo $_SERVER['REQUEST_URI']; ?>?register=true" />
-                                <input type="hidden" name="user-cookie" value="1" />
-                            </div>
-                        </form>
-                    </div>
+                                <div class="booking_cleardiv"></div>
+                                <div class="login_fields">
+                                    <?php do_action('register_form'); ?>
+                                    <input type="submit" id="reg_button" name="user-submit" value="<?php echo $bookingLangObj->getLabel("INDEX_REGISTER_BUTTON"); ?>" class="user-submit" tabindex="105" />
+                                    
+                                    <input type="hidden" name="redirect_to" value="<?php echo $_SERVER['REQUEST_URI']; ?>?register=true" />
+                                    <input type="hidden" name="user-cookie" value="1" />
+                                </div>
+                            </form>
+                        </div>
+                        <?php
+					//}
+					?>
                     
                 </div>
             

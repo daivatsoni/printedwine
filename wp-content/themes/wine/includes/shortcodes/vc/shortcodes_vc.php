@@ -1302,6 +1302,7 @@ vc_map( array(
 			"param_name" => "content",
 			"heading" => __("Column's content", "themerex"),
 			"description" => __("Content of the current column", "themerex"),
+			"admin_label" => true,
 			"class" => "",
 			"value" => "",
 			/*"holder" => "div",*/
@@ -1642,23 +1643,6 @@ vc_map( array(
 			"value" => "",
 			"type" => "textfield"
 		),
-              array(
-						"param_name" => "title",
-						"heading" => __("Title", "themerex"),
-						"description" => __("Title to be displayed the hovering on the marker", "themerex"),
-						"admin_label" => true,
-						"class" => "",
-						"value" => "",
-						"type" => "textfield"
-					),
-               array(
-						"param_name" => "description",
-						"heading" => __("Description", "themerex"),
-						"description" => __("Description to be displayed the clicking on the marker", "themerex"),
-						"class" => "",
-						"value" => "",
-						"type" => "textfield"
-					),
 		array(
 			"param_name" => "zoom",
 			"heading" => __("Zoom", "themerex"),
@@ -1667,7 +1651,16 @@ vc_map( array(
 			"class" => "",
 			"value" => "16",
 			"type" => "textfield"
-		),		
+		),
+		array(
+			"param_name" => "scroll",
+			"heading" => __("Zoom with mouse wheel", "themerex"),
+			"description" => __("Map\'s zoom with mouse wheel", "themerex"),
+			"admin_label" => true,
+			"class" => "",
+			"value" => array(__('zoom', 'themerex') => 'yes'),
+			"type" => "checkbox"
+		),
 		array(
 			"param_name" => "style",
 			"heading" => __("Style", "themerex"),
@@ -2940,10 +2933,6 @@ vc_map( array(
 			"heading" => __("Member's name", "themerex"),
 			"description" => __("Team member's name", "themerex"),
 			"admin_label" => true,
-	        'dependency' => array(
-				'element' => 'user',
-				'value' => array('none')
-			),
 			"class" => "",
 			"value" => "",
 			"type" => "textfield"
@@ -2953,10 +2942,6 @@ vc_map( array(
 			"heading" => __("Position", "themerex"),
 			"description" => __("Team member's position", "themerex"),
 			"admin_label" => true,
-	        'dependency' => array(
-				'element' => 'user',
-				'value' => array('none')
-			),
 			"class" => "",
 			"value" => "",
 			"type" => "textfield"
@@ -2965,10 +2950,6 @@ vc_map( array(
 			"param_name" => "email",
 			"heading" => __("E-mail", "themerex"),
 			"description" => __("Team member's e-mail", "themerex"),
-	        'dependency' => array(
-				'element' => 'user',
-				'value' => array('none')
-			),
 			"class" => "",
 			"value" => "",
 			"type" => "textfield"
@@ -2977,10 +2958,6 @@ vc_map( array(
 			"param_name" => "photo",
 			"heading" => __("Member's Photo", "themerex"),
 			"description" => __("Team member's photo (avatar", "themerex"),
-	        'dependency' => array(
-				'element' => 'user',
-				'value' => array('none')
-			),
 			"class" => "",
 			"value" => "",
 			"type" => "attach_image"
@@ -3397,8 +3374,7 @@ vc_map( array(
 		THEMEREX_VC_margin_bottom(),
 		THEMEREX_VC_margin_left(),
 		THEMEREX_VC_ID(),
-    ),
-	'js_view' => 'VcTrxTextView'
+    )
 ) );
 
 //class WPBakeryShortCode_Trx_Title extends WPBakeryShortCodesContainer {}
@@ -3560,7 +3536,79 @@ class WPBakeryShortCode_Trx_Banner extends THEMEREX_VC_ShortCodeContainer {}
 
 
 
+// Banner
+//-------------------------------------------------------------------------------------
 
+vc_map( array(
+	"base" => "trx_reservation",
+	"name" => __("Reservation", "themerex"),
+	"description" => __("Insert reservation", "themerex"),
+	"category" => __('Content', 'js_composer'),
+    'icon' => 'icon_trx_list',
+	"class" => "trx_sc_container trx_sc_reservation",
+	"content_element" => true,
+	"is_container" => false,
+	"show_settings_on_create" => true,
+	"params" => array(
+		array(
+			"param_name" => "image1",
+			"heading" => __("First image", "themerex"),
+			"description" => __("Put here URL for image file", "themerex"),
+			"class" => "",
+			"value" => "",
+			"type" => "attach_image"
+		),
+		array(
+			"param_name" => "image2",
+			"heading" => __("Second image", "themerex"),
+			"description" => __("Put here URL for image file", "themerex"),
+			"class" => "",
+			"value" => "",
+			"type" => "attach_image"
+		),
+		array(
+			"param_name" => "title",
+			"heading" => __("Title", "themerex"),
+			"admin_label" => true,
+			"class" => "",
+			"value" => "",
+			"type" => "textfield"
+		),
+		array(
+			"param_name" => "number",
+			"heading" => __("Number of reservations", "themerex"),
+			"class" => "",
+			"value" => "",
+			"type" => "textfield"
+		),
+		array(
+			"param_name" => "link",
+			"heading" => __("Link URL", "themerex"),
+			"description" => __("URL for the link on image click", "themerex"),
+			"class" => "",
+			"value" => "",
+			"type" => "textfield"
+		),
+		array(
+			"param_name" => "title",
+			"heading" => __("Title", "themerex"),
+			"description" => __("Banner's title", "themerex"),
+			"admin_label" => true,
+			"class" => "",
+			"value" => "",
+			"type" => "textfield"
+		),
+		THEMEREX_VC_width(),
+		THEMEREX_VC_margin_top(),
+		THEMEREX_VC_margin_right(),
+		THEMEREX_VC_margin_bottom(),
+		THEMEREX_VC_margin_left(),
+		THEMEREX_VC_ID(),
+    )
+
+) );
+
+class WPBakeryShortCode_Trx_Reservation extends THEMEREX_VC_ShortCodeSingle {}
 
 
 // Line

@@ -1229,7 +1229,7 @@ $THEMEREX_shortcodes = array(
 
 
 
-	// Google map
+//=== Google map ============================================================================================================
 	array(
 		"title" => __("Google map", "themerex"),
 		"desc" => __("Insert Google map with desired address or coordinates", "themerex"),
@@ -1241,6 +1241,7 @@ $THEMEREX_shortcodes = array(
 				"id" => "address",
 				"title" => __("Address", "themerex"),
 				"desc" => __("Address to show in map center", "themerex"),
+				"divider" => false,
 				"value" => "",
 				"type" => "text"
 			),
@@ -1252,45 +1253,39 @@ $THEMEREX_shortcodes = array(
 				"type" => "text"
 			),
 			array(
-				"id" => "title",
-				"title" => __("Title", "themerex"),
-				"desc" => __("Title to be displayed when hovering on the marker", "themerex"),
-				"value" => "",
-				"type" => "text"
-			),
-			array(
-				"id" => "description",
-				"title" => __("Description", "themerex"),
-				"desc" => __("Description to be displayed when clicking on the marker", "themerex"),
-				"value" => "",
-				"type" => "text"
-			),
-			array(
 				"id" => "zoom",
 				"title" => __("Zoom", "themerex"),
 				"desc" => __("Map zoom factor", "themerex"),
-				"divider" => true,
+				"divider" => false,
 				"value" => 16,
 				"min" => 1,
 				"max" => 20,
 				"type" => "spinner"
 			),
+			array( 
+				"id" => "scroll",
+				"title" => __('Zoom with mouse wheel', 'themerex'),
+				"desc" => __('Map\'s zoom with mouse wheel', 'themerex'),
+				"override" => "category,page,post",
+				"std" => "yes",
+				"options" => $yes_no,
+				"type" => "switch"
+			),
 			array(
 				"id" => "style",
-				"title" => __("Map style", "themerex"),
-				"desc" => __("Select map style", "themerex"),
-				"value" => "default",
+				"title" => __("Style", "themerex"),
+				"desc" => __("Map style", "themerex"),
+				"value" => "royal",
 				"type" => "checklist",
-				"options" => $THEMEREX_shortcodes_googlemap_styles
+				"options" => $THEMEREX_shortcodes_googlemap_styles,
 			),
 			THEMEREX_shortcodes_width('100%'),
-			THEMEREX_shortcodes_height(240),
+			THEMEREX_shortcodes_height(300),
 			$THEMEREX_shortcodes_margin_top,
+			$THEMEREX_shortcodes_margin_right,
 			$THEMEREX_shortcodes_margin_bottom,
 			$THEMEREX_shortcodes_margin_left,
-			$THEMEREX_shortcodes_margin_right,
 			$THEMEREX_shortcodes_id
-			
 		)
 	),
 

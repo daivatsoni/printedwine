@@ -4,7 +4,7 @@ Plugin Name: Booking Calendar WP Plugin
 Description: Accessible WordPress booking calendar plugin.
 Author: Wachipi Srl
 Author URI: http://www.wachipi.com
-Version: 4.1.2
+Version: 4.1.6
 */
 
 include(dirname(__FILE__).'/wp-booking-calendar-install.php' );
@@ -318,7 +318,7 @@ function booking_calendar_public_scripts() {
 	wp_enqueue_script('wp-booking-calendar-public-tmt_core-js',plugins_url('wp-booking-calendar/public/js/tmt_libs/tmt_core.js'));
 	wp_enqueue_script('wp-booking-calendar-public-tmt_form-js',plugins_url('wp-booking-calendar/public/js/tmt_libs/tmt_form.js'));
 	wp_enqueue_script('wp-booking-calendar-public-tmt_validator-js',plugins_url('wp-booking-calendar/public/js/tmt_libs/tmt_validator.js'));
-	wp_enqueue_script('wp-booking-calendar-public-lib-js',plugins_url('wp-booking-calendar/public/js/lib.js'));
+	wp_enqueue_script('wp-booking-calendar-public-lib-js',plugins_url('wp-booking-calendar/public/js/lib.js'),array('jquery'));
 	wp_enqueue_script('wp-booking-calendar-public-calendar_js',plugins_url('wp-booking-calendar/public/js/wach.calendar.js'),array('jquery'));
 	
 	wp_localize_script( 'wp-booking-calendar-public-calendar_js', 'WPBookingCalendarSettings', array(
@@ -354,11 +354,7 @@ function wp_booking_calendar_admin_menu() {
 	include(dirname(__FILE__).'/admin/class/lang.class.php');
 	$bookingLangObj = new wp_booking_calendar_lang();
 	
-	if ( function_exists('add_object_page') ) {
-		add_object_page(__('Booking Calendar','wp-booking-calendar'), __('Booking Calendar','wp-booking-calendar'), 'wbc_user_orders', 'wp-booking-calendar-welcome', 'wp_booking_calendar_admin_view_welcome_page',plugins_url('wp-booking-calendar/admin/images/icon.png') );
-	} else {
-		add_menu_page(__('Booking Calendar','wp-booking-calendar'), __('Booking Calendar','wp-booking-calendar'), 'wbc_user_orders', 'wp-booking-calendar-welcome', 'wp_booking_calendar_admin_view_welcome_page',plugins_url('wp-booking-calendar/admin/images/icon.png') );
-	}
+	add_menu_page(__('Booking Calendar','wp-booking-calendar'), __('Booking Calendar','wp-booking-calendar'), 'wbc_user_orders', 'wp-booking-calendar-welcome', 'wp_booking_calendar_admin_view_welcome_page',plugins_url('wp-booking-calendar/admin/images/icon.png') );
 	@add_submenu_page('wp-booking-calendar-welcome', __($bookingLangObj->getLabel("LEFT_MENU_SETTINGS"),'wp-booking-calendar'), __($bookingLangObj->getLabel("LEFT_MENU_SETTINGS"),'wp-booking-calendar'), 'wbc_view_slots', 'wp-booking-calendar-settings', 'wp_booking_calendar_admin_view_settings');	
 	@add_submenu_page('wp-booking-calendar-welcome', __($bookingLangObj->getLabel("LEFT_MENU_BG_AND_COLORS"),'wp-booking-calendar'), __($bookingLangObj->getLabel("LEFT_MENU_BG_AND_COLORS"),'wp-booking-calendar'), 'wbc_view_slots', 'wp-booking-calendar-style', 'wp_booking_calendar_admin_view_styles');	
 	@add_submenu_page('wp-booking-calendar-welcome', __($bookingLangObj->getLabel("LEFT_MENU_MANAGE_CATEGORIES"),'wp-booking-calendar'), __($bookingLangObj->getLabel("LEFT_MENU_MANAGE_CATEGORIES"),'wp-booking-calendar'), 'wbc_view_slots', 'wp-booking-calendar-categories', 'wp_booking_calendar_admin_view_categories_list');

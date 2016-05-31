@@ -404,7 +404,7 @@ function sc_columns($atts, $content=null){
 	if (in_shortcode_blogger()) return '';
     extract(shortcode_atts(array(
 		"id" => "",
-		"columns" => "1",
+		"columns" => "2",
 		"indent" => "yes",
 		"top" => "",
 		"bottom" => "",
@@ -819,52 +819,53 @@ function sc_gallery_filter($prm1, $atts) {
 
 
 
-// ---------------------------------- [trx_googlemap] ---------------------------------------
-
-add_shortcode("trx_googlemap", "sc_google_map");
+// ---------------------------------- [Google maps] ---------------------------------------
 
 //[trx_googlemap id="unique_id" address="your_address" width="width_in_pixels_or_percent" height="height_in_pixels"]
+
+add_shortcode('trx_googlemap', 'sc_google_map');
+
 function sc_google_map($atts, $content = null) {
 	if (in_shortcode_blogger()) return '';
 	extract(shortcode_atts(array(
 		"id" => "",
-		"class" => "",
-		"address" => "",
-		"latlng" => "",
-		"zoom" => 16,
-		"title" => "",
-		"description" => "",
-		"style" => '',
 		"width" => "100%",
-		"height" => "400",
+		"height" => "250",
+		"address" => "San Francisco, CA 94102, US",
+		"latlng" => "",
+		"scroll" => "",
+		"zoom" => 10,
+		"style" => '',
 		"top" => "",
 		"bottom" => "",
 		"left" => "",
 		"right" => ""
     ), $atts));
-	if ((int) $width < 100 && themerex_substr($width, -1) != '%') $width='100%';
+	$ed = themerex_substr($width, -1)=='%' ? '%' : 'px';
+	if ((int) $width < 100 && $ed != '%') $width='100%';
 	if ((int) $height < 50) $height='100';
-	$s = getStyleString($top, $right, $bottom, $left, $width, $height);
-	if (empty($id)) $id = 'sc_googlemap_'.str_replace('.', '', mt_rand());
-	if (empty($address) && empty($latlng)) {
-		$latlng = get_custom_option('googlemap_latlng');
-		if (empty($latlng))	$address = get_custom_option('googlemap_address');
-	}
-	if (empty($style)) $style = get_custom_option('googlemap_style');
-	themerex_enqueue_script( 'googlemap', themerex_get_protocol() . '://maps.google.com/maps/api/js?sensor=false', array(), null, true );
-	themerex_enqueue_script( 'googlemap_init', themerex_get_file_url('/js/_googlemap_init.js'), array(), null, true );
-	$output = '<div id="' . $id . '" class="sc_googlemap'. (!empty($class) ? ' '.$class : '').'"'.($s!='' ? ' style="'.$s.'"' : '') 
+	$width = (int) str_replace('%', '', $width);
+
+	$s = ($top !== '' ? 'margin-top:'.$top.'px;' : '')
+		.($bottom !== '' ? 'margin-bottom:'.$bottom.'px;' : '')
+		.($left !== '' ? 'margin-left:'.$left.'px;' : '')
+		.($right !== '' ? 'margin-right:'.$right.'px;' : '')
+		.($width >= 0 ? 'width:'.$width.$ed.';' : '')
+		.($height >= 0 ? 'height:'.$height.'px;' : '');
+
+	themerex_enqueue_script( 'googlemap', 'http://maps.google.com/maps/api/js?sensor=false', array(), null, true );
+	themerex_enqueue_script( 'googlemap_init', get_template_directory_uri().'/js/_googlemap_init.js', array(), null, true );
+
+	return '<div id="sc_googlemap_'.($id != '' ? $id : mt_rand(0, 1000)).'" class="sc_googlemap"'.($s!='' ? ' style="'.$s.'"' : '') 
 		.' data-address="'.esc_attr($address).'"'
 		.' data-latlng="'.esc_attr($latlng).'"'
 		.' data-zoom="'.esc_attr($zoom).'"'
 		.' data-style="'.esc_attr($style).'"'
-		.' data-title="'.esc_attr($title).'"'
-		.' data-description="'.esc_attr($description).'"'
+		.' data-scroll="'.esc_attr($scroll).'"'
 		.' data-point="'.esc_attr(get_custom_option('googlemap_marker')).'"'
 		.'></div>';
-	return apply_filters('themerex_shortcode_output', $output, 'trx_googlemap', $atts, $content);
 }
-// ---------------------------------- [/trx_googlemap] ---------------------------------------
+// ---------------------------------- [/Google maps] ---------------------------------------
 
 
 

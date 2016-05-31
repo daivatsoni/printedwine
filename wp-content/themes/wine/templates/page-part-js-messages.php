@@ -71,6 +71,7 @@ THEMEREX_NAME_LONG 				= "<?php _e('Too long name', 'themerex'); ?>";
 THEMEREX_EMAIL_EMPTY 			= "<?php _e('Too short (or empty) email address', 'themerex'); ?>";
 THEMEREX_EMAIL_LONG				= "<?php _e('Too long email address', 'themerex'); ?>";
 THEMEREX_EMAIL_NOT_VALID 		= "<?php _e('Invalid email address', 'themerex'); ?>";
+THEMEREX_TERMS_NOT_AGREE		= "<?php _e('Please check terms', 'themerex'); ?>";
 THEMEREX_SUBJECT_EMPTY			= "<?php _e('The subject can\'t be empty', 'themerex'); ?>";
 THEMEREX_SUBJECT_LONG 			= "<?php _e('Too long subject', 'themerex'); ?>";
 THEMEREX_MESSAGE_EMPTY 			= "<?php _e('The message text can\'t be empty', 'themerex'); ?>";

@@ -151,7 +151,8 @@ function initShortcodes(container) {
 		});
 	});
 
-	
+	//контейнер / ширину картинки * высоту картинки
+
 	container.find('.sc_slider_swiper:not(.inited)')
 		.each(function () {
 			"use strict";
@@ -216,27 +217,7 @@ function initShortcodes(container) {
 
 	}
 		
-// Googlemap init
-	if (container.find('.sc_googlemap:not(.inited)').length > 0) {
-		container.find('.sc_googlemap:not(.inited)')
-			.each(function () {
-				"use strict";
-				if (jQuery(this).parents('div:hidden,article:hidden').length > 0) return;
-				var map = jQuery(this).addClass('inited');
-				var map_address	= map.data('address');
-				var map_latlng	= map.data('latlng');
-				var map_id		= map.attr('id');
-				var map_zoom	= map.data('zoom');
-				var map_style	= map.data('style');
-				var map_descr	= map.data('description');
-				var map_title	= map.data('title');
-				var map_point	= map.data('point');
-				googlemap_init( jQuery('#'+map_id).get(0), {address: map_address , latlng: map_latlng, style: map_style, zoom: map_zoom, description: map_descr, title: map_title, point: map_point});
-			});
-	}
-
 	
-
 	//Scroll
 	if (container.find('.sc_scroll:not(.inited)').length > 0) {
 		var myScroll = {};
@@ -499,7 +480,6 @@ function skills_counter(start, stop, speed, step, ed, total) {
 	}
 }
 
-
 //skills arc init
 function skills_arc_init(container) {
 	if (arguments.length==0) var container = jQuery('body');
@@ -569,3 +549,4 @@ function skills_arc_init(container) {
 		o.diagram();
 	});
 }
+

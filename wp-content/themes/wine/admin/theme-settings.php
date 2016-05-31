@@ -756,12 +756,12 @@ while( $i_heading <= 6 ){
 
 if( $i_heading == 1) {
 $THEMEREX_options[] = array( "title" => 'Heading H'.$i_heading,
-			"id" => "typography_header'.$i_heading.'_stream",
+			"id" => "typography_header".$i_heading."_stream",
 			"start" => "typography_header_parameters",
 			"type" => "tab");
 } else {
 $THEMEREX_options[] = array( "title" => 'Heading H'.$i_heading,
-			"id" => "typography_header'.$i_heading.'_stream",
+			"id" => "typography_header".$i_heading."_stream",
 			"type" => "tab");
 }
 
@@ -932,17 +932,11 @@ $THEMEREX_options[] = array( "title" => __('Show copyright', 'themerex'),
 $THEMEREX_options[] = array( "title" => __('Footer copyright', 'themerex'),
 			"desc" => __("Copyright text to show in footer area (bottom of site) <br> [year] - <i>Current year</i>", 'themerex'),
 			"id" => "footer_copyright",
-//			"divider" => false,
+			"divider" => false,
 			"override" => "category,post,page",
 			"std" => "<a href='http://themerex.net'>ThemeREX</a> &copy; [year] All Rights Reserved",
 			"type" => "text");
 
-$THEMEREX_options[] = array( "title" => __('Credit Note', 'themerex'),
-			"desc" => __("Credit note to show in footer area (bottom of site)", 'themerex'),
-			"id" => "footer_credits",
-			"override" => "category,post,page",
-			"std" => "Proudly designed and developed by <a target='_blank' href='http://www.stylehousecreative.com/'>Style House Creative</a>",
-			"type" => "text");
 
 
 //###############################
@@ -1410,7 +1404,13 @@ $THEMEREX_options[] = array( "title" => __('Show Google Map', 'themerex'),
 			"options" => $yes_no,
 			"type" => "switch");
 
-
+$THEMEREX_options[] = array( "title" => __('Zoom with mouse wheel', 'themerex'),
+			"desc" => __('Map\'s zoom with mouse wheel', 'themerex'),
+			"id" => "googlemap_scroll",
+			"override" => "category,page,post",
+			"std" => "no",
+			"options" => $yes_no,
+			"type" => "switch");
 
 $THEMEREX_options[] = array( "title" => __('Address to show on map', 'themerex'),
 			"desc" => __("Enter address to show on map center", 'themerex'),
@@ -1422,20 +1422,6 @@ $THEMEREX_options[] = array( "title" => __('Address to show on map', 'themerex')
 $THEMEREX_options[] = array( "title" => __('Latitude and Longtitude to show on map', 'themerex'),
 			"desc" => __("Enter coordinates (separated by comma) to show on map center (instead of address)", 'themerex'),
 			"id" => "googlemap_latlng",
-			"override" => "category,page,post",
-			"std" => "",
-			"type" => "text");
-
-$THEMEREX_options[] = array( "title" => __("Marker's Title",  'themerex'),
-			"desc" => __("Title to be displayed when hovering on the marker", 'themerex'),
-			"id" => "googlemap_title",
-			"override" => "category,page,post",
-			"std" => "",
-			"type" => "text");
-
-$THEMEREX_options[] = array( "title" => __("Marker's Description",  'themerex'),
-			"desc" => __("Description to be displayed when clicking on the marker", 'themerex'),
-			"id" => "googlemap_description",
 			"override" => "category,page,post",
 			"std" => "",
 			"type" => "text");

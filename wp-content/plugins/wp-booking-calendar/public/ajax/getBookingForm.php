@@ -115,7 +115,7 @@ if($prev == '' || $_GET["month"] > $prevMonth || date("Ymd",$prev) < $bookfromda
 }
 
 //only current month is navigable, so I stop navigation at the end of month
-if($next == '' || $_GET["month"] < $nextMonth || date("Ymd",$next) > $booktodate) {
+if($next == '' || $_GET["month"] < $nextMonth || (date("Ymd",$next) > $booktodate && $bookingSettingObj->getBookTo()>0)) {
 	?>
     <div class="booking_float_left booking_height_20 booking_line_20 booking_mark_ccc booking_margin_l_2p booking_font_16"><?php echo $bookingLangObj->getLabel("GETBOOKINGFORM_NEXT_DAY"); ?></div>
     <?php

@@ -53,44 +53,42 @@ class themerex_social_widget extends WP_Widget {
 		
 		?>
 		<div class="widget_inner">
-                    <?php
-                    if ($show_icons) {
-                        $socials = get_theme_option('social_icons');
-                        ?><ul class="social_link social_style_<?php echo get_theme_options_attribute('social_icons','style') ?>"><?php
-                        foreach ($socials as $s) {
-                            if (empty($s['url'])) continue;
-                            ?><li><a class="social_icons" href="<?php echo $s['url']; ?>" target="_blank"><img src="<?php echo $s['icon']; ?>" alt="" /></a></li><?php 
-                        }
-                        ?><div class="clear"></div></ul><?php
-                    } ?>
+            <?php
+				if ($show_logo) {
+					if ($logo_image!='' || ($logo_image=get_theme_option('logo_image'))!='') { 
+					?>
+						<div class="logo logo_image"><a href="<?php echo get_home_url(); ?>"><img src="<?php echo $logo_image; ?>" alt="" /></a></div>
+					<?php 
+					} else if (($logo_text = get_theme_option('logo_text'))!='') {
+						$logo_text = str_replace(array('[', ']'), array('<span class="theme_accent">', '</span>'), $logo_text);
+					?>
+						<div class="logo logo_text"><a href="<?php echo get_home_url(); ?>"><span class="logo_title theme_header"><?php echo $logo_text; ?></span></a></div>
+					<?php 
+					} 
+				}
 
+				if (!empty($text1)) {
+					?>
+					<div class="logo_descr"><?php echo str_replace('[year]',$substitution_date, $text1); ?></div>
                     <?php
-                        if ($show_logo) {
-                            if ($logo_image!='' || ($logo_image=get_theme_option('logo_image'))!='') { 
-                            ?>
-                                <div class="logoFooter"><a href="<?php echo get_home_url(); ?>"><img src="<?php echo $logo_image; ?>" alt="" /></a></div>
-                            <?php 
-                            } else if (($logo_text = get_theme_option('logo_text'))!='') {
-                                $logo_text = str_replace(array('[', ']'), array('<span class="theme_accent">', '</span>'), $logo_text);
-                            ?>
-                                <div class="logoFooter"><a href="<?php echo get_home_url(); ?>"><span class="logo_title theme_header"><?php echo $logo_text; ?></span></a></div>
-                            <?php 
-                            } 
-                        }
-                    ?>
+				}
+				
+				if ($show_icons) {
+					$socials = get_theme_option('social_icons');
+					?><ul class="social_style_<?php echo get_theme_options_attribute('social_icons','style') ?>"><?php
+					foreach ($socials as $s) {
+						if (empty($s['url'])) continue;
+						?><li><a class="social_icons" href="<?php echo $s['url']; ?>" target="_blank"><img src="<?php echo $s['icon']; ?>" alt="" /></a></li><?php 
+					}
+					?></ul><?php
+				}
 
+				if (!empty($text2)) {
+					?>
+					<div class="copy_descr"><?php echo str_replace('[year]',$substitution_date, $text2); ?></div>
                     <?php
-                    if (!empty($text1)) { ?>
-                        <p class="text_sub"><?php echo str_replace('[year]',$substitution_date, $text1); ?></p>
-                    <?php
-                    } ?>
-
-                    <?php 
-                    if (!empty($text2)) {
-                        ?>
-                        <div class="copy_descr"><?php echo str_replace('[year]',$substitution_date, $text2); ?></div>
-                    <?php
-                    } ?>
+				}
+			?>
 		</div>
 
 		<?php

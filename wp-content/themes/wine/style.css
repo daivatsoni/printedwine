@@ -3,7 +3,7 @@
 /*
 Theme Name: Wine
 Theme URI: http://Wine.themerex.net
-Version: 1.4.2
+Version: 1.6
 Author: ThemeREX
 Author URI: http://themerex.net/
 License: GNU General Public License
@@ -1582,8 +1582,20 @@ ul.social_style_icon{}
 .isotopeWrap .isotopeItem:hover .isotopeContentWrap{ opacity: 1; margin: -500px 0 0 0; }
 
 .isotopeWrap .isotopeItem .isotopeContent{ vertical-align: middle; display: table-cell; padding: 0 20px;  }
-.isotopeWrap .isotopeItem .isotopeContent .isotopeTitle{ letter-spacing: 0; color: #fff; margin: 0 0 15px 0; font-size: 25px; line-height: 120%; }
+.isotopeWrap .isotopeItem .isotopeContent .isotopeTitle {
+    letter-spacing: 0;
+    color: #fff;
+    margin: 0 0 15px 0;
+    font-size: 25px;
+    line-height: 120%;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
 .isotopeWrap .isotopeItem .isotopeContent .isotopeTitle a{ color: #fff;}
+.isotopeWrap .isotopeItem .isotopeContent .isotopeTitle:hover,
 .isotopeWrap .isotopeItem .isotopeContent .isotopeTitle a:hover{ color: #b4bb6b;}
 .isotopeWrap .isotopeItem .isotopeContent .isotopeExcerpt{ color: #fff; font-size: 14px; margin: 0 0 10px 0; line-height: 16px; }
 .isotopeWrap .isotopeItem .isotopeContent .postInfo{ font-size: 14px; text-transform: none; padding:  15px 0 0 0;}
@@ -1620,7 +1632,7 @@ ul.social_style_icon{}
 }
 .isotopeWrap .isotopeItem.post_format_standard .isotopeStatickWrap .isotopeStatick .isotopeTitle,
 .isotopeWrap.portfolio_medium .isotopeItem .isotopeStatickWrap .isotopeStatick .isotopeTitle,
-.isotopeWrap.portfolio_big .isotopeItem .isotopeStatickWrap .isotopeStatick .isotopeTitle{ font-size:55px;  letter-spacing:-0.05em; }
+.isotopeWrap.portfolio_big .isotopeItem .isotopeStatickWrap .isotopeStatick .isotopeTitle{ font-size:50px;  letter-spacing:-0.05em; }
 .isotopeWrap .isotopeItem .isotopeStatickWrap .isotopeStatick{ vertical-align: middle; display: table-cell; padding: 40px; }
 .isotopeWrap.portfolio_mini .isotopeItem .isotopeStatickWrap .isotopeStatick .isotopeExcerpt{ font-size: 16px; line-height: 140%; }
 .isotopeWrap .isotopeItem .isotopeStatickWrap .isotopeStatick .postInfo { padding: 0; }
@@ -1790,7 +1802,9 @@ ul.social_style_icon{}
 .user-popUp .formItems .result { margin: 15px 0 0 0 ; display: none;  }
 .user-popUp .formItems .result p{ margin: 0; margin: 0; }
 
-
+.user-popUp .sc_tabs_titles li, .user-popUp .sc_tabs_array {
+    background-color: #fff !important;
+}
 /*=== custom_options =========================================================================================*/
 
 body.custom_options_opened .custom_options{ right: 0; }

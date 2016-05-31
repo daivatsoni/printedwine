@@ -53,6 +53,10 @@ jQuery(document).ready(function() {
 					max_length: { value: 60, message: THEMEREX_EMAIL_LONG },
 					mask: { value: "^([a-z0-9_\\-]+\\.)*[a-z0-9_\\-]+@[a-z0-9_\\-]+(\\.[a-z0-9_\\-]+)*\\.[a-z]{2,6}$", message: THEMEREX_EMAIL_NOT_VALID }
 				},
+                                {
+					field: "i-agree",
+					shouldselchk: {value: "on", message: THEMEREX_TERMS_NOT_AGREE}
+				},
 				{
 					field: "registration_pwd",
 					min_length: { value: 4, message: THEMEREX_PASSWORD_EMPTY },

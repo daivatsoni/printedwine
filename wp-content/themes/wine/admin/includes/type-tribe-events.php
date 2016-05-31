@@ -5,7 +5,7 @@
 // Return true, if current page is any TE page
 if ( !function_exists( 'is_tribe_events_page' ) ) {
 	function is_tribe_events_page() {
-		return class_exists('Tribe__Events__Main') ? tribe_is_event() || tribe_is_event_query() : false;
+		return class_exists('TribeEvents') ? tribe_is_event() || tribe_is_event_query() : false;
 	}
 }
 

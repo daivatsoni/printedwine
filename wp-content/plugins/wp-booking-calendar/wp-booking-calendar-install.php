@@ -6360,11 +6360,11 @@ function booking_calendar_on_activation($networkwide) {
 				$current_version = "1.0.0";
 			}
 			$flag = 0;
-			if($current_version != '3.0.0' && $current_version != '3.0.1' && $current_version != '3.0.2' && $current_version != '3.0.3' && $current_version != '3.0.4' && $current_version != '3.0.5' && $current_version != '3.0.6' && $current_version != '3.0.7' && $current_version != '4.0.0' && $current_version != '4.0.1' && $current_version != '4.0.2' && $current_version != '4.0.3' && $current_version != '4.0.4' && $current_version != '4.0.5' && $current_version != '4.0.6' && $current_version != '4.0.7' && $current_version != '4.0.8' && $current_version != '4.0.9' && $current_version != '4.1.0' && $current_version != '4.1.1' && $current_version != '4.1.2') {
+			if($current_version != '3.0.0' && $current_version != '3.0.1' && $current_version != '3.0.2' && $current_version != '3.0.3' && $current_version != '3.0.4' && $current_version != '3.0.5' && $current_version != '3.0.6' && $current_version != '3.0.7' && $current_version != '4.0.0' && $current_version != '4.0.1' && $current_version != '4.0.2' && $current_version != '4.0.3' && $current_version != '4.0.4' && $current_version != '4.0.5' && $current_version != '4.0.6' && $current_version != '4.0.7' && $current_version != '4.0.8' && $current_version != '4.0.9' && $current_version != '4.1.0' && $current_version != '4.1.1' && $current_version != '4.1.2' && $current_version != '4.1.3' && $current_version != '4.1.4') {
 			   $flag = 1;
 			}
 			//creates record in wp-option table
-			add_option('wbc_version','4.1.2');
+			add_option('wbc_version','4.1.4');
 			$wbc_show_text_update_admin = get_option('wbc_show_text_update_admin');
 			if($wbc_show_text_update_admin == '') {
 				add_option('wbc_show_text_update_admin',$flag);
@@ -6387,10 +6387,10 @@ function booking_calendar_on_activation($networkwide) {
 		$blog_prefix='';
 		//creates record in wp-option table
 		$flag = 0;
-		if($current_version != '3.0.0' && $current_version != '3.0.1' && $current_version != '3.0.2' && $current_version != '3.0.3' && $current_version != '3.0.4' && $current_version != '3.0.5' && $current_version != '3.0.6' && $current_version != '3.0.7' && $current_version != '4.0.1' && $current_version != '4.0.2' && $current_version != '4.0.3' && $current_version != '4.0.4' && $current_version != '4.0.5' && $current_version != '4.0.6' && $current_version != '4.0.7' && $current_version != '4.0.8' && $current_version != '4.0.9' && $current_version != '4.1.0' && $current_version != '4.1.1' && $current_version != '4.1.2') {
+		if($current_version != '3.0.0' && $current_version != '3.0.1' && $current_version != '3.0.2' && $current_version != '3.0.3' && $current_version != '3.0.4' && $current_version != '3.0.5' && $current_version != '3.0.6' && $current_version != '3.0.7' && $current_version != '4.0.1' && $current_version != '4.0.2' && $current_version != '4.0.3' && $current_version != '4.0.4' && $current_version != '4.0.5' && $current_version != '4.0.6' && $current_version != '4.0.7' && $current_version != '4.0.8' && $current_version != '4.0.9' && $current_version != '4.1.0' && $current_version != '4.1.1' && $current_version != '4.1.2' && $current_version != '4.1.3' && $current_version != '4.1.4') {
 		   $flag = 1;
 		}
-		add_option('wbc_version','4.1.2');
+		add_option('wbc_version','4.1.4');
 		$wbc_show_text_update_admin = get_option('wbc_show_text_update_admin');
 		if($wbc_show_text_update_admin == '') {
 			add_option('wbc_show_text_update_admin',$flag);
@@ -6431,143 +6431,151 @@ function wp_booking_calendar_process_update(){
 			update_option('wbc_show_text_update_public','1');
 			wp_booking_multisite_update();
 			
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			
 			break;
 		case '2.0.0':
 			update_option('wbc_show_text_update_admin','1');
 			update_option('wbc_show_text_update_public','1');
 			wp_booking_multisite_update();
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			
 			break;
 		case '2.0.1':
 			update_option('wbc_show_text_update_admin','1');
 			update_option('wbc_show_text_update_public','1');
 			wp_booking_multisite_update();
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			
 			break;
 		case '2.0.2':
 			update_option('wbc_show_text_update_admin','1');
 			update_option('wbc_show_text_update_public','1');
 			wp_booking_multisite_update();
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			
 			break;
 		case '2.0.3':
 			update_option('wbc_show_text_update_admin','1');
 			update_option('wbc_show_text_update_public','1');
 			wp_booking_multisite_update();
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			
 			break;
 		case '2.0.4':
 			update_option('wbc_show_text_update_admin','1');
 			update_option('wbc_show_text_update_public','1');
 			wp_booking_multisite_update();
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			
 			break;
 		case '2.0.5':
 			update_option('wbc_show_text_update_admin','1');
 			update_option('wbc_show_text_update_public','1');
 			wp_booking_multisite_update();
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			
 			break;
 		case '2.0.6':
 			
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			wp_booking_multisite_update();
 			break;
 		case '2.0.7':
 			
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			wp_booking_multisite_update();
 			break;
 		case '3.0.0':
 			
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			wp_booking_multisite_update();
 			
 			break;
 		case '3.0.1':
 			
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			wp_booking_multisite_update();
 			break;
 		case '3.0.2':
 			
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			wp_booking_multisite_update();
 			break;
 		case '3.0.3':
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			wp_booking_multisite_update();
 			break;
 		case '3.0.4':
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			wp_booking_multisite_update();
 			break;
 		case '3.0.5':
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			wp_booking_multisite_update();
 			break;
 		case '3.0.6':
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			wp_booking_multisite_update();
 			break;
 		case '3.0.7':
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			wp_booking_multisite_update();
 			break;
 		case '4.0.0':
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			wp_booking_multisite_update();
 			break;
 		case '4.0.1':
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			wp_booking_multisite_update();
 			break;
 		case '4.0.2':
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			wp_booking_multisite_update();
 			break;
 		case '4.0.3':
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			wp_booking_multisite_update();
 			break;
 		case '4.0.4':
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			wp_booking_multisite_update();
 			break;
 		case '4.0.5':
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			wp_booking_multisite_update();
 			break;
 		case '4.0.6':
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			wp_booking_multisite_update();
 			break;
 		case '4.0.7':
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			wp_booking_multisite_update();
 			break;
 		case '4.0.8':
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			wp_booking_multisite_update();
 			break;
 		case '4.0.9':
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			wp_booking_multisite_update();
 			break;
 		case '4.1.0':
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
 			wp_booking_multisite_update();
 			break;
 		case '4.1.1':
-			update_option('wbc_version','4.1.2');
+			update_option('wbc_version','4.1.4');
+			wp_booking_multisite_update();
+			break;
+		case '4.1.2':
+			update_option('wbc_version','4.1.4');
+			wp_booking_multisite_update();
+			break;
+		case '4.1.3':
+			update_option('wbc_version','4.1.4');
 			wp_booking_multisite_update();
 			break;
 		
