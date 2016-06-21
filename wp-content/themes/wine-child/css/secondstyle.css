@@ -1,3 +1,4 @@
+/*
 @font-face {
     font-family: 'proxima_nova_altRgIt';
     src: url('../fonts/mark_simonson_-_proxima_nova_alt_regular_italic-webfont.eot');
@@ -71,7 +72,7 @@
     font-weight: normal;
     font-style: normal;
 
-}
+}*/
 
 body{background:#ffffff;}
 a:hover{  color: #00aeef!important;}
@@ -80,45 +81,45 @@ a:hover{  color: #00aeef!important;}
 .menu_slot_right{margin:0px; padding:0px; width:79%; float:left;}
 .top_nav{margin:0px; padding:0px; float:left;width:87.9%;}
 .top_nav ul.top_nav_link{margin: 0px 0px 0px; padding:0px 0px; float:left; width:45%;}
-.top_nav ul.top_nav_link li{margin:0px 24px 0px 0px; padding:5px 0px;   font-family: 'proxima_nova_altthin'; font-size:14px;color:#000000; list-style:none; float:left;}
+.top_nav ul.top_nav_link li{margin:0px 24px 0px 0px; padding:5px 0px;  /* font-family: 'proxima_nova_altthin';*/ font-size:14px;color:#000000; list-style:none; float:left;}
 .top_nav ul.top_nav_link li a{margin:0px; padding:0px; display:block; text-decoration:none;color:#000000; }
 .top_nav ul.log_nav{margin:0px 0px 0px 20px; padding:0px 0px; float:right; }
-.top_nav ul.log_nav li{margin:0px 8px 0px 0px; padding:5px;   font-family: 'proxima_nova_altthin'; font-size:14px;color:#000000; list-style:none; float:left;}
+.top_nav ul.log_nav li{margin:0px 8px 0px 0px; padding:5px;  /* font-family: 'proxima_nova_altthin'; */ font-size:14px;color:#000000; list-style:none; float:left;}
 .top_nav ul.log_nav li a{margin:0px; padding:0px; display:block; text-decoration:none;color:#000000;  }
 .top_nav ul.log_nav li.wish_back{background:#e5e5e5;padding:5px 24px 5px 44px; position:relative;margin:0px;}
-.top_nav ul.log_nav li.wish_back a{font-family:arial; font-size:11px;}
+.top_nav ul.log_nav li.wish_back a{/*font-family:arial;*/ font-size:11px;}
 .top_nav ul.log_nav li.wish_back .icon{margin:0px; padding:0px; position:absolute;left:12px; background:url(../images/cart_icon.png) left top no-repeat; width:16px; height:14px; top:8px; }
 .main_nav ul.nav_slot{margin:15px 0px 0px ; padding:0px;}
 .main_nav ul.nav_slot li{margin:0px; padding:0px; float:left; list-style:none;}
-.main_nav ul.nav_slot li a{margin:0px; padding:0px 15px 0px ; display:block;font-family: 'proxima_nova_altthin'; font-size:18px;color:#000000; text-decoration:none;}
+.main_nav ul.nav_slot li a{margin:0px; padding:0px 15px 0px ; display:block; /* font-family: 'proxima_nova_altthin'; */ font-size:18px;color:#000000; text-decoration:none;}
 .search_bg{background:url(../images/manu_bg.png) center 5px no-repeat; height:80px;}
 .text_slot{margin:0px; padding:0px; float:left; width:60%;}
 .search_slot{ padding:0px; float:right;  padding: 11px 0; margin: 0 52px 0 0;}
-.text_text{float:left;font-family: "proxima_nova_rgregular"; font-size:20px;color:#000000;line-height: 60px;}
+.text_text{float:left; /* font-family: "proxima_nova_rgregular"; */ font-size:20px;color:#000000;line-height: 60px;}
 .check_text .amount { color: white;}
-.text_text2{float:right;font-family: 'proxima_nova_ltsemibold'; font-size:16px;color:#726e6d;line-height: 60px;}
+.text_text2{float:right; /* font-family: 'proxima_nova_ltsemibold'; */ font-size:16px;color:#726e6d;line-height: 60px;}
 .search_btn{background:url(../images/search_bg.png) left top no-repeat; width:16px; height:16px; float:left; margin: 6px 0 0;border: medium none; cursor: pointer;}
 .search_inner{width:231px; height:30px; border-radius:6px;border:2px solid #e8e8e8; float:right;}
 .input_search_area{width:88%; float:left;}
-.input_search_area input[type="text"]{padding:4px 10px; border:none; outline:none;font-family: 'proxima_nova_altlight';color:#726e6d;border-radius:8px;}
+.input_search_area input[type="text"]{padding:4px 10px; border:none; outline:none; /* font-family: 'proxima_nova_altlight'; */ color:#726e6d;border-radius:8px;}
 .checkout_slot{background:#333333; float: right;margin:0px; outline:none; width: 10%;padding:10px 10px 0 10px;}
-.item_cart{font-family: 'proxima_nova_altlight'; font-size:14px;color:#cbcbcb;   font-weight: 600;display:block; padding:0px 0px 0px;}	
-.check_text{font-family: 'proxima_nova_altlight'; font-size:13px;color:#fff; display:block; padding:0px 0px 10px;}
-.check_text b{font-family: 'proxima_nova_ltsemibold';font-size:14px;}	
+.item_cart{/*font-family: 'proxima_nova_altlight';*/ font-size:14px;color:#cbcbcb;   font-weight: 600;display:block; padding:0px 0px 0px;}	
+.check_text{/*font-family: 'proxima_nova_altlight';*/ font-size:13px;color:#fff; display:block; padding:0px 0px 10px;}
+.check_text b{/*font-family: 'proxima_nova_ltsemibold';*/font-size:14px;}	
 .topMenu.main { margin: 10px 20px 0 0 ; float: left;  width: auto;}
 footer.footerWidget{border:none;}
-h5.heading{  font-family: arial; font-size:12px;color:#65666b; border-bottom:5px solid #ededed;padding:0px 0px 11px; margin: 0 0 10px;}
+h5.heading{  /*font-family: arial;*/ font-size:12px;color:#65666b; border-bottom:5px solid #ededed;padding:0px 0px 11px; margin: 0 0 10px;}
 h6.heading{  font-family: arial; font-size:12px;color:#00aeef; border-bottom:7px solid #ededed;padding:0px 0px 11px;}
 ul.footer_nav{padding:0px;}
-ul.footer_nav li{margin:0px !important; padding:0px !important; display:block; list-style:none;font-family: arial;font-size:13px;line-height: 16px;}
+ul.footer_nav li{margin:0px !important; padding:0px !important; display:block; list-style:none;/*font-family: arial;*/font-size:13px;line-height: 16px;}
 .wpb_text_column.wpb_content_element  strong { font-weight: 600;}
 ul.footer_nav li::before{display:none;}
-ul.footer_nav li a{margin:0px; padding:0px; color:#9e9e9e; font-size:13px; text-decoration:none;font-family: arial;}
+ul.footer_nav li a{margin:0px; padding:0px; color:#9e9e9e; font-size:13px; text-decoration:none;/*font-family: arial;*/}
 ul.form_slot{margin:0px; padding:0px;}
-ul.form_slot li{display:block; margin:0px 0px 0px !important; padding:0px; list-style:none; font-family: arial;color:#9e9e9e; font-size:13px;}
+ul.form_slot li{display:block; margin:0px 0px 0px !important; padding:0px; list-style:none; /*font-family: arial;*/color:#9e9e9e; font-size:13px;}
 ul.form_slot li::before{display:none;}
-ul.form_slot li input[type="text"]{background:#e0e0e0; border-radius:5px; width:100%;padding:5px; border:none;font-family: arial;color:#fff; font-size:13px;}
-.sub_btn{float:right;background:#bbbbbb url(../images/arrow.png) 72px 9px no-repeat;padding:5px 32px 5px 12px; color:#fff; font-size:14px;border-radius:5px;border:none; outline:none;margin:7px 0px 0px; cursor: pointer; font-family: 'proxima_nova_ltsemibold';}
+ul.form_slot li input[type="text"]{background:#e0e0e0; border-radius:5px; width:100%;padding:5px; border:none;/*font-family: arial;*/color:#fff; font-size:13px;}
+.sub_btn{float:right;background:#bbbbbb url(../images/arrow.png) 72px 9px no-repeat;padding:5px 32px 5px 12px; color:#fff; font-size:14px;border-radius:5px;border:none; outline:none;margin:7px 0px 0px; cursor: pointer; /*font-family: 'proxima_nova_ltsemibold';*/}
 ul.social_link{margin:0px; padding:0px 0px 0px;}
 ul.social_link li{margin:0px 9px 0px 0px !important; padding:0px; float:left; list-style:none;width:32px; height:32px;}
 ul.social_link li:last-child{margin-right:0px !important;}
@@ -130,16 +131,16 @@ ul.social_link li.tw{background:url(../images/tw.png) left top no-repeat;}
 ul.social_link li.pin{background:url(../images/pin.png) left top no-repeat;}
 ul.social_link li a{margin:0px; padding:0px; display:block;width:32px; height:32px; background-color:transparent!important;}
 .logoFooter{padding:10px 0px;}
-.text_sub{margin:0px; padding:0px; font-size:11px; color:#9e9e9e;font-family: arial; line-height:14px;}
-.copyright_text{text-align:right;font-size:11px; color:#9e9e9e;font-family: arial; line-height:14px;}
-.copyright_text a{margin:0px; padding:0 20px 0px 0px; font-size:11px; color:#9e9e9e;font-family: arial; line-height:14px;text-align:right; width:50%;}
+.text_sub{margin:0px; padding:0px; font-size:11px; color:#9e9e9e;/*font-family: arial;*/ line-height:14px;}
+.copyright_text{text-align:right;font-size:11px; color:#9e9e9e;/*font-family: arial;*/ line-height:14px;}
+.copyright_text a{margin:0px; padding:0 20px 0px 0px; font-size:11px; color:#9e9e9e;/*font-family: arial;*/ line-height:14px;text-align:right; width:50%;}
 .margin_top{margin-top:-5px;}
-.copy_text_left{padding:0px 0px; font-size:11px; color:#a3a3a5;font-family: arial; float:left; width:50%;}
+.copy_text_left{padding:0px 0px; font-size:11px; color:#a3a3a5;/*font-family: arial;*/ float:left; width:50%;}
 footer .widget_area{border-bottom:none !important;}
 .login_slot {
     border-bottom: 1px solid #e5e5e5;
 }
-.sign_text{margin:0px; padding:5px 0px 0px; font-size:16px;font-family: 'proxima_nova_ltsemibold'; color:#00aeef;}
+.sign_text{margin:0px; padding:5px 0px 0px; font-size:16px;/*font-family: 'proxima_nova_ltsemibold';*/ color:#00aeef;}
 .sassy-textfiald {
     float: left;
     margin: 0;
@@ -159,7 +160,7 @@ aside.widget_socials ul li:first-child {
     float: left;
     
     font-size: 16px;
-   font-family: 'proxima_nova_altthin';
+    /*font-family: 'proxima_nova_altthin';*/
     margin: 0;
     padding: 5px 0 5px 14px;
     text-transform: inherit !important;
@@ -173,7 +174,7 @@ aside.widget_socials ul li:first-child {
     float: left;
     
     font-size: 16px;
-    font-family: 'proxima_nova_altthin';
+    /*font-family: 'proxima_nova_altthin';*/
     margin: 0;
     padding: 5px 0 5px 14px;
     text-transform: inherit !important;
@@ -185,7 +186,7 @@ aside.widget_socials ul li:first-child {
     border-radius: 5px;
     color: #868686;
     float: left;
-    font-family: 'proxima_nova_altthin';
+    /*font-family: 'proxima_nova_altthin';*/
     font-size: 16px;
     font-weight: normal;
     margin: 0;
@@ -193,11 +194,11 @@ aside.widget_socials ul li:first-child {
     text-transform: uppercase;
 }
 .footer_top_ext{margin:0px 0px 15px; padding:40px 0px; background:#3867ad; text-align:center;}
-.footer_top_ext h2{margin:0px; padding:0px; color:#ffffff; font-size:39px;font-family: 'proxima_nova_altthin';}
+.footer_top_ext h2{margin:0px; padding:0px; color:#ffffff; font-size:39px;/*font-family: 'proxima_nova_altthin';*/}
 footer .widget_area{padding: 0 0 5px !important;}
 #mainmenu li a{ color: #000000 !important;
     display: block;
-    font-family: "proxima_nova_altthin" !important; 
+    /*font-family: "proxima_nova_altthin" !important; */
     font-weight:normal !important;
     padding:2px 20px; margin:0px;
 	font-size: 18px;
@@ -207,7 +208,7 @@ footer .widget_area{padding: 0 0 5px !important;}
 	.widget_socials .copy_descr {
     font-size: 12px;
     line-height: 16px !important;
-	font-family: "proxima_nova_alt_rgregular";
+	/*font-family: "proxima_nova_alt_rgregular";*/
 }
 .footerWidget .sc_columns_5.sc_columns_indent .sc_columns_item{ width: 16.6378%;margin: 0 3.3622% 30px 0;}
 .wrapTopMenu .topMenu > ul{float:left; text-align:left;}
@@ -225,8 +226,8 @@ footer .widget_area{padding: 0 0 5px !important;}
     max-width: 1060px;
 }
 .homePageTagLine .wpb_wrapper {
-     color: #ffffff;
-    font-family: "proxima_nova_rgregular" !important;
+    color: #ffffff;
+    /*font-family: "proxima_nova_rgregular" !important;*/
 } 
 .headerIcon a i {
     position: relative;
@@ -241,7 +242,6 @@ footer .widget_area{padding: 0 0 5px !important;}
     height: 14px;
     line-height: 12px;
     margin: 0 0 0 30px!important;
-     : ;
 }
 .headerIcon li {
     list-style: none;
@@ -254,10 +254,10 @@ footer .widget_area{padding: 0 0 5px !important;}
     padding: 0;
 }
 .headerIcon {
-   display: inline-block;
+    display: inline-block;
     width: 100%;
     text-align: center;
-	   margin: 5px 0 40px;
+    margin: 5px 0 40px;
 }
 .headerIcon a {
     color: #ffffff;
@@ -268,7 +268,7 @@ footer .widget_area{padding: 0 0 5px !important;}
     margin: 0;
     padding: 0;
     cursor: pointer;
-	   position: relative;
+    position: relative;
 }
 .headerIcon a .fa {
     font-size: 41px;
@@ -278,7 +278,7 @@ footer .widget_area{padding: 0 0 5px !important;}
     float: left;
     margin: 0 3.8% 2.992em 0;
     padding: 0;
-	  text-align: center;
+    text-align: center;
     position: relative;
     width: 100% !important;
 }
@@ -299,7 +299,7 @@ footer .widget_area{padding: 0 0 5px !important;}
     background-color: #fff;
     filter: Alpha(Opacity=50);/*IE7 fix*/
     opacity: 0.5;
-	  font-size: 0;
+    font-size: 0;
 }
 .owl-prev:hover, .owl-next:hover {
     filter: Alpha(Opacity=100);/*IE7 fix*/
@@ -331,16 +331,16 @@ footer .widget_area{padding: 0 0 5px !important;}
     opacity: 1;
 }
 .owl-next:before{
- font: normal normal normal 14px/1 FontAwesome;
-   content: "\f105";
+    font: normal normal normal 14px/1 FontAwesome;
+    content: "\f105";
     font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  right: 20px;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    right: 20px;
     top: 10px;
-	position: absolute;
-	  font-size: 90px;
+    position: absolute;
+    font-size: 90px;
 
 }
 .owl-prev:before{
@@ -376,7 +376,7 @@ footer .widget_area{padding: 0 0 5px !important;}
 }
 .sc_section.artistsBlock.sc_align_center p {
     color: #343640;
-    font-family: 'proxima_nova_altthin';
+    /*font-family: 'proxima_nova_altthin';*/
     font-size: 2.2em;
     font-weight: 600;
 }
@@ -394,11 +394,11 @@ footer .widget_area{padding: 0 0 5px !important;}
     padding: 12px 47px 12px 27px;
     position: relative;
     top: -5px;
-    font-family: 'proxima_nova_alt_rgregular';
+    /*font-family: 'proxima_nova_alt_rgregular';*/
 	  cursor: pointer;
 }
 .sc_blogger_title.sc_title > a,.sc_blogger_content {
-    font-family: 'proxima_nova_alt_rgregular';
+    /*font-family: 'proxima_nova_alt_rgregular';*/
 }
 .sc_section.artistsBlock.sc_align_center p .btnSignUp:before{
  font: normal normal normal 14px/1 FontAwesome;
@@ -418,11 +418,11 @@ footer .widget_area{padding: 0 0 5px !important;}
 }
 .sc_section .woocommerce * {
     color: #666;
-    font-family: 'proxima_nova_alt_rgregular';
+    /*font-family: 'proxima_nova_alt_rgregular';*/
 }
 .middleBannerSection .wpb_text_column.wpb_content_element a {
     color: #00aeef;
-    font-family: 'proxima_nova_ltsemibold';
+    /*font-family: 'proxima_nova_ltsemibold';*/
 }
 .sc_section.artistsBlock.sc_align_center p .btnSignUp:hover {
     background: #333!important;
@@ -431,7 +431,7 @@ footer .widget_area{padding: 0 0 5px !important;}
 
 .wpb_text_column.wpb_content_element strong {
     font-weight: 600;
-    font-family: 'proxima_nova_ltsemibold';
+    /*font-family: 'proxima_nova_ltsemibold';*/
 }
 .widget_area.sidebar_cart.sidebar {
     display: none;
@@ -445,14 +445,14 @@ footer .widget_area{padding: 0 0 5px !important;}
     margin-top: 17%;
     text-align: center;
     vertical-align: middle;
-    font-family: 'proxima_nova_ltsemibold';
+    /*font-family: 'proxima_nova_ltsemibold';*/
 }
 aside.widget_socials ul li {
     margin: 0 4px!important;
 }
 .vc_column_container .sc_title.sc_title_center {
     display: block;
-    font-family:"proxima_nova_ltsemibold";
+    /*font-family:"proxima_nova_ltsemibold";*/
     text-align: center;
     text-transform: capitalize;
     font-size: 36px;
@@ -460,7 +460,7 @@ aside.widget_socials ul li {
 .mainWrap .wpb_wrapper p {
 	font-size: 16px;
     margin: 0 0 15px!important;
-	 font-family: 'proxima_nova_alt_rgregular';
+	 /*font-family: 'proxima_nova_alt_rgregular';*/
 }
 .vc_btn3.vc_btn3-size-md.vc_btn3-icon-right:not(.vc_btn3-o-empty) {
     padding-right: 48px!important;
@@ -494,7 +494,7 @@ ul.sc_list.sc_list_style_iconed .icon-right-open-micro::before {
     border-radius: 5px;
     color: #868686;
     float: left;
-    font-family: "proxima_nova_altthin";
+    /*font-family: "proxima_nova_altthin";*/
     font-size: 16px;
     margin: 0;
     padding: 5px 0 5px 14px;
@@ -522,7 +522,7 @@ ul.sc_list.sc_list_style_iconed .icon-right-open-micro::before {
     color: #fff;
     cursor: pointer;
     float: left;
-    font-family: "proxima_nova_altthin";
+    /*font-family: "proxima_nova_altthin";*/
     font-size: 16px;
     font-weight: normal;
     margin: 0;
@@ -537,7 +537,7 @@ ul.sc_list.sc_list_style_iconed .icon-right-open-micro::before {
     letter-spacing: -0.01em;
     line-height: 120%;
     text-transform: capitalize;
-    font-family: 'proxima_nova_ltsemibold';
+    /*font-family: 'proxima_nova_ltsemibold';*/
 }
 .middleBannerSection h3 {
     font-size: 48px;
@@ -546,14 +546,14 @@ ul.sc_list.sc_list_style_iconed .icon-right-open-micro::before {
     letter-spacing: -0.01em;
     line-height: 120%;
     text-transform: capitalize;
-    font-family: 'proxima_nova_altthin';
+    /*font-family: 'proxima_nova_altthin';*/
     margin: 0;
 }
 .middleBannerSection ul.sc_list.sc_list_style_iconed li {
     padding: 2px 0 2px 25px;
     position: relative;
     font-size: 20px;
-    font-family: 'proxima_nova_altthin';
+    /*font-family: 'proxima_nova_altthin';*/
     color: #666;
 }
 .middleBannerSection .vc_general.vc_btn3 {
@@ -576,14 +576,14 @@ ul.sc_list.sc_list_style_iconed .icon-right-open-micro::before {
     transition: all 0.2s ease-in-out 0s;
     vertical-align: middle;
     word-wrap: break-word;
-    font-family: 'proxima_nova_ltsemibold';
+    /*font-family: 'proxima_nova_ltsemibold';*/
     background: #00aeef!important;
     margin: 0!important;
     padding: 10px 40px!important;
 }
 .middleBannerSection  .wpb_text_column.wpb_content_element {
 	color: #3867ad;
-    font-family: "proxima_nova_rgregular";
+    /*font-family: "proxima_nova_rgregular";*/
     font-size: 20px;
 	 margin: 0 0 0 40px!important;
 }
@@ -637,7 +637,7 @@ ul.sc_list.sc_list_style_iconed .icon-right-open-micro::before {
     top: 10px !important;
     width: 340px;
 }
- .check_text:hover ul.usermenuList li .sidebar_cart a, .check_text:hover ul.usermenuList  { color:#000!important;font-family: 'proxima_nova_altthin'!important;}
+ .check_text:hover ul.usermenuList li .sidebar_cart a, .check_text:hover ul.usermenuList  { color:#000!important;/*font-family: 'proxima_nova_altthin'!important;*/}
 .check_text .cart_list.product_list_widget {
     background: transparent!important;
     color: black;
@@ -809,7 +809,7 @@ ul.usermenuList li .sidebar_cart a:hover:before{ background:transparent!importan
 }
 .homePageTagLine.vc_column_container .sc_title.sc_title_center {
     display: block;
-    font-family: "proxima_nova_alt_rgregular";
+    /*font-family: "proxima_nova_alt_rgregular";*/
     font-size: 30px;
     text-align: center;
     text-transform: capitalize;
@@ -835,7 +835,7 @@ ul.usermenuList li .sidebar_cart a:hover:before{ background:transparent!importan
 }
 .sc_section.artistsBlock.sc_align_center p {
     color: #343640;
-    font-family: "proxima_nova_altthin";
+    /*font-family: "proxima_nova_altthin";*/
     font-size: 39px; 
 }
 .sc_section.artistsBlock.sc_align_center p .btnSignUp {
@@ -848,13 +848,13 @@ ul.usermenuList li .sidebar_cart a:hover:before{ background:transparent!importan
     padding: 12px 47px 12px 27px;
     position: relative;
     top: -5px;
-    font-family: 'proxima_nova_alt_rgregular';
+    /*font-family: 'proxima_nova_alt_rgregular';*/
     cursor: pointer;
     font-weight: bold;
 }
 .sc_parallax_overlay.texture_bg_14 {
     color: #000 !important;
-    font-family: "proxima_nova_ltsemibold";
+    /*font-family: "proxima_nova_ltsemibold";*/
     font-size: 21px;
     font-weight: 500;
     line-height: 32px;

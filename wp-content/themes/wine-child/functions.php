@@ -16,26 +16,24 @@ if (!function_exists('themerex_scripts')) {
         $concatenate_scripts = get_theme_option('compose_scripts') == 'yes';
 
         //custom fonts
-        /*
-          $fonts = getThemeFontsList(false);
+        $fonts = getThemeFontsList(false);
 
-          $fontArray = array('theme_font', 'header_font', 'logo_font');
-          $fontUsed = array();
-          foreach ($fontArray as $fnt) {
-          $fnt = get_custom_option($fnt);
-          if (!in_array($fnt, $fontUsed)) {
-          $fontUsed[] = $fnt;
+        $fontArray = array('theme_font', 'header_font', 'logo_font');
+        $fontUsed = array();
+        foreach ($fontArray as $fnt) {
+            $fnt = get_custom_option($fnt);
+            if (!in_array($fnt, $fontUsed)) {
+                $fontUsed[] = $fnt;
 
-          if (isset($fonts[$fnt]) && isset($fonts[$fnt]['ext'])) {
-          // do code for custom fonts.
+                if (isset($fonts[$fnt]) && isset($fonts[$fnt]['ext'])) {
+                // do code for custom fonts.
 
-          } else {
-          $theme_font_link = !empty($fonts[$fnt]['link']) ? $fonts[$fnt]['link'] : str_replace(' ', '+', $fnt) . '		:100,100italic,300,300italic,400,400italic,500,500italic,700,700italic,900,900italic';
-          themerex_enqueue_style('theme-font-' . str_replace(' ', '_', $fnt), 'http://fonts.googleapis.com/css?family=' . $theme_font_link . '&subset=latin,cyrillic-ext,latin-ext,cyrillic', array(), null);
-          }
-          }
-          }
-         */
+                } else {
+                    $theme_font_link = !empty($fonts[$fnt]['link']) ? $fonts[$fnt]['link'] : str_replace(' ', '+', $fnt) . '		:100,100italic,300,300italic,400,400italic,500,500italic,700,700italic,900,900italic';
+                    themerex_enqueue_style('theme-font-' . str_replace(' ', '_', $fnt), 'http://fonts.googleapis.com/css?family=' . $theme_font_link . '&subset=latin,cyrillic-ext,latin-ext,cyrillic', array(), null);
+                }
+            }
+        }
 
         themerex_enqueue_style('fontello', get_template_directory_uri() . '/includes/fontello/css/fontello.css', array(), null);
         themerex_enqueue_style('animation', get_template_directory_uri() . '/includes/fontello/css/animation.css', array(), null);
