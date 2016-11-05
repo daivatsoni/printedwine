@@ -406,3 +406,32 @@ function my_login_logo() { ?>
     </style>
 <?php }
 add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
+add_filter( 'woocommerce_account_menu_items', 'pw_change_account_navigation_items', 10, 1);
+function pw_change_account_navigation_items($items) {
+    $mySort = array(
+        'dashboard'       => __( 'Dashboard', 'woocommerce' ),
+        'edit-account'    => __( 'Account Details', 'woocommerce' ),
+        'edit-address'    => __( 'Addresses', 'woocommerce' ),
+        'orders'          => __( 'Purchase History', 'woocommerce' ),
+        'downloads'       => __( 'Downloads', 'woocommerce' ),
+        'payment-methods' => __( 'Payment Methods', 'woocommerce' ),
+        'customer-logout' => __( 'Logout', 'woocommerce' ),
+    );
+    $newItems = array();
+    
+    foreach($mySort as $endpoint => $value) {
+        if(isset($items[$endpoint]))
+            $newItems[$endpoint] = $mySort[$endpoint];
+    }
+    
+    return $newItems;
+}
+
+function pw_social_login_facebook_new_user_data($arrUserData) {
+    if(isset($arrUserData['role']) && $arrUserData['role']=='customer') {
+        $arrUserData['role'] = "subscriber";
+    }
+    return $arrUserData;
+}
+add_filter( 'wc_social_login_facebook_new_user_data', 'pw_social_login_facebook_new_user_data');

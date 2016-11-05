@@ -100,9 +100,9 @@ themerex_init_template(); // Init theme template - prepare global variables
                             </ul>
                             <ul class="log_nav">
                                 <?php if(is_user_logged_in()) { global $current_user; get_currentuserinfo();?>
-                                <li><a href="javascript:void(0)">Welcome <?php echo $current_user->display_name ?></a></li>
+                                <li><a href="<?php echo get_edit_user_link(); ?>">Welcome <?php echo $current_user->display_name ?></a></li>
                                 <li>|</li>
-                                <li><a href="javascript:void(0)">Logout</a></li>
+                                <li><a href="<?php echo wp_logout_url(home_url()); ?>">Logout</a></li>
                                 <?php } else { ?> 
                                 <li><a href="#user-popUp" onclick="jQuery('.user-popUp .registerFormTab').trigger('click');" class="user-popup-link">Signup</a></li>
                                 <li>|</li>
@@ -217,6 +217,13 @@ themerex_init_template(); // Init theme template - prepare global variables
                         <div class="clear"></div>
                     </div>
                 </div>
+                <div class="mainWrap">
+                    <?php
+                    if ( !is_front_page() && function_exists('yoast_breadcrumb') ) {
+                        yoast_breadcrumb('<p id="breadcrumbs">','</p>');
+                    } ?>
+                </div>
+
             </header>
         
                 <?php
@@ -276,7 +283,7 @@ themerex_init_template(); // Init theme template - prepare global variables
                     </div>
                 <?php
                 }
-
+                
                 //------------------- category & breadcrumbs -------------------
                 //slider
                 get_template_part('templates/page-part-slider');

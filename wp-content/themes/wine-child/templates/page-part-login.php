@@ -31,11 +31,10 @@ if (!is_user_logged_in()) {
                             <ul class="formList">
                                 <li>You can login using your social profile</li>
                                 <li class="loginSoc">
-                                    <a href="#" class="iconLogin fb icon-facebook"></a>
+                                    <?php echo do_shortcode('[woocommerce_social_login_buttons return_url="http://localhost/printedwine/wp-admin/profile.php"]'); ?>
                                     <a href="#" class="iconLogin tw icon-twitter"></a>
                                     <a href="#" class="iconLogin gg icon-gplus"></a>
                                 </li>
-                                <li><a href="#">Problem with login?</a></li>
                             </ul>
                         </div>
                         <div class="sc_result result sc_infobox sc_infobox_closeable"></div>
