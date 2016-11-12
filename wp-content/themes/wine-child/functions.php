@@ -435,3 +435,14 @@ function pw_social_login_facebook_new_user_data($arrUserData) {
     return $arrUserData;
 }
 add_filter( 'wc_social_login_facebook_new_user_data', 'pw_social_login_facebook_new_user_data');
+
+if( function_exists('acf_add_options_page') ) {
+    acf_add_options_page(array(
+        'page_title' 	=> 'PrintedWine Settings',
+        'menu_title'	=> 'PrintedWine Settings',
+        'menu_slug' 	=> 'printedwine-settings',
+        'capability'	=> 'edit_posts',
+        'redirect'	=> false
+    ));
+}
+
