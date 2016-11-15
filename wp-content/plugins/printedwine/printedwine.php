@@ -146,13 +146,13 @@ function pw_filter_wines_callback() {
             $matched_products_query = apply_filters( 'woocommerce_price_filter_results', $wpdb->get_results( $wpdb->prepare("
                 SELECT DISTINCT ID, post_parent, post_type FROM $wpdb->posts
                 INNER JOIN $wpdb->postmeta ON ID = post_id
-                WHERE post_type IN ( 'product', 'product_variation' ) AND post_status = 'publish' AND meta_key = %s AND meta_value >= %d AND meta_value < %d
+                WHERE post_type IN ( 'product', 'product_variation' ) AND post_status = 'publish' AND meta_key = %s AND meta_value >= %d AND meta_value < %d order by meta_value ASC
             ", '_price', $min, $max ), OBJECT_K ), $min, $max );
         } else {
             $matched_products_query = apply_filters( 'woocommerce_price_filter_results', $wpdb->get_results( $wpdb->prepare("
                 SELECT DISTINCT ID, post_parent, post_type FROM $wpdb->posts
                 INNER JOIN $wpdb->postmeta ON ID = post_id
-                WHERE post_type IN ( 'product', 'product_variation' ) AND post_status = 'publish' AND meta_key = %s AND meta_value >= %d
+                WHERE post_type IN ( 'product', 'product_variation' ) AND post_status = 'publish' AND meta_key = %s AND meta_value >= %d order by meta_value ASC
                 ", '_price', $min ), OBJECT_K ), $min );
         }
         
