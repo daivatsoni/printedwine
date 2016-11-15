@@ -146,7 +146,7 @@ function pw_filter_wines_callback() {
             $matched_products_query = apply_filters( 'woocommerce_price_filter_results', $wpdb->get_results( $wpdb->prepare("
                 SELECT DISTINCT ID, post_parent, post_type FROM $wpdb->posts
                 INNER JOIN $wpdb->postmeta ON ID = post_id
-                WHERE post_type IN ( 'product', 'product_variation' ) AND post_status = 'publish' AND meta_key = %s AND meta_value BETWEEN %d AND %d
+                WHERE post_type IN ( 'product', 'product_variation' ) AND post_status = 'publish' AND meta_key = %s AND meta_value >= %d AND meta_value < %d
             ", '_price', $min, $max ), OBJECT_K ), $min, $max );
         } else {
             $matched_products_query = apply_filters( 'woocommerce_price_filter_results', $wpdb->get_results( $wpdb->prepare("
@@ -169,6 +169,9 @@ function pw_filter_wines_callback() {
         if(count($matched_products)) {
             foreach($matched_products as $productId) {
                 $objProduct = wc_get_product($productId);
+                $price = $objProduct->get_price();
+                $currency = get_option('woocommerce_currency');
+                $currency = get_woocommerce_currency_symbol( $currency );
                 $postData = $objProduct->get_post_data();
                 $objCategories = get_the_terms($productId, 'product_cat');
                 if(count($objCategories)) {
@@ -178,18 +181,21 @@ function pw_filter_wines_callback() {
                                 $arrRedDozen[] = array(
                                     'id' => $postData->ID,
                                     'title' => $postData->post_title,
+                                    'price' => $currency.$price
                                 );
                                 break;
                             case "white-dozen":
                                 $arrWhiteDozen[] = array(
                                     'id' => $postData->ID,
-                                    'title' => $postData->post_title
+                                    'title' => $postData->post_title,
+                                    'price' => $currency.$price
                                 );
                                 break;
                             case "mixed-dozen":
                                 $arrMixedDozen[] = array(
                                     'id' => $postData->ID,
-                                    'title' => $postData->post_title
+                                    'title' => $postData->post_title,
+                                    'price' => $currency.$price
                                 );
                                 break;
                         }
@@ -202,13 +208,13 @@ function pw_filter_wines_callback() {
         ob_start();
         ?>
         <div class="vc_col-sm-4">
-            <div class="checkbx extended"><input id="chk-red-dozen" value="1" name="chk-red-dozen" type="checkbox"><label for="chk-red-dozen"><span class="cbimg"></span></label></div>
+            <div class="checkbx extended"><input id="chk-red-dozen" value="1" readonly="readonly" disabled="disabled" name="chk-red-dozen" type="checkbox"><label for="chk-red-dozen"><span class="cbimg"></span></label></div>
             <select name="red-dozen" id="red-dozen" class="selWine">
                 <option value="">Red Dozen</option>
                 <?php 
                 if(count($arrRedDozen)) {
                     foreach($arrRedDozen as $wine ) { ?>
-                        <option value="<?php echo $wine['id']; ?>"><?php echo $wine['title']; ?></option>
+                        <option value="<?php echo $wine['id']; ?>"><?php echo $wine['title']; ?> ( <?php echo $wine['price'] ?> ) </option>
                 <?php
                     }
                 }
@@ -216,13 +222,13 @@ function pw_filter_wines_callback() {
             </select>
         </div>
         <div class="vc_col-sm-4">
-            <div class="checkbx extended"><input id="chk-white-dozen" value="1"  name="chk-white-dozen" type="checkbox"><label for="chk-white-dozen"><span class="cbimg"></span></label></div>
+            <div class="checkbx extended"><input id="chk-white-dozen" value="1" readonly="readonly" disabled="disabled" name="chk-white-dozen" type="checkbox"><label for="chk-white-dozen"><span class="cbimg"></span></label></div>
             <select name="white-dozen" id="white-dozen" class="selWine">
                 <option value="">White Dozen</option>
                 <?php 
                 if(count($arrWhiteDozen)) {
                     foreach($arrWhiteDozen as $wine ) { ?>
-                        <option value="<?php echo $wine['id']; ?>"><?php echo $wine['title']; ?></option>
+                        <option value="<?php echo $wine['id']; ?>"><?php echo $wine['title']; ?> ( <?php echo $wine['price'] ?> ) </option>
                 <?php
                     }
                 }
@@ -230,13 +236,13 @@ function pw_filter_wines_callback() {
             </select>
         </div>
         <div class="vc_col-sm-4">
-            <div class="checkbx extended"><input id="chk-mixed-dozen" value="1"  name="chk-mixed-dozen" type="checkbox"><label for="chk-mixed-dozen"><span class="cbimg"></span></label></div>
+            <div class="checkbx extended"><input id="chk-mixed-dozen" value="1" readonly="readonly" disabled="disabled" name="chk-mixed-dozen" type="checkbox"><label for="chk-mixed-dozen"><span class="cbimg"></span></label></div>
             <select name="mixed-dozen" id="mixed-dozen" class="selWine">
                 <option value="">Mixed Dozen</option>
                 <?php 
                 if(count($arrMixedDozen)) {
                     foreach($arrMixedDozen as $wine ) { ?>
-                        <option value="<?php echo $wine['id']; ?>"><?php echo $wine['title']; ?></option>
+                        <option value="<?php echo $wine['id']; ?>"><?php echo $wine['title']; ?> ( <?php echo $wine['price'] ?> ) </option>
                 <?php
                     }
                 }
