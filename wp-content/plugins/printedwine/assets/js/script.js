@@ -24,8 +24,9 @@ jQuery(document).ready(function( $ ) {
         }
     });
     
-    $('.pw-wine-select .extended input:checkbox').live('change', function() {
-        $('.pw-wine-select .extended input:checkbox').not(this).prop('checked', false);
+    $('.pw-wine-select .extended input:checkbox').live('change', function(e) {
+        currStatus = $(this).prop('checked');
+        $(this).prop('checked', !currStatus);
     });
     
     $(".pw-wine-select .selWine").live("change", function() {
