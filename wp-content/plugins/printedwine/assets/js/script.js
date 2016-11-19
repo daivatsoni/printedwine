@@ -38,7 +38,7 @@ jQuery(document).ready(function( $ ) {
             $("#"+chkId).prop('checked', true);
             $("#btnStep1").show();
         } else {
-            $('.pw-wine-select .extended input:checkbox').prop('checked', false);
+            $("#"+chkId).prop('checked', false);
             $("#btnStep1").hide();
         }
     });    
