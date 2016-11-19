@@ -33,20 +33,28 @@ function add_scripts_styles() {
 add_action( 'wp_enqueue_scripts', 'add_scripts_styles' );
 
 function fn_ds_product_categories() {
+    $priceFilters = get_field("pw_price_filters", "options");
     ob_start(); 
     ?>
 <div class="vc_col-sm-12">
     <div class="vc_col-sm-12 pw-price-select">
         <div class="vc_col-sm-3 vc_col-xs-12">1. PRICE OF WINES *</div>
+        <?php if(count($priceFilters)) {
+            foreach($priceFilters as $filter ) { ?>
+            <div class="vc_col-sm-3 vc_col-xs-12">
+                <div class="checkbx extended"><input id="cb<?php echo $filter['filter_code'] ?>" value="<?php echo $filter['filter_code'] ?>"  name="wine_range" type="checkbox"><label for="cb<?php echo $filter['filter_code'] ?>"><span class="cbimg"></span><span><?php echo $filter['filter_label'] ?></span><span class="tip">From $<?php echo $filter['starts_from'] ?> a Case</span></label></div>
+            </div>                
+        <?php }                
+        } ?>
+        <?php /*
         <div class="vc_col-sm-3 vc_col-xs-12">
-            <div class="checkbx extended"><input id="cb1" value="cleanskin"  name="wine_range" type="checkbox"><label for="cb1"><span class="cbimg"></span><span>Cleanskins $</span><span class="tip">From $<?php echo the_field("cleanskin_range_starts_from", "options"); ?> a Case</span></label></div>
-        </div>
-        <div class="vc_col-sm-3 vc_col-xs-123">
             <div class="checkbx extended"><input id="cb2" value="mid"  name="wine_range" type="checkbox"><label for="cb2"><span class="cbimg"></span><span>Mid Range $$</span><span class="tip">From $<?php echo the_field("mid_range_starts_from", "options"); ?> a Case</span></label></div>
         </div>
-        <div class="vc_col-sm-3 vc_col-xs-123">
+        <div class="vc_col-sm-3 vc_col-xs-12">
             <div class="checkbx extended"><input id="cb3" value="premium"  name="wine_range" type="checkbox"><label for="cb3"><span class="cbimg"></span><span>Premium $$$</span><span class="tip">From $<?php echo the_field("premium_range_starts_from", "options"); ?> a Case</span></label></div>
         </div>
+         * 
+         */ ?>
     </div>
     <div class="col-12 pw-wine-select">
         <div class="vc_col-sm-3 vc_col-xs-12">2. TYPE OF WINES * <span class="tip">* Required</span><span class="tip">You can select only one type of wine per case.</span></div>
@@ -129,132 +137,171 @@ vc_map(array(
     )
 ));
 
-function pw_filter_wines_callback() {
-	global $wpdb, $priceRange; // this is how you get access to the database
-
-	$level = $_GET['level'];
-        $upperLevel = $priceRange[$level]['upper'];
-        
-        $fromPrice = get_field($level."_range_starts_from", "options");
-        $toPrice = get_field($upperLevel."_range_starts_from", "options");
-
-        $matched_products = array();
-        $min     = floatval( $fromPrice );
-        $max     = floatval( $toPrice );
-        
-        if($upperLevel) {
-            $matched_products_query = apply_filters( 'woocommerce_price_filter_results', $wpdb->get_results( $wpdb->prepare("
-                SELECT DISTINCT ID, post_parent, post_type FROM $wpdb->posts
-                INNER JOIN $wpdb->postmeta ON ID = post_id
-                WHERE post_type IN ( 'product', 'product_variation' ) AND post_status = 'publish' AND meta_key = %s AND meta_value >= %d AND meta_value < %d order by meta_value ASC
-            ", '_price', $min, $max ), OBJECT_K ), $min, $max );
-        } else {
-            $matched_products_query = apply_filters( 'woocommerce_price_filter_results', $wpdb->get_results( $wpdb->prepare("
-                SELECT DISTINCT ID, post_parent, post_type FROM $wpdb->posts
-                INNER JOIN $wpdb->postmeta ON ID = post_id
-                WHERE post_type IN ( 'product', 'product_variation' ) AND post_status = 'publish' AND meta_key = %s AND meta_value >= %d order by meta_value ASC
-                ", '_price', $min ), OBJECT_K ), $min );
-        }
-        
-        if ( $matched_products_query ) {
-            foreach ( $matched_products_query as $product ) {
-                if ( $product->post_type == 'product' )
-                    $matched_products[] = $product->ID;
-                if ( $product->post_parent > 0 && ! in_array( $product->post_parent, $matched_products ) )
-                    $matched_products[] = $product->post_parent;
-            }
-        }
-        
-        $arrRedDozen = $arrWhiteDozen = $arrMixedDozen = array();
-        if(count($matched_products)) {
-            foreach($matched_products as $productId) {
-                $objProduct = wc_get_product($productId);
-                $price = $objProduct->get_price();
-                $currency = get_option('woocommerce_currency');
-                $currency = get_woocommerce_currency_symbol( $currency );
-                $postData = $objProduct->get_post_data();
-                $objCategories = get_the_terms($productId, 'product_cat');
-                if(count($objCategories)) {
-                    foreach($objCategories as $term) {
-                        switch($term->slug) {
-                            case "red-dozen":
-                                $arrRedDozen[] = array(
-                                    'id' => $postData->ID,
-                                    'title' => $postData->post_title,
-                                    'price' => $currency.$price
-                                );
-                                break;
-                            case "white-dozen":
-                                $arrWhiteDozen[] = array(
-                                    'id' => $postData->ID,
-                                    'title' => $postData->post_title,
-                                    'price' => $currency.$price
-                                );
-                                break;
-                            case "mixed-dozen":
-                                $arrMixedDozen[] = array(
-                                    'id' => $postData->ID,
-                                    'title' => $postData->post_title,
-                                    'price' => $currency.$price
-                                );
-                                break;
-                        }
-                    }
-                }
-                
-            }
-        } 
-        
-        ob_start();
-        ?>
-        <div class="vc_col-sm-4">
-            <div class="checkbx extended"><input id="chk-red-dozen" value="1" readonly="readonly" disabled="disabled" name="chk-red-dozen" type="checkbox"><label for="chk-red-dozen"><span class="cbimg"></span></label></div>
-            <select name="red-dozen" id="red-dozen" class="selWine">
-                <option value="">Red Dozen</option>
-                <?php 
-                if(count($arrRedDozen)) {
-                    foreach($arrRedDozen as $wine ) { ?>
-                        <option value="<?php echo $wine['id']; ?>"><?php echo $wine['title']; ?> ( <?php echo $wine['price'] ?> ) </option>
-                <?php
-                    }
-                }
-                ?>
-            </select>
-        </div>
-        <div class="vc_col-sm-4">
-            <div class="checkbx extended"><input id="chk-white-dozen" value="1" readonly="readonly" disabled="disabled" name="chk-white-dozen" type="checkbox"><label for="chk-white-dozen"><span class="cbimg"></span></label></div>
-            <select name="white-dozen" id="white-dozen" class="selWine">
-                <option value="">White Dozen</option>
-                <?php 
-                if(count($arrWhiteDozen)) {
-                    foreach($arrWhiteDozen as $wine ) { ?>
-                        <option value="<?php echo $wine['id']; ?>"><?php echo $wine['title']; ?> ( <?php echo $wine['price'] ?> ) </option>
-                <?php
-                    }
-                }
-                ?>
-            </select>
-        </div>
-        <div class="vc_col-sm-4">
-            <div class="checkbx extended"><input id="chk-mixed-dozen" value="1" readonly="readonly" disabled="disabled" name="chk-mixed-dozen" type="checkbox"><label for="chk-mixed-dozen"><span class="cbimg"></span></label></div>
-            <select name="mixed-dozen" id="mixed-dozen" class="selWine">
-                <option value="">Mixed Dozen</option>
-                <?php 
-                if(count($arrMixedDozen)) {
-                    foreach($arrMixedDozen as $wine ) { ?>
-                        <option value="<?php echo $wine['id']; ?>"><?php echo $wine['title']; ?> ( <?php echo $wine['price'] ?> ) </option>
-                <?php
-                    }
-                }
-                ?>
-            </select>
-        </div>        
-        <?php
-        $html = ob_get_clean();
-        
-        echo $html;
-        
-	wp_die(); // this is required to terminate immediately and return a proper response
-}
 add_action( 'wp_ajax_pw_filter_wines', 'pw_filter_wines_callback' );
 add_action( 'wp_ajax_nopriv_pw_filter_wines', 'pw_filter_wines_callback' );
+function pw_filter_wines_callback() {
+    global $wpdb; // this is how you get access to the database
+    $priceFilters = get_field("pw_price_filters", "options");
+    if(count($priceFilters)) {
+        $priceRange = array();
+        for($i=0; $i<count($priceFilters); $i++) {
+            if(isset($priceFilters[$i+1])) {
+                $priceRange[$priceFilters[$i]['filter_code']] = array(
+                    'min' => $priceFilters[$i]['starts_from'],
+                    'max' => $priceFilters[$i+1]['starts_from'],
+                );
+            } else {
+                $priceRange[$priceFilters[$i]['filter_code']] = array(
+                    'min' => $priceFilters[$i]['starts_from'],
+                );
+            }
+        }
+    }
+    $level = $_GET['level'];
+
+    $matched_products = array();
+    $min = floatval($priceRange[$level]['min']);
+    $max = (isset($priceRange[$level]['max'])) ? floatval($priceRange[$level]['max']) : false;
+
+    if($max) {
+        $matched_products_query = apply_filters( 'woocommerce_price_filter_results', $wpdb->get_results( $wpdb->prepare("
+            SELECT DISTINCT ID, post_parent, post_type FROM $wpdb->posts
+            INNER JOIN $wpdb->postmeta ON ID = post_id
+            WHERE post_type IN ( 'product', 'product_variation' ) AND post_status = 'publish' AND meta_key = %s AND meta_value >= %d AND meta_value < %d order by meta_value ASC
+        ", '_price', $min, $max ), OBJECT_K ), $min, $max );
+    } else {
+        $matched_products_query = apply_filters( 'woocommerce_price_filter_results', $wpdb->get_results( $wpdb->prepare("
+            SELECT DISTINCT ID, post_parent, post_type FROM $wpdb->posts
+            INNER JOIN $wpdb->postmeta ON ID = post_id
+            WHERE post_type IN ( 'product', 'product_variation' ) AND post_status = 'publish' AND meta_key = %s AND meta_value >= %d order by meta_value ASC
+            ", '_price', $min ), OBJECT_K ), $min );
+    }
+
+    if ( $matched_products_query ) {
+        foreach ( $matched_products_query as $product ) {
+            if ( $product->post_type == 'product' )
+                $matched_products[] = $product->ID;
+            if ( $product->post_parent > 0 && ! in_array( $product->post_parent, $matched_products ) )
+                $matched_products[] = $product->post_parent;
+        }
+    }
+
+    $arrRedDozen = $arrWhiteDozen = $arrMixedDozen = array();
+    if(count($matched_products)) {
+        foreach($matched_products as $productId) {
+            $objProduct = wc_get_product($productId);
+            $price = $objProduct->get_price();
+            $currency = get_option('woocommerce_currency');
+            $currency = get_woocommerce_currency_symbol( $currency );
+            $postData = $objProduct->get_post_data();
+            $objCategories = get_the_terms($productId, 'product_cat');
+            if(count($objCategories)) {
+                foreach($objCategories as $term) {
+                    switch($term->slug) {
+                        case "red-dozen":
+                            $arrRedDozen[] = array(
+                                'id' => $postData->ID,
+                                'title' => $postData->post_title,
+                                'price' => $currency.$price
+                            );
+                            break;
+                        case "white-dozen":
+                            $arrWhiteDozen[] = array(
+                                'id' => $postData->ID,
+                                'title' => $postData->post_title,
+                                'price' => $currency.$price
+                            );
+                            break;
+                        case "mixed-dozen":
+                            $arrMixedDozen[] = array(
+                                'id' => $postData->ID,
+                                'title' => $postData->post_title,
+                                'price' => $currency.$price
+                            );
+                            break;
+                    }
+                }
+            }
+
+        }
+    } 
+
+    ob_start();
+    ?>
+    <div class="vc_col-sm-4 vc_col-xs-12">
+        <div class="checkbx extended"><input id="chk-red-dozen" value="1" readonly="readonly" disabled="disabled" name="chk-red-dozen" type="checkbox"><label for="chk-red-dozen"><span class="cbimg"></span></label></div>
+        <select name="red-dozen" id="red-dozen" class="selWine">
+            <option value="">Red Dozen</option>
+            <?php 
+            if(count($arrRedDozen)) {
+                foreach($arrRedDozen as $wine ) { ?>
+                    <option value="<?php echo $wine['id']; ?>"><?php echo $wine['title']; ?> ( <?php echo $wine['price'] ?> ) </option>
+            <?php
+                }
+            }
+            ?>
+        </select>
+    </div>
+    <div class="vc_col-sm-4 vc_col-xs-12">
+        <div class="checkbx extended"><input id="chk-white-dozen" value="1" readonly="readonly" disabled="disabled" name="chk-white-dozen" type="checkbox"><label for="chk-white-dozen"><span class="cbimg"></span></label></div>
+        <select name="white-dozen" id="white-dozen" class="selWine">
+            <option value="">White Dozen</option>
+            <?php 
+            if(count($arrWhiteDozen)) {
+                foreach($arrWhiteDozen as $wine ) { ?>
+                    <option value="<?php echo $wine['id']; ?>"><?php echo $wine['title']; ?> ( <?php echo $wine['price'] ?> ) </option>
+            <?php
+                }
+            }
+            ?>
+        </select>
+    </div>
+    <div class="vc_col-sm-4 vc_col-xs-12">
+        <div class="checkbx extended"><input id="chk-mixed-dozen" value="1" readonly="readonly" disabled="disabled" name="chk-mixed-dozen" type="checkbox"><label for="chk-mixed-dozen"><span class="cbimg"></span></label></div>
+        <select name="mixed-dozen" id="mixed-dozen" class="selWine">
+            <option value="">Mixed Dozen</option>
+            <?php 
+            if(count($arrMixedDozen)) {
+                foreach($arrMixedDozen as $wine ) { ?>
+                    <option value="<?php echo $wine['id']; ?>"><?php echo $wine['title']; ?> ( <?php echo $wine['price'] ?> ) </option>
+            <?php
+                }
+            }
+            ?>
+        </select>
+    </div>        
+    <?php
+    $html = ob_get_clean();
+
+    echo $html;
+
+    wp_die(); // this is required to terminate immediately and return a proper response
+}
+
+add_filter('acf/validate_value/name=starts_from', 'validate_starts_from_func', 10, 4);
+function validate_starts_from_func($valid, $value, $field, $input) {
+    if (!$valid) {
+        return $valid;
+    }
+    $repeater_key = 'field_582b12567333e';
+    $start_key = 'field_582b128373340';
+    // extract row from input
+    if(count($_POST['acf'][$repeater_key]) < 2) 
+        return $valid;
+    
+    // collect array keys
+    $arrKeys = array_keys($_POST['acf'][$repeater_key]);
+    
+    $row = preg_replace('/^\s*acf\[[^\]]+\]\[([^\]]+)\].*$/', '\1', $input);
+    
+    $currentIndex = array_search($row, $arrKeys);
+    $previousIndex = $currentIndex-1;
+
+    $lower_value = $_POST['acf'][$repeater_key][$arrKeys[$previousIndex]][$start_key];
+    $current_value = $value;
+    if ($current_value < $lower_value) {
+          $valid = 'Start value must be greater than previous start value';
+    }
+    $oldRowId = $row;
+    return $valid;
+}
