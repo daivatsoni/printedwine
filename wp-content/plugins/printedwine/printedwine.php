@@ -233,7 +233,7 @@ function pw_filter_wines_callback() {
     ?>
     <div class="vc_col-sm-4 vc_col-xs-12">
         <div class="checkbx extended"><input class="wine-chkbx" id="chk-red-dozen" value="1" name="chk-red-dozen" type="checkbox"><label for="chk-red-dozen"><span class="cbimg"></span></label></div>
-        <select name="red-dozen" id="red-dozen" class="selWine">
+        <select name="wine" id="red-dozen" class="selWine">
             <option value="">Red Dozen</option>
             <?php 
             if(count($arrRedDozen)) {
@@ -247,7 +247,7 @@ function pw_filter_wines_callback() {
     </div>
     <div class="vc_col-sm-4 vc_col-xs-12">
         <div class="checkbx extended"><input class="wine-chkbx" id="chk-white-dozen" value="1" name="chk-white-dozen" type="checkbox"><label for="chk-white-dozen"><span class="cbimg"></span></label></div>
-        <select name="white-dozen" id="white-dozen" class="selWine">
+        <select name="wine" id="white-dozen" class="selWine">
             <option value="">White Dozen</option>
             <?php 
             if(count($arrWhiteDozen)) {
@@ -261,7 +261,7 @@ function pw_filter_wines_callback() {
     </div>
     <div class="vc_col-sm-4 vc_col-xs-12">
         <div class="checkbx extended"><input class="wine-chkbx" id="chk-mixed-dozen" value="1" name="chk-mixed-dozen" type="checkbox"><label for="chk-mixed-dozen"><span class="cbimg"></span></label></div>
-        <select name="mixed-dozen" id="mixed-dozen" class="selWine">
+        <select name="wine" id="mixed-dozen" class="selWine">
             <option value="">Mixed Dozen</option>
             <?php 
             if(count($arrMixedDozen)) {
