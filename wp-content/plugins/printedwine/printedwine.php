@@ -34,37 +34,40 @@ add_action( 'wp_enqueue_scripts', 'add_scripts_styles' );
 
 function fn_ds_product_categories() {
     $priceFilters = get_field("pw_price_filters", "options");
+    $labelEditorUrl = get_field("lebel_editor_url", "options");
     ob_start(); 
     ?>
-<div class="vc_col-sm-12">
-    <div class="vc_col-sm-12 pw-price-select">
-        <div class="vc_col-sm-3 vc_col-xs-12">1. PRICE OF WINES *</div>
-        <?php if(count($priceFilters)) {
-            foreach($priceFilters as $filter ) { ?>
-            <div class="vc_col-sm-3 vc_col-xs-12">
-                <div class="checkbx extended"><input id="cb<?php echo $filter['filter_code'] ?>" value="<?php echo $filter['filter_code'] ?>"  name="wine_range" type="checkbox"><label for="cb<?php echo $filter['filter_code'] ?>"><span class="cbimg"></span><span><?php echo $filter['filter_label'] ?></span><span class="tip">From $<?php echo $filter['starts_from'] ?> a Case</span></label></div>
-            </div>                
-        <?php }                
-        } ?>
-        <?php /*
-        <div class="vc_col-sm-3 vc_col-xs-12">
-            <div class="checkbx extended"><input id="cb2" value="mid"  name="wine_range" type="checkbox"><label for="cb2"><span class="cbimg"></span><span>Mid Range $$</span><span class="tip">From $<?php echo the_field("mid_range_starts_from", "options"); ?> a Case</span></label></div>
+    <form action="<?php echo $labelEditorUrl;?>" method="post">
+        <div class="vc_col-sm-12">
+                <div class="vc_col-sm-12 pw-price-select">
+                    <div class="vc_col-sm-3 vc_col-xs-12">1. PRICE OF WINES *</div>
+                    <?php if(count($priceFilters)) {
+                        foreach($priceFilters as $filter ) { ?>
+                        <div class="vc_col-sm-3 vc_col-xs-12">
+                            <div class="checkbx extended"><input id="cb<?php echo $filter['filter_code'] ?>" value="<?php echo $filter['filter_code'] ?>"  name="wine_range" type="checkbox"><label for="cb<?php echo $filter['filter_code'] ?>"><span class="cbimg"></span><span><?php echo $filter['filter_label'] ?></span><span class="tip">From $<?php echo $filter['starts_from'] ?> a Case</span></label></div>
+                        </div>                
+                    <?php }                
+                    } ?>
+                    <?php /*
+                    <div class="vc_col-sm-3 vc_col-xs-12">
+                        <div class="checkbx extended"><input id="cb2" value="mid"  name="wine_range" type="checkbox"><label for="cb2"><span class="cbimg"></span><span>Mid Range $$</span><span class="tip">From $<?php echo the_field("mid_range_starts_from", "options"); ?> a Case</span></label></div>
+                    </div>
+                    <div class="vc_col-sm-3 vc_col-xs-12">
+                        <div class="checkbx extended"><input id="cb3" value="premium"  name="wine_range" type="checkbox"><label for="cb3"><span class="cbimg"></span><span>Premium $$$</span><span class="tip">From $<?php echo the_field("premium_range_starts_from", "options"); ?> a Case</span></label></div>
+                    </div>
+                     * 
+                     */ ?>
+                </div>
+                <div class="col-12 pw-wine-select">
+                    <div class="vc_col-sm-3 vc_col-xs-12">2. TYPE OF WINES * <span class="tip">* Required</span><span class="tip">You can select only one type of wine per case.</span></div>
+                    <div class="vc_col-sm-9 vc_col-xs-12" id="wine-selector">Select Price Range first</div>
+                </div>    
         </div>
-        <div class="vc_col-sm-3 vc_col-xs-12">
-            <div class="checkbx extended"><input id="cb3" value="premium"  name="wine_range" type="checkbox"><label for="cb3"><span class="cbimg"></span><span>Premium $$$</span><span class="tip">From $<?php echo the_field("premium_range_starts_from", "options"); ?> a Case</span></label></div>
-        </div>
-         * 
-         */ ?>
-    </div>
-    <div class="col-12 pw-wine-select">
-        <div class="vc_col-sm-3 vc_col-xs-12">2. TYPE OF WINES * <span class="tip">* Required</span><span class="tip">You can select only one type of wine per case.</span></div>
-        <div class="vc_col-sm-9 vc_col-xs-12" id="wine-selector">Select Price Range first</div>
-    </div>    
-</div>
-<div class="col-12">
-    <button type="submit" id="btnStep1" name="btnStep1" class="button" style="display:none;">Make label for your wine</button>
-</div>    
-<?php
+        <div class="col-12">
+            <button type="submit" id="btnStep1" name="btnStep1" class="button" style="display:none;">Make label for your wine</button>
+        </div>    
+    </form>
+    <?php
     $html = ob_get_clean();
     return $html;
 }
