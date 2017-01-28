@@ -1,10 +1,10 @@
 <?php
 	// Report all PHP errors
-	error_reporting(E_ALL);
+	error_reporting(E_ALL ^ E_DEPRECATED);
 
 	$mysql_ip = 'localhost';
-	$mysql_user = 'demourl_pwine';
-	$mysql_pass = 'm!fmw7pHb*{L';
+	$mysql_user = 'root';
+	$mysql_pass = '';
 	$mysql_db = 'demourl_pwine';
 
 	//$mysql_user = 'daiva1l1_kpom';

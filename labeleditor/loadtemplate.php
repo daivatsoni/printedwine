@@ -8,8 +8,6 @@
 	{
 		$templatespath = $row['canvas_json'];
 		$json = file_get_contents($templatespath);
-		$json = str_replace('\\"','"', $json);
-		$json = str_replace('\\\\','\\', $json);
 		echo $json;
 	}
 ?>

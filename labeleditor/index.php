@@ -1895,7 +1895,7 @@ body {
 				$(this).css('border',"5px solid #00aeef");
 
 			    var labelpath = $(this).attr('src');
-			    loadedtemplateid = $(this).data('labelid');
+			    loadedtemplateid = $(this).data('labelid');				
 			    loadedlabelid = $(this).data('countid');
 			    $('#labelcontent1').html('');
 			    $('#labelcontent2').html('');

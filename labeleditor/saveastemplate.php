@@ -26,14 +26,15 @@
 
 	if (isset($_POST['jsonData'])) {
 		//$jsonunicode = jsonRemoveUnicodeSequences($_POST['jsonData']);
-		file_put_contents($folderLocation."/".$last_template_id.".ype", $_POST['jsonData']);
+		$json = file_put_contents($folderLocation."/".$last_template_id.".ype", $_POST['jsonData']);
+		$json_array = json_decode($json, true);
 	}
 
 	$update_Qry = "UPDATE user_templates set canvas_thumbnail = 'templates/". $last_template_id . ".png', canvas_json = 'templates/". $last_template_id . ".ype' WHERE template_id = " . $last_template_id;
 	$runQry = mysql_query($update_Qry);
 
-	/*function jsonRemoveUnicodeSequences($struct) {
+	/* function jsonRemoveUnicodeSequences($struct) {
 	   return preg_replace("/\\\\u([a-f0-9]{4})/e", "iconv('UCS-4LE','UTF-8',pack('V', hexdec('U$1')))", json_encode($struct));
-	}*/
+	} */
 	echo $last_template_id;
 ?>
