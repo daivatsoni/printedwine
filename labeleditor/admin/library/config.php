@@ -1,8 +1,20 @@
 <?php
+if($_SERVER['HTTP_HOST']=="localhost") {
+	// Report all PHP errors
+	error_reporting(E_ALL ^ E_DEPRECATED);
+
 	$mysql_ip = 'localhost';
 	$mysql_user = 'root';
 	$mysql_pass = '';
 	$mysql_db = 'daiva1l1_kpom';
+} else if($_SERVER['HTTP_HOST']=="demomyurl.com") {
+	error_reporting(E_ALL ^ E_DEPRECATED);
+
+	$mysql_ip = 'localhost';
+	$mysql_user = 'demourl_pwine';
+	$mysql_pass = 'm!fmw7pHb*{L';
+	$mysql_db = 'demourl_pwine';
+}
 	
 	/*$mysql_user = 'daiva1l1_kpom';
 	$mysql_pass = '2f?37ziv1g7B+t@HRA';
