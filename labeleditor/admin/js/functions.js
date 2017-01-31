@@ -1028,7 +1028,9 @@ function saveAsTemplateFile() {
         })
     }
 }
-
+$("#downloadAsJPEG").click(function() {
+    downloadImage();
+});
 function savetextfromselection() {
     var actobj = canvas.getActiveObject();
     var actgroupobjs = canvas.getActiveGroup();
@@ -1184,6 +1186,77 @@ function proceed_savetemplate() {
     if (issavetemplate) saveTemplateFile();
 }
 
+function downloadImage() {
+    resetZoom();
+    $('#publishModal').modal('hide');
+    $("#spinnerModal").modal('show');
+    var cwidth = document.getElementById("loadCanvasWid").value;
+    var cheight = document.getElementById("loadCanvasHei").value;
+    var cols = document.getElementById("numOfcanvascols").value;
+    var rows = document.getElementById("numOfcanvasrows").value;
+
+    //inch to pixel
+    cwidth = cwidth * 96;
+    cheight = cheight * 96;
+
+    var buffer = document.getElementById("outputcanvas");
+    var buffer_context = buffer.getContext("2d");
+    buffer.width = parseInt(cwidth) * parseInt(cols);
+    var hiddencanvascount = parseInt(cols) * parseInt(rows) * (pageindex + 1) - $(".divcanvas:visible").length;
+    buffer.height = parseInt(cheight) * ((parseInt(rows) * (pageindex + 1)) - hiddencanvascount / parseInt(cols));
+
+    var h = 0;
+    var writtenpages = 0;
+    var processpages = 0;
+    var rowcount = 0;
+    var colcount = 0;
+    for (var i = 0; i < canvasindex; i++) {
+        if (!canvasarray[i]) continue;
+
+        hideshowobjects(canvasarray[i], false);
+
+        canvasarray[i].deactivateAll().renderAll();
+        var ito = getinfotextobj(canvasarray[i]);
+        if (ito) ito.opacity = 0;
+        if ($("#divcanvas" + i).is(":visible")) {
+            processpages++;
+            if (colcount >= cols) {
+                colcount = 0;
+                rowcount++;
+            }
+            w = cwidth * colcount;
+            h = cheight * rowcount;
+            colcount++;
+            (function(li, c, r) {
+                var img = new Image();
+                img.onload = function() {
+                    buffer_context.drawImage(this, c, r);
+                    writtenpages++;
+                    if (writtenpages == processpages) {
+
+                        var canvasele = document.getElementById("outputcanvas");
+                        var currentTime = new Date();
+                        var month = currentTime.getMonth() + 1;
+                        var day = currentTime.getDate();
+                        var year = currentTime.getFullYear();
+                        var hours = currentTime.getHours();
+                        var minutes = currentTime.getMinutes();
+                        var seconds = currentTime.getSeconds();
+                        var filename = month + '' + day + '' + year + '' + hours + '' + minutes + '' + seconds + ".jpeg";
+
+                        // draw to canvas...
+                        canvasele.toBlob(function(blob) {
+                            saveAs(blob, filename);
+                            $('#spinnerModal').modal('hide');
+                            hideshowobjects(canvasarray[li], true);
+                        });
+                    }
+                };
+                img.src = canvasarray[li].toDataURL("image/jpg");
+            })(i, w, h);
+        }
+    }
+}
 
 function hideshowobjects(lcanvas, showflag) {
 

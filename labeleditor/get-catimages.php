@@ -25,7 +25,12 @@
 <?php } else { ?>
 	   <div class="col-lg-6 col-md-8 col-xs-12 thumb" id="<?php echo $row['id']; ?>" style="padding:5px;">
 		  <a class="thumbnail" href="#" style="margin-bottom: 0;">
+			<?php if (file_exists('http://demomyurl.com/printedwine/labeleditor/'.$row['element_path'])) { ?>
 			<img class="catImage img-responsive" data-imgsrc="<?php echo $row['element_path']; ?>" src="<?php echo $row['element_path']; ?>" alt="" style="height:125px; width:200px; ">
+			<?php } else { ?>
+			<img class="catImage img-responsive" data-imgsrc="admin/<?php echo $row['element_path']; ?>" src="admin/<?php echo $row['element_path']; ?>" alt="" style="height:125px; width:200px; ">
+			<?php } ?>
+			<!--<img class="catImage img-responsive" data-imgsrc="<?php //echo $row['element_path']; ?>" src="<?php //echo $row['element_path']; ?>" alt="" style="height:125px; width:200px; ">-->
 		  </a><input type="checkbox" class="catimg-checkbox" id="<?php echo $row['id']; ?>" value="<?php echo $row['id']; ?>" />
 	   </div>
 <?php } ?>

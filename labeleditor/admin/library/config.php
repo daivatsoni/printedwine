@@ -1,8 +1,12 @@
 <?php
 	$mysql_ip = 'localhost';
-	$mysql_user = 'daiva1l1_kpom';
-	$mysql_pass = '2f?37ziv1g7B+t@HRA';
+	$mysql_user = 'root';
+	$mysql_pass = '';
 	$mysql_db = 'daiva1l1_kpom';
+	
+	/*$mysql_user = 'daiva1l1_kpom';
+	$mysql_pass = '2f?37ziv1g7B+t@HRA';
+	$mysql_db = 'daiva1l1_kpom';*/
 
 	// Report simple running errors
 	error_reporting(E_ERROR | E_WARNING | E_PARSE);

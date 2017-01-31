@@ -105,21 +105,20 @@
                                    <button class="btn btn-info" title="Redo" type="button" id="redo" style="background-color:#2bbfbf;"><i class="fa fa-repeat"></i></button>
                                     <!-- <button class="btn btn-info" type="button" id="saveTemplate"><i class="fa fa-cloud-download"></i> Save</button> -->
                                     <!-- <button class="btn btn-info" type="button" id="publishTemplate"><i class="fa fa-check"></i> Publish</button> -->
-                  <div class="btn-group">
-                    <button data-toggle="dropdown" class="btn btn-info dropdown-toggle" style="background-color:#2bbfbf;"><i class="fa fa-download"></i>&nbsp; Download<span class="caret" style="margin-left:10px;"></span></button>
-                  <!--  <ul class="dropdown-menu">
-                <!--      <li><a id="downloadAsPDF" href="#">Save As PDF (For Print)</a></li> -->
-                    <!--  <li><a id="downloadAsJPEG" href="#">Save As JPEG (For Web)</a></li> -->
-                
-                   <!--   <li class="divider"></li>
-                      <li class="dropdown-submenu">
-                      <a href="#">More Options<span class="caret" style="margin-left:10px;"></a>
-                                      <ul class="dropdown-menu">
-                                          <li><a href="#" class="noclose" data-value="option1" tabIndex="-1"><input type="checkbox" id="savecrop"/>&nbsp;Save with Crop Marks</a></li>
-                                      </ul>
-                      </li>  
-                    </ul> -->
-                  </div>
+									<div class="btn-group">
+										<button data-toggle="dropdown" class="btn btn-info dropdown-toggle" style="background-color:#2bbfbf;"><i class="fa fa-download"></i>&nbsp; Download<span class="caret" style="margin-left:10px;"></span></button>
+										<ul class="dropdown-menu">
+											<!--<li><a id="downloadAsPDF" href="javascript:void(0);">Save As PDF (For Print)</a></li> -->
+											<li><a id="downloadAsJPEG" href="javascript:void(0);">Save As JPEG (For Web)</a></li> 
+											<li class="divider"></li>
+											<li class="dropdown-submenu">
+											<a href="#">More Options<span class="caret" style="margin-left:10px;"></a>
+												<ul class="dropdown-menu">
+													<li><a href="#" class="noclose" data-value="option1" tabIndex="-1"><input type="checkbox" id="savecrop"/>&nbsp;Save with Crop Marks</a></li>
+												</ul>
+										</li>  
+										</ul> 
+									</div>
                                 </span>
                               </div><!-- /.navbar-collapse -->
                           </div><!-- /.container-fluid -->

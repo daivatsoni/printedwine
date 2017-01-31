@@ -146,7 +146,7 @@
 		$pdf->StopTransform();
 	}
 	$pdf->Close();
-	$filename = $_SERVER['DOCUMENT_ROOT'] . "editor/admin/outputpdfs/" . $_POST['filename'];
+	$filename = $_SERVER['DOCUMENT_ROOT'] . "printedwine/labeleditor/admin/outputpdfs/" . $_POST['filename'];
 	$pdf->Output($filename, 'F');
 	echo $filename;
 	//$filename = $_SERVER['DOCUMENT_ROOT'] . "HTML5CanvasTemplateEditor/design/admin/outputpdfs/temp.pdf";

@@ -15,7 +15,12 @@
 	 while($row = mysql_fetch_array($runQuery)){ ?>
 	   <div class="col-lg-6 col-md-8 col-xs-12 thumb" id="<?php  echo $row['id']; ?>" style="padding:5px;">
 		  <a class="thumbnail" href="#" style="margin-bottom: 0;">
+  		  <?php if (file_exists('http://demomyurl.com/printedwine/labeleditor/'.$row['bg_path'])) { ?>
 			<img class="bgImage img-responsive" data-imgsrc="<?php  echo $row['bg_path']; ?>" src="<?php  echo $row['bg_path']; ?>" alt="" style="height:125px; width:200px; ">
+     	  <?php } else { ?>
+			<img class="bgImage img-responsive" data-imgsrc="admin/<?php  echo $row['bg_path']; ?>" src="admin/<?php  echo $row['bg_path']; ?>" alt="" style="height:125px; width:200px; ">
+		  <?php } ?>
+			<!--<img class="bgImage img-responsive" data-imgsrc="<?php  //echo $row['bg_path']; ?>" src="<?php  //echo $row['bg_path']; ?>" alt="" style="height:125px; width:200px; ">-->
 		  </a><input type="checkbox" class="bgimg-checkbox" id="<?php  echo $row['id']; ?>" value="<?php  echo $row['id']; ?>" />
 	   </div>
 <?php

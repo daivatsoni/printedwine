@@ -134,7 +134,7 @@ body {
 				</div>
 				<div class="row margbtm20">
 				<div class="tools-top" style="visibility:hidden;" align='center'>
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 iconsdiv" style="z-index:2000;">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 iconsdiv" style="z-index:1;">
 						<ul class="list-inline icons">
 							<span class="textelebtns">
 								<div class="btn-group" style="z-index:1000;">
