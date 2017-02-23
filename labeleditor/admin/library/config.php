@@ -7,7 +7,7 @@ if($_SERVER['HTTP_HOST']=="localhost") {
 	$mysql_user = 'root';
 	$mysql_pass = '';
 	$mysql_db = 'daiva1l1_kpom';
-} else if($_SERVER['HTTP_HOST']=="demomyurl.com") {
+} else if($_SERVER['SERVER_ADDR']=="103.21.59.174") {
 	error_reporting(E_ALL ^ E_DEPRECATED);
 
 	$mysql_ip = 'localhost';
