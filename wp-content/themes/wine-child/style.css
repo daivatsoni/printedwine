@@ -29,3 +29,21 @@ We are confident that you will be more than pleased by your purchase!
 .login_slot {
     border-bottom: 1px solid #e5e5e5;
 }
+
+/**
+* Printed Wine Member Profile
+*/
+
+.woocommerce-MyAccount-navigation ul li {
+    list-style: none;
+    margin: 5px 6px;
+    background: #fff;
+    padding: 10px 25px;
+    width: 60%;
+    border-radius: 5px; border:1px solid #898989;
+}
+.woocommerce-MyAccount-navigation ul li a { color:#898989; font-weight:400;}
+.woocommerce-MyAccount-navigation ul li.is-active { background:#898989; } 
+.woocommerce-MyAccount-navigation ul li.is-active a { color:#fff;}
+.woocommerce-account .woocommerce-MyAccount-content { float:none !important; width:auto!important;}
+.col-md-9 { float: right; width: 70%; }

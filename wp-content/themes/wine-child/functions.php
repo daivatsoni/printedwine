@@ -446,3 +446,21 @@ if( function_exists('acf_add_options_page') ) {
     ));
 }
 
+/*
+* Custmize My Account Order
+*/
+
+function wpb_woo_my_account_order() {
+ $myorder = array( 
+ 'edit-account' => __( 'Account Profile', 'woocommerce' ),
+ 'lets-communicate' => __( 'Lets Communicate!', 'woocommerce' ),
+ 'wine-art-preferance' => __( 'Wine and Art Perferances', 'woocommerce' ),
+ 'my-custom-endpoint' => __( 'Printed Wine Credits', 'woocommerce' ),
+ 'edit-address' => __( 'Addresses', 'woocommerce' ),
+ 'payment-methods' => __( 'Payment Methods', 'woocommerce' ), 
+ );
+ return $myorder;
+}
+add_filter ( 'woocommerce_account_menu_items', 'wpb_woo_my_account_order' );  
+
+
