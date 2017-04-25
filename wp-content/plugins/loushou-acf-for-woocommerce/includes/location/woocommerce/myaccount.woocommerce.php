@@ -21,9 +21,9 @@ class LOU_ACF_WC_My_Account extends LOU_ACF_Location {
 		// add our fields to the WC my account page
 		// @NOTE#1:cannot have two forms on one page, because 'required validation' is handled on the page level by acf, not the form level. maybe in the future we can add this in there. for now, just the bottom field group area is available
 		// REFERENCE: woocommerce/templates/myaccount/my-account.php @ 38
-		//add_action( 'woocommerce_before_my_account', array( &$this, 'add_fields_to_my_account_top' ), 100 );
+		// add_action( 'woocommerce_before_my_account', array( &$this, 'add_fields_to_my_account_top' ), 100 );
 		// REFERENCE: woocommerce/templates/myaccount/my-account.php @ 46
-//		add_action( 'woocommerce_after_my_account', array( &$this, 'add_fields_to_my_account_bottom' ), 100 );
+		// add_action( 'woocommerce_after_my_account', array( &$this, 'add_fields_to_my_account_bottom' ), 100 );
 		add_action( 'woocommerce_acf_edit_account_form_start', array( &$this, 'add_fields_to_my_account_bottom' ), 100 );
                 
 	}

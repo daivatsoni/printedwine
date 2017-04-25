@@ -47,3 +47,36 @@ We are confident that you will be more than pleased by your purchase!
 .woocommerce-MyAccount-navigation ul li.is-active a { color:#fff;}
 .woocommerce-account .woocommerce-MyAccount-content { float:none !important; width:auto!important;}
 .col-md-9 { float: right; width: 70%; }
+
+.header_tab ul li {
+    display: inline-block;
+}
+.header_tab ul li a{
+	margin-bottom: 0;
+	margin-left:-4px; 
+	margin-right: 0;
+}
+.header_tab ul li.list-group-item {
+    position: relative;
+   /* display: block; */ 
+    padding: 10px 20px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+	
+.header_tab ul li a {
+	border-top-right-radius:0;
+	border-bottom-left-radius:4px;
+}
+.header_tab ul li a:last-child {
+	border-top-right-radius:4px;
+	border-bottom-left-radius:0;
+}
+.header_tab ul li.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #428bca;
+    border-color: #428bca;
+}
+.header_tab ul li.active a{ color:#fff;}

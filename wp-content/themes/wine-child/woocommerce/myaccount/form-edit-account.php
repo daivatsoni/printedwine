@@ -22,7 +22,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 do_action( 'woocommerce_before_edit_account_form' ); ?>
 
+<?php 
+	
+	$user_id = get_current_user_id();
+	$user = get_userdata( $user_id );
+	
+	$birthdate = get_user_meta( $user_id, 'user_profile_image', true );
+	
+	echo $birthdate;
+	
+	$api = LOU_ACF_API::instance();
+
+	// fetch the list of groups that belong on the top of the my account page
+	$field_groups = $api->get_field_groups();
+?>
+
 <form class="woocommerce-EditAccountForm edit-account" action="" method="post">
+
+<img src="" >
 
 <?php do_action( 'woocommerce_acf_edit_account_form_start' ); // ADDED BY DAIVAT SONI ?>
 
