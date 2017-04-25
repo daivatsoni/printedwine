@@ -29,8 +29,6 @@ do_action( 'woocommerce_before_edit_account_form' ); ?>
 	
 	$birthdate = get_user_meta( $user_id, 'user_profile_image', true );
 	
-	echo $birthdate;
-	
 	$api = LOU_ACF_API::instance();
 
 	// fetch the list of groups that belong on the top of the my account page
@@ -39,12 +37,12 @@ do_action( 'woocommerce_before_edit_account_form' ); ?>
 
 <form class="woocommerce-EditAccountForm edit-account" action="" method="post">
 
-<img src="" >
-
-<?php do_action( 'woocommerce_acf_edit_account_form_start' ); // ADDED BY DAIVAT SONI ?>
-
 	<?php do_action( 'woocommerce_edit_account_form_start' ); ?>
-
+	
+	<div class="form_fields">	
+		<?php do_action( 'woocommerce_acf_edit_account_form_start' ); // ADDED BY DAIVAT SONI ?>
+	</div>
+	
 	<p class="woocommerce-FormRow woocommerce-FormRow--first form-row form-row-first">
 		<label for="account_first_name"><?php _e( 'First name', 'woocommerce' ); ?> <span class="required">*</span></label>
 		<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="account_first_name" id="account_first_name" value="<?php echo esc_attr( $user->first_name ); ?>" />
@@ -58,9 +56,7 @@ do_action( 'woocommerce_before_edit_account_form' ); ?>
 	<p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
 		<label for="account_email"><?php _e( 'Email address', 'woocommerce' ); ?> <span class="required">*</span></label>
 		<input type="email" class="woocommerce-Input woocommerce-Input--email input-text" name="account_email" id="account_email" value="<?php echo esc_attr( $user->user_email ); ?>" />
-	</p>
-
-	
+	</p>	
         
 	<fieldset>
 		<legend><?php _e( 'Password Change', 'woocommerce' ); ?></legend>

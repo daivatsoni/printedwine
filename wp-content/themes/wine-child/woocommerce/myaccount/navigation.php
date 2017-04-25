@@ -22,7 +22,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 do_action( 'woocommerce_before_account_navigation' );
 ?>
+
+
 <div class="col-md-3">    
+
+	<div class="header_profile">
+		<?php do_action( 'woocommerce_acf_edit_account_form_start' ); // ADDED BY DAIVAT SONI ?>
+	</div>
+
 <nav class="woocommerce-MyAccount-navigation">
 	<ul>
 		<?php foreach ( wc_get_account_menu_items() as $endpoint => $label ) : ?>
