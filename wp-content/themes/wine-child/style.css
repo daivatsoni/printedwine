@@ -80,5 +80,5 @@ We are confident that you will be more than pleased by your purchase!
     border-color: #428bca;
 }
 .header_tab ul li.active a{ color:#fff;}
-.header_profile div.acf-field-date-picker ,.header_profile div.acf-field-select{ display:none; }
+.header_profile div.acf-field-date-picker ,.header_profile div.acf-field-select, .header_profile div.acf-field-58ff4ed06ca5b{ display:none; }
 .form_fields div.acf-field-image { display:none;}

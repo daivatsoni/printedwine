@@ -450,7 +450,7 @@ if( function_exists('acf_add_options_page') ) {
 * Custmize My Account Order
 */
 
-function wpb_woo_my_account_order() {
+/*function wpb_woo_my_account_order() {
  $myorder = array( 
  'edit-account' => __( 'Account Profile', 'woocommerce' ),
  'lets-communicate' => __( 'Lets Communicate!', 'woocommerce' ),
@@ -461,6 +461,55 @@ function wpb_woo_my_account_order() {
  );
  return $myorder;
 }
-add_filter ( 'woocommerce_account_menu_items', 'wpb_woo_my_account_order' );  
+add_filter ( 'woocommerce_account_menu_items', 'wpb_woo_my_account_order' );  */
 
+//Step one- you need to create a page and grab its page id
+//Step two - paste the set of functions in your functions.php file
+//Step - In this example Vidoe is the page and it's the end point
+// create a custom end point in the My Accunt Page
+function custom_wc_end_point() {
+	if(class_exists('WooCommerce')){
+    add_rewrite_endpoint( 'lets-communicate', EP_ROOT | EP_PAGES );
+}
+}
+add_action( 'init', 'custom_wc_end_point' );
+// this action inform the woocommerce about the new end points
+function custom_endpoint_query_vars( $vars ) {
+    $vars[] = 'lets-communicate,wine-art-preferance';
+    return $vars;
+}
+add_filter( 'query_vars', 'custom_endpoint_query_vars', 0 );
+//flush the permalinks
+function ac_custom_flush_rewrite_rules() {
+    flush_rewrite_rules();
+}
 
+//adding menu to the account
+add_action( 'after_switch_theme', 'ac_custom_flush_rewrite_rules' );
+// add the custom endpoint in the my account nav items
+function custom_endpoint_acct_menu_item( $items ) {
+   
+    $myorder = array( 
+		'edit-account' => __( 'Account Profile', 'woocommerce' ),
+		'lets-communicate' => __( 'Lets Communicate!', 'woocommerce' ),
+		'wine-art-preferance' => __( 'Wine and Art Perferances', 'woocommerce' ),
+		'my-custom-endpoint' => __( 'Printed Wine Credits', 'woocommerce' ),
+		'edit-address' => __( 'Addresses', 'woocommerce' ),
+		'payment-methods' => __( 'Payment Methods', 'woocommerce' ), 
+		);
+	return $myorder;
+}
+add_filter( 'woocommerce_account_menu_items', 'custom_endpoint_acct_menu_item' );
+// fetch content from your source page (in this case video page)
+function fetch_content_custom_endpoint() {
+   /* global $post;
+    $id = "4871"; // your video page id
+    ob_start();
+    $output = apply_filters('the_content', get_post_field('post_content', $id));
+    $output .= ob_get_contents();
+    ob_end_clean();
+    echo $output;*/
+	
+	include 'woocommerce/myaccount/lets-communicate.php';
+}
+add_action( 'woocommerce_account_lets-communicate_endpoint', 'fetch_content_custom_endpoint' );
