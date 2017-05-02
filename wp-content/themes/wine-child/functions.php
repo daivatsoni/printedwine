@@ -446,26 +446,11 @@ if( function_exists('acf_add_options_page') ) {
     ));
 }
 
-// Custmize My Account Order
-
-/*function wpb_woo_my_account_order() {
-	$myorder = array( 
-		'edit-account' => __( 'Account Profile', 'woocommerce' ),
-		'lets-communicate' => __( 'Lets Communicate!', 'woocommerce' ),
-		'wine-art-preferance' => __( 'Wine and Art Perferances', 'woocommerce' ),
-		'my-custom-endpoint' => __( 'Printed Wine Credits', 'woocommerce' ),
-		'edit-address' => __( 'Addresses', 'woocommerce' ),
-		'payment-methods' => __( 'Payment Methods', 'woocommerce' ), 
-	);
-	return $myorder;
-}
-add_filter ( 'woocommerce_account_menu_items', 'wpb_woo_my_account_order' ); */
-
 //Step one- you need to create a page and grab its page id
 //Step two - paste the set of functions in your functions.php file
 //Step - In this example Vidoe is the page and it's the end point
 
-// create a custom end point in the My Accunt Page
+// create a custom end point in the My Accunt Page                          
 function custom_wc_end_point() {
 	if(class_exists('WooCommerce')){
 		add_rewrite_endpoint( 'lets-communicate', EP_ROOT | EP_PAGES );
@@ -520,7 +505,7 @@ add_action( 'woocommerce_account_wine-art-preferance_endpoint', 'fetch_content_c
 
 function fetch_content_custom_printed_wine_endpoint() {
 	
-	include 'woocommerce/myaccount/printed-wine-credits.php';
+	include 'woocommerce/myaccount/printed-wine-credits.php';    
 	
 }
 add_action( 'woocommerce_account_printed-wine-credits_endpoint', 'fetch_content_custom_printed_wine_endpoint' );
