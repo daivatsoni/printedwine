@@ -41,5 +41,36 @@ jQuery(document).ready(function( $ ) {
             $("#"+chkId).prop('checked', false);
             $("#btnStep1").hide();
         }
-    });    
+    }); 
+	
+	$("input[type='checkbox']").on("change",function(){
+         if($(this).is(":checked"))
+         {
+			 $(this).attr("checked", "checked");
+			console.log($(this).val());
+		 }
+	});
+	
+	$('#lets_communicate').click(function(){
+		 var checkedArray = $("#commnunicate").find(":checked").map(function () {
+			return this.value;
+		}).get();
+			
+		console.log(checkedArray); 		
+		var data = {
+			'action': 'lets_communicate',
+			'communicate_ids': checkedArray,    // We pass php values differently!
+			'user_id': $('.user_id').val(),
+			'user_email':$('.user_email').val(),
+			'user_firstname':$('.user_firstname').val()
+		};
+		
+		// We can also pass the url value separately from ajaxurl for front end AJAX implementations
+		$.post(THEMEREX_ajax_url, data, function(response) {
+			//console.log(THEMEREX_ajax_url);
+			console.log('Got this from the server: ' + response);
+		});
+	
+	
+	});
 });

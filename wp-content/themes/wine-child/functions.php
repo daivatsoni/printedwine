@@ -521,5 +521,6 @@ add_action( 'woocommerce_account_wine-art-preferance_endpoint', 'fetch_content_c
 function fetch_content_custom_printed_wine_endpoint() {
 	
 	include 'woocommerce/myaccount/printed-wine-credits.php';
+	
 }
 add_action( 'woocommerce_account_printed-wine-credits_endpoint', 'fetch_content_custom_printed_wine_endpoint' );

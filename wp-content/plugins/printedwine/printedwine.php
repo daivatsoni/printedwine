@@ -308,3 +308,59 @@ function validate_starts_from_func($valid, $value, $field, $input) {
     $oldRowId = $row;
     return $valid;
 }
+
+function mc_subscribe($email, $fname, $debug, $apikey, $listid, $server) {
+	$apikey = '8c3ea8c6e4b96a5b0bfcb0e10c7f4ff7-us12';
+	$auth = base64_encode( 'user:'.$apikey );
+	$data = array(
+		'apikey'        => $apikey,
+		'email_address' => $email,
+		'status'        => 'subscribed',
+		'merge_fields'  => array(
+			'FNAME' => $fname
+			)
+		);
+	$json_data = json_encode($data);
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, 'https://'.$server.'api.mailchimp.com/3.0/lists/'.$listid.'/members/');
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',
+		'Authorization: Basic '.$auth));
+	curl_setopt($ch, CURLOPT_USERAGENT, 'PHP-MCAPI/2.0');
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+	curl_setopt($ch, CURLOPT_POST, true);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
+	$result = curl_exec($ch);
+	if ($debug) {
+		var_dump($result);
+		die('<br><br>*Creepy etheral voice* : Mailchimp executed subscribe');
+	}
+	//die();
+};
+add_action( 'wp_ajax_lets_communicate', 'lets_communicate' );
+
+function lets_communicate(){
+	
+	$ids = $_POST['communicate_ids'];
+	$user_id =  $_POST['user_id'];
+	$email = $_POST['user_email'];
+	$fname = $_POST['user_firstname'];
+	$apikey = '8c3ea8c6e4b96a5b0bfcb0e10c7f4ff7-us12';
+	$listid = '8c5ff6724e';
+	$server = 'us12';
+	
+	foreach($ids as $id){
+		if($id == 'opt_1'){
+			mc_subscribe($email, $fname, 'true', $apikey, $listid, $server);
+		}elseif($id == 'opt_2'){
+			mc_subscribe($email, $fname, 'true', $apikey, $listid, $server);
+		}elseif($id == 'opt_3'){
+			mc_subscribe($email, $fname, 'true', $apikey, $listid, $server);
+		}elseif($id == 'opt_4'){
+			mc_subscribe($email, $fname, 'true', $apikey, $listid, $server);
+		}else{
+			return false;
+		}	
+	}
+}
