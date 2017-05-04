@@ -310,7 +310,7 @@ function validate_starts_from_func($valid, $value, $field, $input) {
 }
 
 function mc_subscribe($email, $fname, $debug, $apikey, $listid, $server) {
-	$apikey = '8c3ea8c6e4b96a5b0bfcb0e10c7f4ff7-us12';
+	
 	$auth = base64_encode( 'user:'.$apikey );
 	$data = array(
 		'apikey'        => $apikey,
@@ -332,35 +332,55 @@ function mc_subscribe($email, $fname, $debug, $apikey, $listid, $server) {
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
 	$result = curl_exec($ch);
-	if ($debug) {
+	
+	/*if ($debug) {
 		var_dump($result);
 		die('<br><br>*Creepy etheral voice* : Mailchimp executed subscribe');
-	}
+	}*/
 	//die();
 };
 add_action( 'wp_ajax_lets_communicate', 'lets_communicate' );
 
 function lets_communicate(){
 	
-	$ids = $_POST['communicate_ids'];
+	$msg = '';
+	$form_opt = get_field('list_of_options','option');
+	$ids = $_POST['list_ids'];
 	$user_id =  $_POST['user_id'];
 	$email = $_POST['user_email'];
 	$fname = $_POST['user_firstname'];
-	$apikey = '8c3ea8c6e4b96a5b0bfcb0e10c7f4ff7-us12';
-	$listid = '8c5ff6724e';
+	$apikey = get_field('api_key','option');
 	$server = 'us12';
 	
-	foreach($ids as $id){
-		if($id == 'opt_1'){
-			mc_subscribe($email, $fname, 'true', $apikey, $listid, $server);
-		}elseif($id == 'opt_2'){
-			mc_subscribe($email, $fname, 'true', $apikey, $listid, $server);
-		}elseif($id == 'opt_3'){
-			mc_subscribe($email, $fname, 'true', $apikey, $listid, $server);
-		}elseif($id == 'opt_4'){
-			mc_subscribe($email, $fname, 'true', $apikey, $listid, $server);
-		}else{
-			return false;
-		}	
+	// Check none is selected or not 
+	
+	// Check in array , if in array 
+	if(in_array('none',$ids)){
+		
+		//Fetch all List Ids 		
+		foreach($form_opt as $opt) {
+			$allIds[] = $opt['list_id']; 
+		}
+				
+		//loop to unsubscribe all list 
+		$unsubscribeLists = array_diff($allIds,$ids);
+		
+		//Unset none index from $ids
+		unset($ids['none']);
+		
+		$msg = 'unsubscribe';	
 	}
+	
+	// Check Length of ids, check numbers of ids available
+	if(count($ids)){
+		
+		//print_r($ids);
+		foreach($ids as $id){
+			mc_subscribe($email, $fname, true, $apikey, $id, $server);
+		}
+		
+		$msg = 'subscribe';
+	}
+	
+	return $msg;
 }

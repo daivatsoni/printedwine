@@ -35,8 +35,9 @@
 									<p><?php echo $opt['option_label']; ?></p>
 								</div>
 								<div class="col-lg-2">
-									<input type="checkbox" class="chimpoptions" name="chimpoptions[]" value="opt_<?php echo $i; ?>" class="form-control">
+									<input type="checkbox" class="chimpoptions" name="chimpoptions[]" value="<?php echo $opt['list_id']; ?>" class="form-control">
 									<input type="hidden" name="user_id" value="<?php echo $memberId; ?>" class="user_id">
+									<input type="hidden" name="listIndex[]" value="<?php echo $opt['list_id']; ?>" class="listIndex">
 									<input type="hidden" name="user_email" value="<?php echo $current_user->user_email; ?>" class="user_email">
 									<input type="hidden" name="user_firstname" value="<?php echo  $current_user->user_firstname; ?>" class="user_firstname">
 								</div>
@@ -47,7 +48,7 @@
 					
 					<div class="form-group">
 						<div class="row">
-							<input type="submit" name="submit" value="save" id="lets_communicate">
+							<input type="button" name="submit" value="save" id="lets_communicate">
 						</div>
 					</div>
 					

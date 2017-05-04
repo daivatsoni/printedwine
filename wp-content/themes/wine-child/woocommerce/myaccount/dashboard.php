@@ -26,6 +26,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 <p>
 	<?php
 		echo sprintf( esc_attr__( 'Hello %s%s%s (not %2$s? %sSign out%s)', 'woocommerce' ), '<strong>', esc_html( $current_user->display_name ), '</strong>', '<a href="' . esc_url( wc_get_endpoint_url( 'customer-logout', '', wc_get_page_permalink( 'myaccount' ) ) ) . '">', '</a>' );
+		$user_id = get_current_user_id();
+		$data = get_field('user_profile_image','user_'.$user_id);
+		echo '<pre>';
+		print_r($data); echo '</pre>';
 	?>
 </p>
 

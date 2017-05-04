@@ -43,34 +43,44 @@ jQuery(document).ready(function( $ ) {
         }
     }); 
 	
-	$("input[type='checkbox']").on("change",function(){
-         if($(this).is(":checked"))
-         {
-			 $(this).attr("checked", "checked");
-			console.log($(this).val());
-		 }
-	});
+	Array.prototype.associate = function (keys) {
+	  var result = {};
+
+	  this.forEach(function (el, i) {
+		result[keys[i]] = el;
+	  });
+
+	  return result;
+	};
 	
-	$('#lets_communicate').click(function(){
-		 var checkedArray = $("#commnunicate").find(":checked").map(function () {
+	$('#lets_communicate').on("click",function(){
+		
+		 var checkedArray = $("#commnunicate").find(":checked").map(function (index) {
 			return this.value;
 		}).get();
-			
-		console.log(checkedArray); 		
+		
+		var indexArray = $("#commnunicate").find(".listIndex").map(function (index) {
+			return this.value;
+		}).get();
+		
+		var listIds = checkedArray.associate(checkedArray);
+		//console.log(listIds);
+		
 		var data = {
 			'action': 'lets_communicate',
-			'communicate_ids': checkedArray,    // We pass php values differently!
+			'list_ids': listIds,    // We pass php values differently!
 			'user_id': $('.user_id').val(),
 			'user_email':$('.user_email').val(),
 			'user_firstname':$('.user_firstname').val()
 		};
 		
 		// We can also pass the url value separately from ajaxurl for front end AJAX implementations
-		$.post(THEMEREX_ajax_url, data, function(response) {
-			//console.log(THEMEREX_ajax_url);
-			console.log('Got this from the server: ' + response);
+		$.post(THEMEREX_ajax_url, data, function(msg) {
+			// TODO : Show Thank you subscribe/unsubscribe message based on selection;
+			console.log(msg);
 		});
-	
+		
+		return false;
 	
 	});
 });
