@@ -333,10 +333,10 @@ function mc_subscribe($email, $fname, $debug, $apikey, $listid, $server) {
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
 	$result = curl_exec($ch);
 	
-	/*if ($debug) {
+	if ($debug) {
 		var_dump($result);
 		die('<br><br>*Creepy etheral voice* : Mailchimp executed subscribe');
-	}*/
+	}
 	//die();
 };
 add_action( 'wp_ajax_lets_communicate', 'lets_communicate' );
