@@ -347,7 +347,7 @@ function lets_communicate(){
 	$form_opt = get_field('list_of_options','option');
 	$ids = $_POST['list_ids'];
 	$user_id =  $_POST['user_id'];
-	$email = $_POST['user_email'];
+	$email = 'gayatru@mailinator.com';
 	$fname = $_POST['user_firstname'];
 	$apikey = get_field('api_key','option');
 	$server = 'us12';
