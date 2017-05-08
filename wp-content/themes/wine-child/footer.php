@@ -111,14 +111,6 @@ if ($footer_widget || $copyright) {
 
 <?php
 
-$email = 'gayatru@mailinator.com';
-$fname = 'test';
-$apikey = get_field('api_key','option');
-$id = 'baff2ed5f3';
-$server = 'us12';
-
-mc_subscribe($email, $fname, false, $apikey, $id, $server);
-
 require(get_stylesheet_directory() . '/templates/page-part-login.php');
 require(get_template_directory() . '/templates/page-part-js-messages.php');
 require(get_template_directory() . '/templates/page-part-customizer.php');

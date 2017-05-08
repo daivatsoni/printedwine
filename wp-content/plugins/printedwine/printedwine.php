@@ -309,36 +309,58 @@ function validate_starts_from_func($valid, $value, $field, $input) {
     return $valid;
 }
 
-function mc_subscribe($email, $fname, $debug, $apikey, $listid, $server) {
+function mc_subscribe($email, $fname, $debug, $apikey, $listid, $server) {	
 	
-	$auth = base64_encode( 'user:'.$apikey );
-	$data = array(
-		'apikey'        => $apikey,
-		'email_address' => $email,
-		'status'        => 'subscribed',
-		'merge_fields'  => array(
-			'FNAME' => $fname
-			)
-		);
-	$json_data = json_encode($data);
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, 'https://'.$server.'api.mailchimp.com/3.0/lists/'.$listid.'/members/');
-	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',
-		'Authorization: Basic '.$auth));
-	curl_setopt($ch, CURLOPT_USERAGENT, 'PHP-MCAPI/2.0');
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-	curl_setopt($ch, CURLOPT_POST, true);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
-	$result = curl_exec($ch);
+		// MailChimp API credentials
+		$apiKey = $apikey;
+        $listID = $listid;
+        
+        // MailChimp API URL
+        $memberID = md5(strtolower($email));
+        $dataCenter = substr($apiKey,strpos($apiKey,'-')+1);
+        $url = 'https://' . $dataCenter . '.api.mailchimp.com/3.0/lists/' . $listID . '/members/' . $memberID;
 	
-	if ($debug) {
-		var_dump($result);
-		die('<br><br>*Creepy etheral voice* : Mailchimp executed subscribe');
-	}
-	//die();
-};
+		// member information
+		$lname = 'testtt';
+		$data = array(
+            'email_address' => $email,
+            'status'        => 'subscribed',
+            'merge_fields'  => array(
+                'FNAME'     => $fname
+            )
+        );
+		$json = json_encode($data);
+        
+        // send a HTTP POST request with curl
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_USERPWD, 'user:' . $apiKey);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+        $result = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+		print_r($json);
+
+		// store the status message based on response code
+        if ($httpCode == 200) {
+            echo $_SESSION['msg'] = '<p style="color: #34A853">You have successfully subscribed to CodexWorld.</p>';
+        } else {
+            switch ($httpCode) {
+                case 214:
+                    $msg = 'You are already subscribed.';
+                    break;
+                default:
+                    $msg = 'Some problem occurred, please try again.';
+                    break;
+            }
+          echo $_SESSION['msg'] = '<p style="color: #EA4335">'.$msg.'</p>';
+        }	
+}
 add_action( 'wp_ajax_lets_communicate', 'lets_communicate' );
 
 function lets_communicate(){
@@ -347,7 +369,7 @@ function lets_communicate(){
 	$form_opt = get_field('list_of_options','option');
 	$ids = $_POST['list_ids'];
 	$user_id =  $_POST['user_id'];
-	$email = 'gayatru@mailinator.com';
+	$email = $_POST['user_email'];
 	$fname = $_POST['user_firstname'];
 	$apikey = get_field('api_key','option');
 	$server = 'us12';
