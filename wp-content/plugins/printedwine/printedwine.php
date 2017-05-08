@@ -345,7 +345,7 @@ function mc_subscribe($email, $fname, $apikey, $id) {
 
 		// store the status message based on response code
         if ($httpCode == 200) {
-             $msg = '<p style="color: #34A853">You have successfully subscribed to CodexWorld.</p>';
+             $msg = '<p style="color: #34A853">You have successfully subscribed to Printed Wine.</p>';            
         } else {
             switch ($httpCode) {
                 case 214:
