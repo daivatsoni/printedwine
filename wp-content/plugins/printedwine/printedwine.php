@@ -361,7 +361,7 @@ function mc_subscribe($email, $fname, $lname, $debug, $apikey, $listid, $server)
            $msg = '<p style="color: #EA4335">'.$msg.'</p>';
         }	
 		
-		return $msg;
+		echo $msg;
 }
 add_action( 'wp_ajax_lets_communicate', 'lets_communicate' );
 
@@ -406,5 +406,5 @@ function lets_communicate(){
 		$msg = 'subscribe';
 	}
 	
-	return $msg;
+	//return $msg;
 }
