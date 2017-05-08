@@ -309,7 +309,7 @@ function validate_starts_from_func($valid, $value, $field, $input) {
     return $valid;
 }
 
-function mc_subscribe($email, $fname, $debug, $apikey, $listid, $server) {	
+function mc_subscribe($email, $fname, $lname $debug, $apikey, $listid, $server) {	
 	
 		// MailChimp API credentials
 		$apiKey = $apikey;
@@ -321,12 +321,12 @@ function mc_subscribe($email, $fname, $debug, $apikey, $listid, $server) {
         $url = 'https://' . $dataCenter . '.api.mailchimp.com/3.0/lists/' . $listID . '/members/' . $memberID;
 	
 		// member information
-		$lname = 'testtt';
 		$data = array(
             'email_address' => $email,
             'status'        => 'subscribed',
             'merge_fields'  => array(
-                'FNAME'     => $fname
+                'FNAME'     => $fname,
+				'LNAME'		=> $lname
             )
         );
 		$json = json_encode($data);
@@ -348,7 +348,7 @@ function mc_subscribe($email, $fname, $debug, $apikey, $listid, $server) {
 
 		// store the status message based on response code
         if ($httpCode == 200) {
-            echo $_SESSION['msg'] = '<p style="color: #34A853">You have successfully subscribed to CodexWorld.</p>';
+             $msg = '<p style="color: #34A853">You have successfully subscribed to CodexWorld.</p>';
         } else {
             switch ($httpCode) {
                 case 214:
@@ -358,8 +358,10 @@ function mc_subscribe($email, $fname, $debug, $apikey, $listid, $server) {
                     $msg = 'Some problem occurred, please try again.';
                     break;
             }
-          echo $_SESSION['msg'] = '<p style="color: #EA4335">'.$msg.'</p>';
+           $msg = '<p style="color: #EA4335">'.$msg.'</p>';
         }	
+		
+		return $msg;
 }
 add_action( 'wp_ajax_lets_communicate', 'lets_communicate' );
 
@@ -398,7 +400,7 @@ function lets_communicate(){
 		
 		//print_r($ids);
 		foreach($ids as $id){
-			mc_subscribe($email, $fname, true, $apikey, $id, $server);
+			mc_subscribe($email, $fname, $lname, false, $apikey, $id, $server);
 		}
 		
 		$msg = 'subscribe';
