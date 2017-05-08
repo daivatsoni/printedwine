@@ -373,6 +373,7 @@ function lets_communicate(){
 	$user_id =  $_POST['user_id'];
 	$email = $_POST['user_email'];
 	$fname = $_POST['user_firstname'];
+	$lname = $_POST['user_lastname'];
 	$apikey = get_field('api_key','option');
 	$server = 'us12';
 	
