@@ -309,7 +309,7 @@ function validate_starts_from_func($valid, $value, $field, $input) {
     return $valid;
 }
 
-function mc_subscribe($email, $fname, $lname, $apikey, $id) {	
+function mc_subscribe($email, $fname, $apikey, $id) {	
 	
 		// MailChimp API credentials
 		$apiKey = $apikey;
@@ -325,8 +325,7 @@ function mc_subscribe($email, $fname, $lname, $apikey, $id) {
             'email_address' => $email,
             'status'        => 'subscribed',
             'merge_fields'  => array(
-                'FNAME'     => $fname,
-				'LNAME'		=> $lname
+                'FNAME'     => $fname
             )
         );
 		$json = json_encode($data);
@@ -399,7 +398,7 @@ function lets_communicate(){
 		
 		//print_r($ids);
 		foreach($ids as $id){
-			mc_subscribe($email, $fname, $lname, $apikey, $id);
+			mc_subscribe($email, $fname, $apikey, $id);
 		}
 		
 		$msg = 'subscribe';
