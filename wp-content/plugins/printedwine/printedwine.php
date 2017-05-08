@@ -309,11 +309,11 @@ function validate_starts_from_func($valid, $value, $field, $input) {
     return $valid;
 }
 
-function mc_subscribe($email, $fname, $lname, $debug, $apikey, $listid, $server) {	
+function mc_subscribe($email, $fname, $lname, $apikey, $id) {	
 	
 		// MailChimp API credentials
 		$apiKey = $apikey;
-        $listID = $listid;
+        $listID = $id;
         
         // MailChimp API URL
         $memberID = md5(strtolower($email));
@@ -343,8 +343,6 @@ function mc_subscribe($email, $fname, $lname, $debug, $apikey, $listid, $server)
         $result = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
-
-		print_r($json);
 
 		// store the status message based on response code
         if ($httpCode == 200) {
@@ -401,7 +399,7 @@ function lets_communicate(){
 		
 		//print_r($ids);
 		foreach($ids as $id){
-			mc_subscribe($email, $fname, $lname, false, $apikey, $id, $server);
+			mc_subscribe($email, $fname, $lname, $apikey, $id);
 		}
 		
 		$msg = 'subscribe';
