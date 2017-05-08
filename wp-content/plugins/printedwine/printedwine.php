@@ -309,7 +309,7 @@ function validate_starts_from_func($valid, $value, $field, $input) {
     return $valid;
 }
 
-function mc_subscribe($email, $fname, $lname $debug, $apikey, $listid, $server) {	
+function mc_subscribe($email, $fname, $lname, $debug, $apikey, $listid, $server) {	
 	
 		// MailChimp API credentials
 		$apiKey = $apikey;
