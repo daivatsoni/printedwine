@@ -78,6 +78,7 @@ jQuery(document).ready(function( $ ) {
 		$.post(THEMEREX_ajax_url, data, function(msg) {
 			// TODO : Show Thank you subscribe/unsubscribe message based on selection;
 			console.log(msg);
+			$("#resultMsg").append(msg);
 		});
 		
 		return false;

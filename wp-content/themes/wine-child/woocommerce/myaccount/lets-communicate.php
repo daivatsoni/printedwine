@@ -22,7 +22,7 @@
 		<?php endif; ?>
 	</div>
 	
-	<div class="col-lg-9">
+	<div class="col-lg-9" id="resultMsg">
 		<form name="commnunicate" method="post" id="commnunicate">
 			<?php 
 				if(!empty($form_opt)){ $i = 1;
@@ -71,7 +71,7 @@
 	</div>
 	
 	<div class="col-lg-9">
-		<form name="commnunicate" method="post">
+		<form name="letschat" method="post" id="letschat">
 			<div class="form-group">
 				<div class="row">
 					<div class="col-lg-6">
@@ -87,19 +87,24 @@
 						
 						<div class="form-group">
 							<h5>Out of hours number(Optional)</h5>
-							<input type="text" placeholder="" name="primary_phone" class="form-control">		
+							<input type="text" placeholder="" name="contact_hours" class="form-control">		
 						</div>
 						
 						<div class="form-control">
 							<h5>Contact time(optional)</h5>
 							<p>When would you like us to contact you?</p>
 							
-							<input type="text" name="day" placeholder="Day">
-							<input type="text" name="time" placeholder="Time">
+							<input type="text" name="contact_day" placeholder="Day">
+							<input type="text" name="contact_time" placeholder="Time">
 						</div>
 						
+						<input type="hidden" name="user_id" value="<?php echo $memberId; ?>" class="user_id">
+						<input type="hidden" name="user_email" value="<?php echo $current_user->user_email; ?>" class="user_email">
+						<input type="hidden" name="user_firstname" value="<?php echo  $current_user->user_firstname; ?>" class="user_firstname">
+						<input type="hidden" name="user_lastname" value="<?php echo  $current_user->user_lastname; ?>" class="user_lastname">
+						
 						<div class="form-control">
-							<input type="submit" name="submit" value="SAVE">
+							<input type="submit" name="submit" value="SAVE" id="lets_chat">
 						</div>
 					</form>
 					
