@@ -27,7 +27,14 @@ do_action( 'woocommerce_before_account_navigation' );
 <div class="col-md-3">    
 
 	<div class="header_profile">
-		<?php do_action( 'woocommerce_acf_edit_account_form_start' ); // ADDED BY DAIVAT SONI ?>
+		<?php //do_action( 'woocommerce_acf_edit_account_form_start' ); // ADDED BY DAIVAT SONI ?>
+		<?php 
+			$user_id = get_current_user_id();
+			$data = get_field('user_profile_image','user_'.$user_id);
+		?>
+		
+		<img data-name="image" src="<?php echo $data['url']; ?>" alt="" class="woocommerce img" width="150px">
+			
 	</div>
 
 <nav class="woocommerce-MyAccount-navigation">
