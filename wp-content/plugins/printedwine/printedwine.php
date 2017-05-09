@@ -360,6 +360,7 @@ function mc_subscribe($email, $fname, $apikey, $id) {
 		
 		echo $msg;
 }
+
 add_action( 'wp_ajax_lets_communicate', 'lets_communicate' );
 
 function lets_communicate(){
@@ -405,4 +406,20 @@ function lets_communicate(){
 	}
 	
 	//return $msg;
+}
+
+add_action( 'wp_ajax_lets_communicate', 'lets_chat' );
+function lets_chat(){
+	
+	//POSTS DATA
+	$primary_phone = $_POST['primary_phone'];
+	$contact_hours = $_POST['contact_hours'];
+	$contact_day = $_POST['contact_day'];
+	$contact_time = $_POST['contact_time'];
+	
+	//API data
+	$apikey = get_field('api_key','option');
+	$id = '';
+	
+	mc_subscribe($email, $fname, $primary_phone, $contact_hours, $contact_day, $contact_time, $apikey, $id);
 }

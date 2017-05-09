@@ -78,7 +78,31 @@ jQuery(document).ready(function( $ ) {
 		$.post(THEMEREX_ajax_url, data, function(msg) {
 			// TODO : Show Thank you subscribe/unsubscribe message based on selection;
 			console.log(msg);
-			$("#resultMsg").append(msg);
+			$("#resultMsg").html(msg);
+		});
+		
+		return false;
+	
+	});
+	
+	$('#lets_chat').on("click",function(){
+			
+		var listIds = checkedArray.associate(checkedArray);
+		//console.log(listIds);
+		
+		var data = {
+			'action': 'lets_chat',
+			'primary_phone': $('.primary_phone'),    // We pass php values differently!
+			'contact_hours': $('.contact_hours').val(),
+			'contact_day':$('.contact_day').val(),
+			'contact_time':$('.contact_time').val()
+		};
+		
+		// We can also pass the url value separately from ajaxurl for front end AJAX implementations
+		$.post(THEMEREX_ajax_url, data, function(msg) {
+			// TODO : Show Thank you subscribe/unsubscribe message based on selection;
+			console.log(msg);
+			$("#letcchat").html(msg);
 		});
 		
 		return false;
