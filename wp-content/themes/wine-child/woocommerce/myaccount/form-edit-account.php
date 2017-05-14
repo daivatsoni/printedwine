@@ -37,44 +37,75 @@ do_action( 'woocommerce_before_edit_account_form' ); ?>
 
 <form class="woocommerce-EditAccountForm edit-account" action="" method="post">
 
+	<h1>Profile</h1>
+	
+	<h5>General Information about your account:</h5>
+	<p>You can red our privacy plociy <a href=''>here.</a> if you would like to close your account you can do this <a href='#'>here.</a></p>
 	<?php do_action( 'woocommerce_edit_account_form_start' ); ?>
-	
-	<div class="form_fields">	
-		<?php do_action( 'woocommerce_acf_edit_account_form_start' ); // ADDED BY DAIVAT SONI ?>
-	</div>
-	
+		
 	<p class="woocommerce-FormRow woocommerce-FormRow--first form-row form-row-first">
-		<label for="account_first_name"><?php _e( 'First name', 'woocommerce' ); ?> <span class="required">*</span></label>
-		<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="account_first_name" id="account_first_name" value="<?php echo esc_attr( $user->first_name ); ?>" />
+		<label for="account_first_name">Your Name<span class="required">*</span></label>
+		<input type="text" class="woocommerce-Input woocommerce-Input--text input-text"
+		name="account_first_name" id="account_first_name" value="<?php echo esc_attr( $user->first_name ); ?>" placeholder="First Name" />
 	</p>
 	<p class="woocommerce-FormRow woocommerce-FormRow--last form-row form-row-last">
-		<label for="account_last_name"><?php _e( 'Last name', 'woocommerce' ); ?> <span class="required">*</span></label>
-		<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="account_last_name" id="account_last_name" value="<?php echo esc_attr( $user->last_name ); ?>" />
+		<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="account_last_name" 
+		id="account_last_name" value="<?php echo esc_attr( $user->last_name ); ?>" placeholder="Last Name" />
 	</p>
 	<div class="clear"></div>
+	<p class="woocommerce-FormRow woocommerce-FormRow--first form-row form-row-first">	
+		<label>Date of Birth</label>
+		<input type="text" class="input-text" name="billing_birthdate" id="reg_billing_birthdate" gldp-id="mydate" value="<?php if ( ! empty( $_POST['billing_birthdate'] ) ) esc_attr_e( $_POST['billing_birthdate'] ); ?>" />
+		<small>We believe in Happy Birthdays</small>
+	</p>
 
+	
 	<p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
 		<label for="account_email"><?php _e( 'Email address', 'woocommerce' ); ?> <span class="required">*</span></label>
-		<input type="email" class="woocommerce-Input woocommerce-Input--email input-text" name="account_email" id="account_email" value="<?php echo esc_attr( $user->user_email ); ?>" />
-	</p>	
-        
-	<fieldset>
-		<legend><?php _e( 'Password Change', 'woocommerce' ); ?></legend>
+		<input type="email" class="woocommerce-Input woocommerce-Input--text input-text" 
+		name="account_email" id="account_email" value="<?php echo esc_attr( $user->user_email ); ?>" placeholder="Email" />
+	</p>
 
-		<p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
-			<label for="password_current"><?php _e( 'Current Password (leave blank to leave unchanged)', 'woocommerce' ); ?></label>
-			<input type="password" class="woocommerce-Input woocommerce-Input--password input-text" name="password_current" id="password_current" />
-		</p>
-		<p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
-			<label for="password_1"><?php _e( 'New Password (leave blank to leave unchanged)', 'woocommerce' ); ?></label>
+	<p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
+		<label for=""><?php _e( 'Invite URL', 'woocommerce' ); ?> <span class="required">*</span></label>
+		<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" 
+		name="invite_url" id="invite_url" value="" placeholder="https://printedwine.com" style="width:35% !important;"  />
+		<input type="text" class="woocommerce-Input woocommerce-Input--text input-text" style="width:35% !important;"
+		name="account_your_name" id="account_your_name" value="<?php echo esc_attr( $user->first_name ); ?>" placeholder="Your Name" />
+	
+		<small>It's easy to invite your friends tojoin Printedwine by using this URL. When they signup, you will get points and they will get a discount. Win Win! So share the love
+		abd tell your Artist friends to contribute art, tell your tribe about the great deals we have and enjoy the benefits!</small>
+	</p>
+	
+	<p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
+		<label for="account_gender"><?php _e( 'Gender', 'woocommerce' ); ?> <span>(Optional)</span></label>
+		<select name="gender" style="width:40% !important;">
+		</select>
+	</p>
+         
+	<?php _e( 'Password', 'woocommerce' ); ?>
+	<p>
+		<small>
+		<?php _e('You can change and update your password here. Please note, you can also
+		use Facebook authentication to login to your account if you"d prefer that.', 'woocommerce');?>
+		</small>
+	</p>
+	<p class="woocommerce-FormRow woocommerce-FormRow--first form-row form-row-first">
+			<label for="password_1"><?php _e( 'New Password', 'woocommerce' ); ?></label>
+	</p>
+	<p class="woocommerce-FormRow woocommerce-FormRow--first form-row form-row-first">
+			<label for="password_current"><?php _e( 'Current Password', 'woocommerce' ); ?></label>
+	</p>
+
+		<p class="woocommerce-FormRow woocommerce-FormRow--first form-row form-row-first">
+			
 			<input type="password" class="woocommerce-Input woocommerce-Input--password input-text" name="password_1" id="password_1" />
 		</p>
-		<p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
-			<label for="password_2"><?php _e( 'Confirm New Password', 'woocommerce' ); ?></label>
-			<input type="password" class="woocommerce-Input woocommerce-Input--password input-text" name="password_2" id="password_2" />
+		<p class="woocommerce-FormRow woocommerce-FormRow--first form-row form-row-first">
+					<input type="password" class="woocommerce-Input woocommerce-Input--password input-text" name="password_current" id="password_current" />
 		</p>
-	</fieldset>
-	<div class="clear"></div>
+		
+		<div class="clear"></div>
 
 	<?php do_action( 'woocommerce_edit_account_form' ); ?>
 
