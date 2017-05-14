@@ -28,7 +28,7 @@ do_action( 'woocommerce_before_edit_account_address_form' ); ?>
 	
 	<?php 
 	
-		$address = apply_filters( 'woocommerce_my_account_my_address_formatted_address', array(
+		/*$address = apply_filters( 'woocommerce_my_account_my_address_formatted_address', array(
 					'first_name'  => get_user_meta( $customer_id, $name . '_first_name', true ),
 					'last_name'   => get_user_meta( $customer_id, $name . '_last_name', true ),
 					'company'     => get_user_meta( $customer_id, $name . '_company', true ),
@@ -38,7 +38,35 @@ do_action( 'woocommerce_before_edit_account_address_form' ); ?>
 					'state'       => get_user_meta( $customer_id, $name . '_state', true ),
 					'postcode'    => get_user_meta( $customer_id, $name . '_postcode', true ),
 					'country'     => get_user_meta( $customer_id, $name . '_country', true )
-				), $customer_id, $name );
+				), $customer_id, $name );*/
+				
+	
+	add_filter( 'woocommerce_order_formatted_billing_address' , 'woo_custom_order_formatted_billing_address' );
+
+	/**
+	 * woo_custom_order_formatted_billing_address
+	 *
+	 * @access      public
+	 * @since       1.0 
+	 * @return      void
+	*/
+	function woo_custom_order_formatted_billing_address() {
+		
+		$address = array(
+			'first_name'	=> $this->billing_first_name,
+			'last_name'		=> $this->billing_last_name,
+			'company'		=> $this->billing_company,
+			'address_1'		=> $this->billing_address_1,
+			'address_2'		=> $this->billing_address_2,
+			'city'			=> $this->billing_city,
+			'state'			=> $this->billing_state,
+			'postcode'		=> $this->billing_postcode,
+			'country'		=> $this->billing_country
+		);
+
+		return $address;
+		
+	}
 	?>
 	
 	</address>
@@ -50,6 +78,10 @@ do_action( 'woocommerce_before_edit_account_address_form' ); ?>
 	<form method="post">
 
 		<h3><?php echo apply_filters( 'woocommerce_my_account_edit_address_title', $page_title ); ?></h3>
+		
+		<h5>Where we send you the good stuff!</h5>
+		<p>Edit and update your address(s) at anytime.<br>
+		You can read our privacy policy <a href="">here</a>.</p>
 
 		<?php do_action( "woocommerce_before_edit_address_form_{$load_address}" ); ?>
 
@@ -72,3 +104,11 @@ do_action( 'woocommerce_before_edit_account_address_form' ); ?>
 <?php endif; ?>
 
 <?php do_action( 'woocommerce_after_edit_account_address_form' ); ?>
+
+<script>
+jQuery(document).ready(function(){
+	
+		jQuery('#billing_first_name_field').prepend('<label>Your Name</label>');
+});
+
+</script>
