@@ -53,6 +53,8 @@ jQuery(document).ready(function( $ ) {
 	  return result;
 	};
 	
+	/* Get All Let's Communicate form parameters send to the mailchimp functionality; */
+	
 	$('#lets_communicate').on("click",function(){
 		
 		 var checkedArray = $("#commnunicate").find(":checked").map(function (index) {
@@ -78,34 +80,36 @@ jQuery(document).ready(function( $ ) {
 		$.post(THEMEREX_ajax_url, data, function(msg) {
 			// TODO : Show Thank you subscribe/unsubscribe message based on selection;
 			console.log(msg);
-			$("#resultMsg").html(msg);
+			$("#resultMsg").html(msg); // Append response to the viewer;
 		});
 		
 		return false;
 	
 	});
 	
+	/* Get All Let's Chat's form parameters send to the mailchimp functionality; */
+	
 	$('#lets_chat').on("click",function(){
-			
-		var listIds = checkedArray.associate(checkedArray);
-		//console.log(listIds);
-		
+				
 		var data = {
 			'action': 'lets_chat',
-			'primary_phone': $('.primary_phone'),    // We pass php values differently!
+			'list_id': $('.chat_list_id').val(), //Get the Mailchimp list id of chat form submission
+			'primary_phone': $('.primary_phone').val(),    
 			'contact_hours': $('.contact_hours').val(),
 			'contact_day':$('.contact_day').val(),
-			'contact_time':$('.contact_time').val()
+			'contact_time':$('.contact_time').val(),
+			'user_email':$('.user_email').val(),
+			'user_firstname':$('.user_firstname').val(),
+			'user_id':$('.user_id').val()
 		};
 		
 		// We can also pass the url value separately from ajaxurl for front end AJAX implementations
 		$.post(THEMEREX_ajax_url, data, function(msg) {
 			// TODO : Show Thank you subscribe/unsubscribe message based on selection;
 			console.log(msg);
-			$("#letcchat").html(msg);
+			$("#letcchat").html(msg); //Append the response to the viewer 
 		});
 		
-		return false;
-	
+		return false;	
 	});
 });

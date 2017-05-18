@@ -407,7 +407,9 @@ function lets_communicate(){
 	
 	//return $msg;
 }
-
+ 
+/* Reciving the Data from Ajax request for Let's chat */
+ 
 add_action( 'wp_ajax_lets_communicate', 'lets_chat' );
 function lets_chat(){
 	
@@ -417,9 +419,71 @@ function lets_chat(){
 	$contact_day = $_POST['contact_day'];
 	$contact_time = $_POST['contact_time'];
 	
+	//User Details
+	$user_id = $_POST['user_id'];
+	$email = $_POST['user_id'];
+	$fname = $_POST['user_firstname'];	
+	
 	//API data
 	$apikey = get_field('api_key','option');
-	$id = '';
+	$listId = $_POST['chat_list_id'];
 	
-	mc_subscribe($email, $fname, $primary_phone, $contact_hours, $contact_day, $contact_time, $apikey, $id);
+	mc_subscribe_for_chat($email, $fname, $primary_phone, $contact_hours, $contact_day, $contact_time, $apikey, $id);
+}
+
+function mc_subscribe_for_chat($email, $fname, $primary_phone, $contact_hours, $contact_day, $contact_time, $apikey, $id){
+
+	// MailChimp API credentials
+	$apiKey = $apikey;
+    $listID = $id;
+        
+    // MailChimp API URL
+    $memberID = md5(strtolower($email));
+    $dataCenter = substr($apiKey,strpos($apiKey,'-')+1);
+    $url = 'https://' . $dataCenter . '.api.mailchimp.com/3.0/lists/' . $listID . '/members/' . $memberID;
+	
+	// member information
+	$data = array(
+        'email_address' => $email,
+        'status'        => 'subscribed',
+        'merge_fields'  => array(
+            'FNAME'	    => $fname,
+			'PNUMBER'	=> $primary_phone,
+			'CHOUR'		=> $contact_hours,
+			'CONTIME'	=> $contact_time,
+			'CDAY'		=> $contact_day	
+        )
+    );
+	
+	$json = json_encode($data);
+        
+	// send a HTTP POST request with curl
+	$ch = curl_init($url);
+	curl_setopt($ch, CURLOPT_USERPWD, 'user:' . $apiKey);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+	$result = curl_exec($ch);
+	$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+	curl_close($ch);
+
+	// store the status message based on response code
+	if ($httpCode == 200) {
+		 $msg = '<p style="color: #34A853">You have successfully subscribed chat with Printed Wine.</p>';            
+	} else {
+		switch ($httpCode) {
+			case 214:
+				$msg = 'You are already subscribed.';
+				break;
+			default:
+				$msg = 'Some problem occurred, please try again.';
+				break;
+		}
+	   $msg = '<p style="color: #EA4335">'.$msg.'</p>';
+	}	
+	
+	echo $msg;
 }

@@ -65,9 +65,19 @@
 	<!-- 
 		Let's chat Options
 	-->
-	
+	<?php 
+		//Get Option Field Values
+		$chat_title = get_field('section_chat_title','option'); 
+		$chat_subtitle = get_field('chat_subheading','option');
+		
+		//Mailchimp List Id for chat list
+		$chimp_chat_list_id = get_field('chat_list_id','option');
+	?>
+		
 	<div class="col-lg-9">
-		<h4>Lets Chat!</h4>
+		<?php if(!empty($chat_title) && $chat_title != '') : ?>
+			<h4><?php echo $chat_title; ?></h4>
+		<?php endif; ?>
 	</div>
 	
 	<div class="col-lg-9" id="letcchat">
@@ -75,14 +85,16 @@
 			<div class="form-group">
 				<div class="row">
 					<div class="col-lg-6">
-						<h5>Please select your Phone preferences</h5>
-						<p>Determine when and how ofeten we can call you.</p>
+						<?php if(!empty($chat_subtitle)): ?>
+							<?php echo $chat_subtitle; ?>
+						<?php endif; ?>
 					</div>
 					
 					<form name="chat" method="post">
 						<div class="form-group">
 							<h5>Primary Phone/Mobile number</h5>
-							<input type="text" placeholder="Ïnclude Area Code" name="primary_phone" class="form-control primary_phone">		
+							<input type="text" placeholder="Ïnclude Area Code" name="primary_phone" 
+							class="form-control primary_phone">		
 						</div>
 						
 						<div class="form-group">
@@ -98,6 +110,7 @@
 							<input type="text" name="contact_time" placeholder="Time" class="contact_time">
 						</div>
 						
+						<input type="hidden" name="chat_list_id" value="<?php echo $chimp_chat_list_id; ?>" class="chat_list_id">
 						<input type="hidden" name="user_id" value="<?php echo $memberId; ?>" class="user_id">
 						<input type="hidden" name="user_email" value="<?php echo $current_user->user_email; ?>" class="user_email">
 						<input type="hidden" name="user_firstname" value="<?php echo  $current_user->user_firstname; ?>" class="user_firstname">
