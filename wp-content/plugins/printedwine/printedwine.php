@@ -448,10 +448,6 @@ function mc_subscribe_for_chat($email, $fname, $primary_phone, $contact_hours, $
         'status'        => 'subscribed',
         'merge_fields'  => array(
             'FNAME'	    => $fname,
-			'PNUMBER'	=> $primary_phone,
-			'CHOUR'		=> $contact_hours,
-			'CONTIME'	=> $contact_time,
-			'CDAY'		=> $contact_day	
         )
     );
 	
