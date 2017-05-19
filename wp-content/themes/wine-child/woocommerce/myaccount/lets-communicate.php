@@ -80,8 +80,9 @@
 		<?php endif; ?>
 	</div>
 	
-	<div class="col-lg-9" id="letcchat">
-		<form name="letschat" method="post" id="letschat">
+	<div class="col-lg-9" >
+	<p id="letcchat" ></p>
+		<form name="letschat" method="post" >
 			<div class="form-group">
 				<div class="row">
 					<div class="col-lg-6">

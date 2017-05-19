@@ -57,7 +57,8 @@ jQuery(document).ready(function( $ ) {
 	
 	$('#lets_communicate').on("click",function(){
 		
-		 var checkedArray = $("#commnunicate").find(":checked").map(function (index) {
+		var checkedArray = '';
+		 checkedArray = $("#commnunicate").find(":checked").map(function (index) {
 			return this.value;
 		}).get();
 		
@@ -90,6 +91,8 @@ jQuery(document).ready(function( $ ) {
 	/* Get All Let's Chat's form parameters send to the mailchimp functionality; */
 	
 	$('#lets_chat').on("click",function(){
+		
+		console.log('here');
 				
 		var data = {
 			'action': 'lets_chat',
@@ -106,7 +109,8 @@ jQuery(document).ready(function( $ ) {
 		// We can also pass the url value separately from ajaxurl for front end AJAX implementations
 		$.post(THEMEREX_ajax_url, data, function(msg) {
 			// TODO : Show Thank you subscribe/unsubscribe message based on selection;
-			console.log(msg);
+			console.log(msg+'Test----');
+			console.log(data);
 			$("#letcchat").html(msg); //Append the response to the viewer 
 		});
 		
