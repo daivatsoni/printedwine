@@ -484,7 +484,7 @@ function lets_chat(){
 	
 	//API data
 	$apikey = get_field('api_key','option');  
-	$listId = $_POST['chat_list_id'];
+	$id = $_POST['chat_list_id'];  
 	
 	mc_subscribe_for_chat($email, $fname, $primary_phone, $contact_hours, $contact_day, $contact_time, $apikey, $id);
 }
