@@ -87,6 +87,39 @@ jQuery(document).ready(function( $ ) {
 	
 	});
 	
+	$('#wineandartAct').on("click",function(){
+		
+		var checkedArray = '';
+		 checkedArray = $("#wineandart").find(":checked").map(function (index) {
+			return this.value;
+		}).get();
+		
+		var indexArray = $("#wineandart").find(".listIndex").map(function (index) {
+			return this.value;
+		}).get();
+		
+		var listIds = checkedArray.associate(checkedArray);
+		
+		var data = {
+			'action': 'wine_and_art',
+			'list_ids': listIds,    // We pass php values differently!
+			'user_id': $('.user_id').val(),
+			'user_email':$('.user_email').val(),
+			'user_firstname':$('.user_firstname').val(),
+			'user_lastname':$('.user_lastname').val()
+		};
+		
+		// We can also pass the url value separately from ajaxurl for front end AJAX implementations
+		$.post(THEMEREX_ajax_url, data, function(msg) {
+			// TODO : Show Thank you subscribe/unsubscribe message based on selection;
+			console.log(msg);
+			$("#resultMsg").html(msg); // Append response to the viewer;   
+		});
+		
+		return false;
+	
+	});
+	
 	/* Get All Let's Chat's form parameters send to the mailchimp functionality; */
 	
 	$('#lets_chat').on("click",function(){

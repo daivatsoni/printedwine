@@ -23,7 +23,7 @@
 	</div>
 	
 	<div class="col-lg-9" id="resultMsg">
-		<form name="commnunicate" method="post" id="commnunicate">
+		<form name="wineandart" method="post" id="wineandart">
 			<?php 
 				if(!empty($form_opt)){ $i = 1;
 					foreach($form_opt as $opt) { ?>
@@ -49,7 +49,7 @@
 					
 					<div class="form-group">
 						<div class="row">
-							<input type="button" name="submit" value="save" id="lets_communicate">
+							<input type="button" name="submit" value="save" id="wineandartAct">
 						</div>
 					</div>
 					

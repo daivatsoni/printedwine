@@ -406,6 +406,27 @@ function lets_communicate(){
 	//return $msg;
 }
 
+add_action( 'wp_ajax_wine_and_art', 'wine_and_art' );
+
+function wine_and_art(){
+	
+	$form_opt = get_field('list_of_options','option');
+	$ids = $_POST['list_ids'];
+	$user_id =  $_POST['user_id'];
+	$email = $_POST['user_email'];
+	$fname = $_POST['user_firstname'];
+	$lname = $_POST['user_lastname'];
+	$apikey = get_field('api_key','option');
+		
+	// Check Length of ids, check numbers of ids available
+	if(count($ids)){
+		
+		//print_r($ids);
+		foreach($ids as $id){
+			mc_subscribe($email, $fname, $apikey, $id);
+		}		
+	}	
+}
 
 function mc_subscribe_for_chat($email, $fname, $primary_phone, $contact_hours, $contact_day, $contact_time, $apikey, $id){
 
