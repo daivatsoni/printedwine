@@ -67,7 +67,6 @@ jQuery(document).ready(function( $ ) {
 		}).get();
 		
 		var listIds = checkedArray.associate(checkedArray);
-		//console.log(listIds);
 		
 		var data = {
 			'action': 'lets_communicate',
@@ -91,8 +90,8 @@ jQuery(document).ready(function( $ ) {
 	/* Get All Let's Chat's form parameters send to the mailchimp functionality; */
 	
 	$('#lets_chat').on("click",function(){
-		
-		console.log('here');
+		var user_Val = $('.user_firstname').val();
+		console.log('here'+user_Val+'.....');
 				
 		var data = {
 			'action': 'lets_chat',

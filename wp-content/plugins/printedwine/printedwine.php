@@ -375,8 +375,6 @@ function lets_communicate(){
 	$apikey = get_field('api_key','option');
 	$server = 'us12';
 	
-	// Check none is selected or not 
-	
 	// Check in array , if in array 
 	if(in_array('none',$ids)){
 		
@@ -391,7 +389,7 @@ function lets_communicate(){
 		//Unset none index from $ids
 		unset($ids['none']);
 		
-		$msg = 'unsubscribe';	
+		//$msg = 'unsubscribe';	
 	}
 	
 	// Check Length of ids, check numbers of ids available
@@ -402,34 +400,12 @@ function lets_communicate(){
 			mc_subscribe($email, $fname, $apikey, $id);
 		}
 		
-		$msg = 'subscribe';
+		//$msg = 'subscribe';
 	}
 	
 	//return $msg;
 }
- 
-/* Reciving the Data from Ajax request for Let's chat */
- 
-add_action( 'wp_ajax_lets_communicate', 'lets_chat' );
-function lets_chat(){
-	
-	//POSTS DATA
-	$primary_phone = $_POST['primary_phone'];
-	$contact_hours = $_POST['contact_hours'];
-	$contact_day = $_POST['contact_day'];
-	$contact_time = $_POST['contact_time'];
-	
-	//User Details
-	$user_id = $_POST['user_id'];
-	$email = $_POST['user_id'];
-	$fname = $_POST['user_firstname'];	
-	
-	//API data
-	$apikey = get_field('api_key','option');
-	$listId = $_POST['chat_list_id'];
-	
-	mc_subscribe_for_chat($email, $fname, $primary_phone, $contact_hours, $contact_day, $contact_time, $apikey, $id);
-}
+
 
 function mc_subscribe_for_chat($email, $fname, $primary_phone, $contact_hours, $contact_day, $contact_time, $apikey, $id){
 
@@ -486,4 +462,29 @@ function mc_subscribe_for_chat($email, $fname, $primary_phone, $contact_hours, $
 	}	
 	
 	echo $msg;
+}
+ 
+/* Reciving the Data from Ajax request for Let's chat */
+ 
+add_action( 'wp_ajax_lets_chat', 'lets_chat' );
+function lets_chat(){
+	
+	$msg = '';
+	
+	//POSTS DATA
+	$primary_phone = $_POST['primary_phone'];
+	$contact_hours = $_POST['contact_hours'];
+	$contact_day = $_POST['contact_day'];
+	$contact_time = $_POST['contact_time'];
+	
+	//User Details
+	$user_id = $_POST['user_id'];
+	$email = $_POST['user_id'];
+	$fname = $_POST['user_firstname'];	
+	
+	//API data
+	$apikey = get_field('api_key','option');  
+	$listId = $_POST['chat_list_id'];
+	
+	mc_subscribe_for_chat($email, $fname, $primary_phone, $contact_hours, $contact_day, $contact_time, $apikey, $id);
 }
