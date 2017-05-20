@@ -412,6 +412,7 @@ function mc_subscribe_for_chat($email, $fname, $primary_phone, $contact_hours, $
 	// MailChimp API credentials
 	$apiKey = $apikey;
     $listID = $id;
+	$msg = '';
         
     // MailChimp API URL
     $memberID = md5(strtolower($email));
@@ -455,10 +456,10 @@ function mc_subscribe_for_chat($email, $fname, $primary_phone, $contact_hours, $
 				$msg = 'You are already subscribed.';
 				break;
 			default:
-				$msg = 'Some problem occurred, please try again.';
+				$msg = 'Some problem occurred, please try again.'.$httpCode.'---';
 				break;
 		}
-	   $msg = '<p style="color: #EA4335">'.$msg.'</p>';
+	   $msg = '<p style="color: #EA4335">'.$msg.'</p>';  
 	}	
 	
 	echo $msg;
