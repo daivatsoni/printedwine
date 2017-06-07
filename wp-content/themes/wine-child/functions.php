@@ -453,16 +453,14 @@ if( function_exists('acf_add_options_page') ) {
 // create a custom end point in the My Accunt Page                          
 function custom_wc_end_point() {
 	if(class_exists('WooCommerce')){
-		add_rewrite_endpoint( 'lets-communicate', EP_ROOT | EP_PAGES );
-		add_rewrite_endpoint( 'wine-art-preferance', EP_ROOT | EP_PAGES );
-		add_rewrite_endpoint( 'printed-wine-credits', EP_ROOT | EP_PAGES );
+		add_rewrite_endpoint( 'my_gallery', EP_ROOT | EP_PAGES );
 	}
 }  
 add_action( 'init', 'custom_wc_end_point' );
 
 // this action inform the woocommerce about the new end points
 function custom_endpoint_query_vars( $vars ) {
-    $vars[] = 'lets-communicate,wine-art-preferance,printed-wine-credits';
+    $vars[] = 'lets-communicate,wine-art-preferance,printed-wine-credits,my_gallery';
     return $vars;
 }
 add_filter( 'query_vars', 'custom_endpoint_query_vars', 0 );
@@ -509,3 +507,11 @@ function fetch_content_custom_printed_wine_endpoint() {
 	
 }
 add_action( 'woocommerce_account_printed-wine-credits_endpoint', 'fetch_content_custom_printed_wine_endpoint' );
+function fetch_content_custom_my_gallery_endpoint() {
+	
+	include 'woocommerce/myaccount/my_gallery.php';    
+	
+}
+add_action( 'woocommerce_account_my_gallery_endpoint', 'fetch_content_custom_my_gallery_endpoint' );
+
+

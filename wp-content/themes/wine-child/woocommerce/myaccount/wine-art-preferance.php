@@ -39,8 +39,8 @@
 									<input type="hidden" name="user_id" value="<?php echo $memberId; ?>" class="user_id">
 									<input type="hidden" name="listIndex[]" value="<?php echo $opt['list_id']; ?>" class="listIndex">
 									<input type="hidden" name="user_email" value="<?php echo $current_user->user_email; ?>" class="user_email">
-									<input type="hidden" name="user_firstname" value="<?php echo  $current_user->user_firstname; ?>" class="user_firstname">
-									<input type="hidden" name="user_lastname" value="<?php echo  $current_user->user_lastname; ?>" class="user_lastname">
+									<input type="hidden" name="user_firstname" value="<?php echo $current_user->user_firstname; ?>" class="user_firstname">
+									<input type="hidden" name="user_lastname" value="<?php echo $current_user->user_lastname; ?>" class="user_lastname">
 								</div>
 							</div>
 						</div>

@@ -114,7 +114,7 @@
 						<input type="hidden" name="chat_list_id" value="<?php echo $chimp_chat_list_id; ?>" class="chat_list_id">
 						<input type="hidden" name="user_id" value="<?php echo $memberId; ?>" class="user_id">
 						<input type="hidden" name="user_email" value="<?php echo $current_user->user_email; ?>" class="user_email">
-						<input type="hidden" name="user_firstname" value="<?php echo  $current_user->user_firstname; ?>" class="user_firstname">
+						<input type="hidden" name="user_firstname" value="<?php echo $current_user->user_firstname; ?>" class="user_firstname">
 						
 						<div class="form-control">
 							<input type="submit" name="submit" value="SAVE" id="lets_chat">

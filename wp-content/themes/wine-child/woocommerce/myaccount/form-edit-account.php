@@ -33,6 +33,7 @@ do_action( 'woocommerce_before_edit_account_form' ); ?>
 
 	// fetch the list of groups that belong on the top of the my account page
 	$field_groups = $api->get_field_groups();
+	
 ?>
 
 <form class="woocommerce-EditAccountForm edit-account" action="" method="post">
