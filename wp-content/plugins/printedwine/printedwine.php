@@ -418,14 +418,10 @@ function wine_and_art(){
 	$lname = $_POST['user_lastname'];
 	$apikey = get_field('api_key','option');
 		
-	// Check Length of ids, check numbers of ids available
-	if(count($ids)){
-		
-		//print_r($ids);
-		foreach($ids as $id){
-			mc_subscribe($email, $fname, $apikey, $id);
-		}		
-	}	
+	//print_r($ids);
+	foreach($ids as $id){
+		mc_subscribe($email, $fname, $apikey, $id);
+	}		
 }
 
 function mc_subscribe_for_chat($email, $fname, $primary_phone, $contact_hours, $contact_day, $contact_time, $apikey, $id){
