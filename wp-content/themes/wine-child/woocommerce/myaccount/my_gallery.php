@@ -16,7 +16,7 @@
 	
 	<div class="col-lg-9">
 	
-		<a href="#" id="createAlubm">Create Alubm</a>
+		<a href="javascript:void(0);" id="createAlbum">Create Album</a>
 		
 		<p id="resultMsg"></p>
 		   

@@ -506,3 +506,6 @@ function lets_chat(){
 	
 	mc_subscribe_for_chat($email, $fname, $primary_phone, $contact_hours, $contact_day, $contact_time, $apikey, $id);
 }
+
+require_once "classes/pw_product_form.class.php";
+require_once "classes/pw_cart.class.php";
