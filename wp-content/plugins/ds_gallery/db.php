@@ -16,8 +16,8 @@ class Ds_gallery_db {
 	function setup_tables() {
 		if(!is_multisite()) {
 			self::create_tables();
-			self::update_gallery_table();
-			self::update_categories_table();			
+//			self::update_gallery_table();
+//			self::update_categories_table();			
 		}
 	}
 	
@@ -77,7 +77,7 @@ class Ds_gallery_db {
 		`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
 		`name` VARCHAR( 120 ) NULL,
 		`user_id` BIGINT NOT NULL ,
-                `status` 
+                `status` enum('Active','Inactive') NOT NULL
 		);";
 		
 		$this->wpdb->query($sql);
@@ -159,10 +159,15 @@ class Ds_gallery_db {
 		return $results;
 	}
 	
-	function return_categories($criteria=array()) {
+	function return_albums($criteria=array()) {
 		$id = $criteria['id'];
+		$userId = $criteria['user_id'];
+                
 		$sql = "SELECT * FROM $this->table_name_category WHERE 1";
-		if($id>0) $sql .= " AND id='$id'";
+                
+		if($id>0) $sql .= " AND id='$id'";                
+		if($userId>0) $sql .= " AND user_id='$userId'";
+                
 		$sql .= ' ORDER BY name';
 		
 		$results = $this->wpdb->get_results($sql, 'ARRAY_A');
@@ -224,13 +229,14 @@ class Ds_gallery_db {
 		if(is_main_site()) $this->wpdb->query($sql);
 	}
 	
-	function add_category($criteria=array()) {
+	function add_album($criteria=array()) {
 		$name = $criteria['name'];
-		$marker_icon = $criteria['marker_icon'];
-		$postcode = $criteria['postcode'];
+		$user_id = $criteria['user_id'];
+		$status = "Active";
 		
-		$sql = "INSERT INTO $this->table_name_category (name, marker_icon, postcode) VALUES ('".$name."', '".$marker_icon."', '".$postcode."')";
-		$this->wpdb->query($sql);
+		$sql = "INSERT INTO $this->table_name_category (name, user_id, status) VALUES ('".$name."', '".$user_id."', '".$status."')";
+		$rows = $this->wpdb->query($sql);
+                return $rows;
 	}
 	
 }

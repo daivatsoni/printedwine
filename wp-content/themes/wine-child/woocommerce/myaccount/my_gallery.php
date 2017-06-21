@@ -15,10 +15,12 @@
 	</div>
 	
 	<div class="col-lg-9">
-	
+            <p id="resultMsg"></p>
+            <div id="btnAlbum">
 		<a href="javascript:void(0);" id="createAlbum">Create Album</a>
-		
-		<p id="resultMsg"></p>
+                <div id="albumForm" style="display:none;"></div>
+            </div>
+            <div id="albumListContainer"></div>
 		   
 	</div>	
 </div>
