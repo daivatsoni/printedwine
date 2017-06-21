@@ -11,6 +11,9 @@
 if (!defined('ABSPATH'))
     exit; // Exit if accessed directly
 
+require_once dirname( __FILE__ ).'/db.php';
+
+
 function add_scripts_files() {
 //    if( 'index.php' != $hook ) {
 //	// Only applies to dashboard panel
@@ -21,34 +24,33 @@ function add_scripts_files() {
 
 add_action('wp_enqueue_scripts', 'add_scripts_files');
 
-add_action('init', 'create_posttype');
-
-function create_posttype() {
-    register_post_type('acme_gallery', array(
-        'labels' => array(
-            'name' => __('Gallery'),
-            'singular_name' => __('Gallery')
-        ),
-        'public' => true,
-        'has_archive' => true,
-        'rewrite' => array('slug' => 'gallery'),
-        )
-    );
-}
+//add_action('init', 'create_posttype');
+//function create_posttype() {
+//    register_post_type('acme_gallery', array(
+//        'labels' => array(
+//            'name' => __('Gallery'),
+//            'singular_name' => __('Gallery')
+//        ),
+//        'public' => true,
+//        'has_archive' => true,
+//        'rewrite' => array('slug' => 'gallery'),
+//        )
+//    );
+//}
 
 add_action('wp_ajax_save_galery', 'save_galery');
-add_action('wp_ajax_nopriv_save_galery', 'save_galery');
+//add_action('wp_ajax_nopriv_save_galery', 'save_galery');
 
 function save_galery() {
 
     $my_cptpost_args = array(
         'post_title' => $_POST['cptTitle'],
         'post_content' => $_POST['cptContent'],
-        'post_status' => 'pending',
+        'post_status' => 'publish',
         'post_type' => $_POST['post_type']
     );
 
-    echo '124837483478';
+    
     
     // at the end stop further execution
     exit;
@@ -70,6 +72,7 @@ function create_plugin_database_table() {
         $sql = "CREATE TABLE `" . $wp_track_table . "` ( ";
 
         $sql .= "  id mediumint(9) NOT NULL AUTO_INCREMENT, ";
+        $sql .= "  user_id mediumint(9) NOT NULL, ";
         $sql .= "  time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL ";
         $sql .= "  album_name tinytext NOT NULL ";
         $sql .= "  album_status tinytext NOT NULL ";
