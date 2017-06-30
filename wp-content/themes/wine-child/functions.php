@@ -454,13 +454,14 @@ if( function_exists('acf_add_options_page') ) {
 function custom_wc_end_point() {
 	if(class_exists('WooCommerce')){
 		add_rewrite_endpoint( 'my_gallery', EP_ROOT | EP_PAGES );
+                add_rewrite_endpoint( 'artist_profile', EP_ROOT | EP_PAGES );
 	}
 }  
 add_action( 'init', 'custom_wc_end_point' );
 
 // this action inform the woocommerce about the new end points
 function custom_endpoint_query_vars( $vars ) {
-    $vars[] = 'lets-communicate,wine-art-preferance,printed-wine-credits,my_gallery';
+    $vars[] = 'lets-communicate,wine-art-preferance,printed-wine-credits,my_gallery,artist_profile';
     return $vars;
 }
 add_filter( 'query_vars', 'custom_endpoint_query_vars', 0 );
@@ -513,5 +514,12 @@ function fetch_content_custom_my_gallery_endpoint() {
 	
 }
 add_action( 'woocommerce_account_my_gallery_endpoint', 'fetch_content_custom_my_gallery_endpoint' );
+
+function fetch_content_custom_artist_profile_endpoint() {
+	
+	include 'woocommerce/myaccount/artist_profile.php';    
+	
+}
+add_action( 'woocommerce_account_artist_profile_endpoint', 'fetch_content_custom_artist_profile_endpoint' );
 
 

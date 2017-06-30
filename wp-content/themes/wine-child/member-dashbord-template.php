@@ -16,6 +16,7 @@ get_header(); ?>
 				<div class="header_tab list-group list-group-horizontal">
 					<ul>
 						<li class="list-group-item"><a href="http://localhost/printedwine/member-dashboard/edit-account/">My Profile</a></li>
+                                                <li class="list-group-item"><a href="http://localhost/printedwine/member-dashboard/artist_profile/">Artist Profile</a></li>
 						<li class="list-group-item"><a href="http://localhost/printedwine/member-dashboard/my_gallery/">My Gallery</a></li>
 						<li class="list-group-item"><a href="#">Sales</a></li>
 						<li class="list-group-item"><a href="#">Purchase History</a></li>
