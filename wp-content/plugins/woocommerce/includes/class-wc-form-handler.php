@@ -22,6 +22,7 @@ class WC_Form_Handler {
 		add_action( 'template_redirect', array( __CLASS__, 'redirect_reset_password_link' ) );
 		add_action( 'template_redirect', array( __CLASS__, 'save_address' ) );
 		add_action( 'template_redirect', array( __CLASS__, 'save_account_details' ) );
+                add_action( 'template_redirect', array( __CLASS__, 'save_artist_details' ) );
 		add_action( 'wp_loaded', array( __CLASS__, 'checkout_action' ), 20 );
 		add_action( 'wp_loaded', array( __CLASS__, 'process_login' ), 20 );
 		add_action( 'wp_loaded', array( __CLASS__, 'process_registration' ), 20 );
@@ -1028,6 +1029,94 @@ class WC_Form_Handler {
 			} catch ( Exception $e ) {
 				wc_add_notice( '<strong>' . __( 'Error:', 'woocommerce' ) . '</strong> ' . $e->getMessage(), 'error' );
 			}
+		}
+	}
+        public static function save_artist_details() {
+		if ( 'POST' !== strtoupper( $_SERVER[ 'REQUEST_METHOD' ] ) ) {
+			return;
+		}
+
+		if ( empty( $_POST[ 'action' ] ) || 'save_artist_details' !== $_POST[ 'action' ]  ) {
+			return;
+		}
+
+		$errors       = new WP_Error();
+		$user         = new stdClass();
+
+		$user->ID     = (int) get_current_user_id();
+		$current_user = get_user_by( 'id', $user->ID );
+
+		if ( $user->ID <= 0 ) {
+			return;
+		}
+                $user_id = $user->ID;
+		$account_artist_name = ! empty( $_POST[ 'artist_name' ] ) ? wc_clean( $_POST[ 'artist_name' ] ) : '';
+		$artist_country  = ! empty( $_POST[ 'artist_country' ] ) ? wc_clean( $_POST[ 'artist_country' ] ) : '';
+		$artist_born_year      = ! empty( $_POST[ 'artist_born_year' ] ) ? wc_clean( $_POST[ 'artist_born_year' ] ) : '';
+		$artist_type           = ! empty( $_POST[ 'artist_type' ] ) ? $_POST[ 'artist_type' ] : '';
+		$artist_description    = ! empty( $_POST[ 'artist_description' ] ) ? $_POST[ 'artist_description' ] : '';
+		$artist_awards         = ! empty( $_POST[ 'artist_awards' ] ) ? $_POST[ 'artist_awards' ] : '';
+		
+
+		// Handle required fields
+		$required_fields = apply_filters( 'woocommerce_save_artist_details_required_fields', array(
+			'artist_name' => __( 'Name', 'woocommerce' ),
+			'artist_country'  => __( 'Country', 'woocommerce' ),
+			'artist_born_year'      => __( 'Born year', 'woocommerce' ),
+                        'artist_type'      => __( 'Artist Type', 'woocommerce' ),
+                        'artist_description'      => __( 'Description', 'woocommerce' ),
+                        'artist_awards'      => __( 'Awards', 'woocommerce' ),
+		) );
+
+		foreach ( $required_fields as $field_key => $field_name ) {
+			$value = wc_clean( $_POST[ $field_key ] );
+			if ( empty( $value ) ) {
+				wc_add_notice( '<strong>' . esc_html( $field_name ) . '</strong> ' . __( 'is a required field.', 'woocommerce' ), 'error' );
+			}
+		}
+
+	
+		if ( $errors->get_error_messages() ) {
+			foreach ( $errors->get_error_messages() as $error ) {
+				wc_add_notice( $error, 'error' );
+			}
+		}
+
+		if ( wc_notice_count( 'error' ) === 0 ) {
+
+			//wp_update_user( $user ) ;
+                        global $wpdb;
+                        $artist_type = implode(",", $artist_type);
+                        $sql = "SELECT * FROM pw_artist WHERE user_id='$user_id'";
+                        $results = $wpdb->get_results($sql, 'ARRAY_A');
+                        if(count($results)>0) {
+                                $sql = "Update pw_artist "
+                                        . "set "
+                                        . "user_id = '".$user_id."', "
+                                        . "artist_name = '".$account_artist_name."',"
+                                        . "artist_country = '".$artist_country."',"
+                                        . "artist_born_year = '".$artist_born_year."', "
+                                        . "artist_type = '".$artist_type."', "
+                                        . "artist_description = '".$artist_description."', "
+                                        . "artist_awards = '".$artist_awards."'";
+//echo $sql;exit;
+                                $rows = $wpdb->query($sql);
+                        }
+                        else {
+
+
+                                $sql = "INSERT INTO pw_artist (user_id, artist_name, artist_country,artist_born_year,artist_type,artist_description,artist_awards,status) "
+                                        . "VALUES "
+                                        . "('".$user_id."', '".$account_artist_name."', '".$artist_country."','".$artist_born_year."', '".$artist_type."', '".$artist_description."', '".$artist_awards."','Active')";
+
+                                $rows = $wpdb->query($sql);
+                        }
+			wc_add_notice( __( 'Account details changed successfully.', 'woocommerce' ) );
+
+			do_action( 'woocommerce_save_artist_details', $user->ID );
+
+			wp_safe_redirect( wc_get_page_permalink( 'myaccount' ) );
+			exit;
 		}
 	}
 }
