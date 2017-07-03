@@ -403,6 +403,15 @@ function my_login_logo() { ?>
             background-size: 200px;
             width: 200px;
         }
+        input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
     </style>
 <?php }
 add_action( 'login_enqueue_scripts', 'my_login_logo' );
@@ -516,7 +525,17 @@ function fetch_content_custom_my_gallery_endpoint() {
 add_action( 'woocommerce_account_my_gallery_endpoint', 'fetch_content_custom_my_gallery_endpoint' );
 
 function fetch_content_custom_artist_profile_endpoint() {
-	
+	wp_enqueue_style("select2", get_stylesheet_directory_uri()."/css/select2.css");
+        wp_enqueue_script("select2", get_stylesheet_directory_uri()."/js/select2.js", array('jquery'));
+        ?>
+        <script type='text/javascript'>
+        jQuery(document).ready(function ($) {
+           $(".js-example-basic-multiple").select2({
+                placeholder: 'Select artist type'
+              }); 
+        });
+        </script> 
+        <?php
 	include 'woocommerce/myaccount/artist_profile.php';    
 	
 }
