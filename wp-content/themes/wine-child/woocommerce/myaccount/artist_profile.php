@@ -69,7 +69,7 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
                     <?php 
                     foreach ($country as $item){
                     ?>
-                    <option value="<?php echo $item->id;?>" <?php if($artist[0]->artist_country == $item->id ){?> selected="selected"<?php } ?>><?php echo $item->country_name;?></option>
+                    <option value="<?php echo $item->id;?>" <?php if($artist && ($artist[0]->artist_country == $item->id )){?> selected="selected"<?php } ?>><?php echo $item->country_name;?></option>
                     <?php 
                     }
                     ?>
@@ -77,7 +77,7 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
             <select name="artist_born_year" id="artist_born_year" style="width:30% !important;">
                     <option value="">Born</option>
                     <?php for($born = date('Y'); $born >= date('Y', strtotime('-100 years')); $born--){?>
-                    <option value="<?php echo $born;?>"<?php if($artist[0]->artist_born_year == $born ){?> selected="selected"<?php } ?>><?php echo $born;?></option>
+                    <option value="<?php echo $born;?>"<?php if($artist && ($artist[0]->artist_born_year == $born) ){?> selected="selected"<?php } ?>><?php echo $born;?></option>
                     <?php } ?>
 		</select>
             <select class="js-example-basic-multiple" id="artist_type" name="artist_type[]" style="width:30% !important;" multiple="multiple">
