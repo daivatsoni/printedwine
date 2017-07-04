@@ -17,7 +17,7 @@ class Artist {
     function Artist() {
         
         add_action('wp_enqueue_scripts', array(__CLASS__, 'add_scripts_files'));
-       // add_action('wp_ajax_get_albums', array(__CLASS__, 'listAlbums'));
+        add_action('wp_ajax_save_art', array(__CLASS__, 'save_art'));
         add_action('wp_ajax_save_artist', array(__CLASS__, 'save_artist'));
       //  add_action('wp_ajax_createForm', array(__CLASS__, 'createForm'));
         
@@ -60,6 +60,43 @@ class Artist {
         }else{
             $status = $db->add_artist($albumVars);
         }
+        // at the end stop further execution
+        if($status) {
+            $result = array("status"=>1, "message"=>"Artist created successfully.");
+            echo json_encode($result);
+        } 
+        exit;
+    }
+    
+    function save_art() {
+         //echo "<pre>";print_r($_FILES);exit;
+        // get current user id
+        $user_id = get_current_user_id();
+        $uploaddir = get_stylesheet_directory_uri().'/images/arts/'; 
+        $file = $uploaddir . basename($_FILES['image']['name']); 
+        $raw_file_name = $_FILES['image']['tmp_name'];
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $file)) { 
+            echo "success"; 
+        } else {
+            echo "error";
+        }
+       // $image_path = get_stylesheet_directory_uri()."/images/arts/blank_photo.jpeg";
+        $albumVars = array(
+            "user_id"=> $user_id,
+            "art_title" => $_POST['art_title'],
+            "art_category" => $_POST['art_category'],
+            "art_sub_category" => $_POST['art_sub_category'],
+            "art_colors" => $_POST['art_colors'],
+            "art_year" => $_POST['art_year'],
+            "image_path" => $raw_file_name,
+            "art_description" => $_POST['art_description'],
+            "status" => "Active"
+        );
+        
+     
+        $db = new Artist_db();
+        
+        $status = $db->add_art($albumVars);
         // at the end stop further execution
         if($status) {
             $result = array("status"=>1, "message"=>"Artist created successfully.");

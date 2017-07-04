@@ -67,14 +67,20 @@ class Artist_db {
 		);";
 		$this->wpdb->query($sql);
 		
-		/*$sql = "CREATE TABLE IF NOT EXISTS " . $this->table_name_gallery . " (
+		$sql = "CREATE TABLE IF NOT EXISTS " . $this->table_name_gallery . " (
 		`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-		`name` VARCHAR( 120 ) NULL,
 		`user_id` BIGINT NOT NULL ,
+                `art_title` VARCHAR( 160 ) NULL ,
+                `art_category` VARCHAR( 160 ) NULL ,
+                `art_sub_category` VARCHAR( 160 ) NULL ,
+                `art_colors` VARCHAR( 160 ) NULL ,
+                `art_year` BIGINT NOT NULL ,
+                `image_path` VARCHAR( 255 ) NULL ,
+                `art_description` TEXT NULL ,
                 `status` enum('Active','Inactive') NOT NULL
 		);";
 		
-		$this->wpdb->query($sql);*/
+		$this->wpdb->query($sql);
 	}
 	
 	function return_nb_stores($criteria=array()) {
@@ -171,14 +177,20 @@ class Artist_db {
 		if(is_main_site()) $this->wpdb->query($sql);
 	}
 	
-	function add_gallery($criteria=array()) {
-		$name = $criteria['name'];
-		$user_id = $criteria['user_id'];
-		$status = "Active";
+	function add_art($criteria=array()) {
 		
-		$sql = "INSERT INTO $this->table_name_category (name, user_id, status) VALUES ('".$name."', '".$user_id."', '".$status."')";
-		$rows = $this->wpdb->query($sql);
-                return $rows;
+		$sql = "INSERT INTO $this->table_name_gallery 
+		(user_id, art_title,
+                art_category, art_sub_category,
+                art_colors, art_year, 
+                image_path, art_description, status) 
+		VALUES (
+                '".$criteria['user_id']."', '".$criteria['art_title']."',"
+                . " '".$criteria['art_category']."', '".$criteria['art_sub_category']."', "
+                . "'".$criteria['art_colors']."', '".$criteria['art_year']."', "
+                . "'".$criteria['image_path']."', '".$criteria['art_description']."', '".$criteria['status']."'
+		)";
+		if(is_main_site()) $this->wpdb->query($sql);
 	}
 	
 }

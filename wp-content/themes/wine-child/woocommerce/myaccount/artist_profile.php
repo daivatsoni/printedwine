@@ -24,7 +24,11 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
 	
 	$user_id = get_current_user_id();
 	$artist_type = get_field('artist_type','option');
-      //  echo "<pre>";print_r($artist_type);exit;
+        $art_cat = get_field('art_category','option');
+        $art_sub_cat = get_field('art_sub_category','option');
+        $colours = get_field('colours','option');
+
+       // echo "<pre>";print_r($art_cat);exit;
 	
         
         global $wpdb;
@@ -44,8 +48,6 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
 <form class="woocommerce-artist_form artist_form" action="" method="post">
 
     <h1>1. Artist Profile</h1><span>All fields are mendetory</span>
-	
-	<?php //do_action( 'woocommerce_artist_profile_form_start' ); ?>
 		
 	<p class="woocommerce-FormRow woocommerce-FormRow--first form-row form-row-first">
 		<input type="text" class="woocommerce-Input woocommerce-Input--text input-text"
@@ -101,11 +103,11 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
             <input type="submit" class="woocommerce-Button button" name="saveDataArtist" id="saveDataArtist" value="<?php esc_attr_e( 'Save', 'woocommerce' ); ?>" />
 		<input type="hidden" name="action" value="saveDataArtist" />
 	</p>
-
-	<?php //do_action( 'woocommerce_artist_profile_form_end' ); ?>
+ 
+ <?php //include 'woocommerce/myaccount/artist_profile_template.php';     ?>
 </form>
 <div class="clear"></div>
-<form class="woocommerce-ArtistProfileForm artist_profile" action="" method="post">
+<form class="woocommerce-ArtistArtForm artist_art" id="saveDataArtForm" action="" method="post" enctype="multipart/form-data">
 
     <h1>2. Upload images to your gallary</h1><span>you may click and drag to reorder once you have saved</span>
 	
@@ -121,7 +123,7 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
                 <label for="file-upload" class="custom-file-upload">
                     Click to upload
                 </label>
-                <input id="file-upload" type="file" hidden="true"/>
+                <input id="file-upload" name="image" type="file" hidden="true"/>
             </div>
             <div class="clear"></div>
         </div>
@@ -139,12 +141,24 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
             <p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
                     <select name="art_category" style="width:20% !important;">
                         <option value="">Category</option>
+                        <?php 
+                        foreach ($art_cat as $item){ ?>
+                            <option value="<?php echo $item['category'];?>"  ><?php echo $item['category'];?></option>;
+                        <?php } ?>
                     </select>
                     <select name="art_sub_category" style="width:20% !important;">
                         <option value="">Sub Category</option>
+                        <?php 
+                        foreach ($art_sub_cat as $item){ ?>
+                            <option value="<?php echo $item['sub_category'];?>" ><?php echo $item['sub_category'];?></option>;
+                        <?php } ?>
                     </select>
                     <select name="art_colors" style="width:20% !important;">
                         <option value="">Colours</option>
+                        <?php 
+                        foreach ($colours as $item){ ?>
+                            <option value="<?php echo $item['colour'];?>" ><?php echo $item['colour'];?></option>;
+                        <?php } ?>
                     </select>
                     <select name="art_year" style="width:20% !important;">
                         <option value="">Year</option>
@@ -165,20 +179,20 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
     
 	<div class="clear"></div>
       
-	<?php do_action( 'woocommerce_artist_profile_image_form' ); ?>
+	<?php //do_action( 'woocommerce_artist_profile_image_form' ); ?>
 
 	<p>
-		<?php wp_nonce_field( 'save_artist_details' ); ?>
-		<input type="submit" class="woocommerce-Button button" name="save_artist_image_details" value="<?php esc_attr_e( 'Save', 'woocommerce' ); ?>" />
-		<input type="hidden" name="action" value="save_artist_image_details" />
+		<?php //wp_nonce_field( 'save_artist_details' ); ?>
+            <input type="submit" class="woocommerce-Button button" id="saveDataArt" name="saveDataArt" value="<?php esc_attr_e( 'Save', 'woocommerce' ); ?>" />
+		<input type="hidden" name="action" value="save_art" />
 	</p>
         </div>
         </div>
         </div>
         </div>
    
-	<?php do_action( 'woocommerce_artist_profile_image_form_end' ); ?>
+	<?php //do_action( 'woocommerce_artist_profile_image_form_end' ); ?>
 </form>
 
 
-<?php do_action( 'woocommerce_after_artist_profile_form' ); ?>
+<?php //do_action( 'woocommerce_after_artist_profile_form' ); ?>
