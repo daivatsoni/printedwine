@@ -156,7 +156,7 @@ class Artist_db {
             
 		$sql = "INSERT INTO $this->table_name 
 		(user_id, artist_name, artist_country, artist_born_year, artist_type, artist_description, artist_awards, status) 
-		VALUES ('".$criteria['user_id']."', '".$criteria['artist_name']."', '".$criteria['artist_country']."', '".$criteria['artist_born_year']."', '".$criteria['artist_type']."', '".$criteria['artist_description']."', '".$criteria['artist_awards']."', '".$criteria['status']."', 
+		VALUES ('".$criteria['user_id']."', '".$criteria['artist_name']."', '".$criteria['artist_country']."', '".$criteria['artist_born_year']."', '".$criteria['artist_type']."', '".$criteria['artist_description']."', '".$criteria['artist_awards']."', '".$criteria['status']."' 
 		)";
 		if(is_main_site()) $this->wpdb->query($sql);
 	}

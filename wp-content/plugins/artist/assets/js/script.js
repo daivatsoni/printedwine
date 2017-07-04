@@ -46,11 +46,10 @@ jQuery(document).ready(function ($) {
             'art_year': $('#art_year').val(),
             'art_description': $('#art_description').val()
         };*/
-         alert(data);
         $.post(THEMEREX_ajax_url, data, function (msg) {
-            alert(msg);
+          
             $result = JSON.parse(msg);
-            alert($result);
+            
             $("#resultMsg").html($result.message);
             if($result.status) {
                 $("#resultMsg").addClass("success");
