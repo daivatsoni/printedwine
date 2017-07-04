@@ -8,7 +8,7 @@
  * Created: 1 Jul, 2017
  */
 
-CREATE TABLE `country` (
+CREATE TABLE `wp_country` (
 `id` int(11) NOT NULL auto_increment,
 `country_code` varchar(2) NOT NULL default '',
 `country_name` varchar(100) NOT NULL default '',
