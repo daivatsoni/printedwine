@@ -44,10 +44,11 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
        // print_r($artist[0]->artist_name);exit;
         if($artist){
             $name = $artist[0]->artist_name;
+            $selected_type = explode(",", $artist[0]->artist_type);
         }else{
             $name = esc_attr( $user->first_name ).' '.esc_attr( $user->last_name );
         }
-	$selected_type = explode(",", $artist[0]->artist_type);
+	
 ?>
 
 <form class="woocommerce-artist_form artist_form" action="" method="post">
