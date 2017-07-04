@@ -92,13 +92,13 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
         <div class="clear"></div>
         <p class="woocommerce-FormRow woocommerce-FormRow--first form-row form-row-first">
             <textarea class="woocommerce-Input woocommerce-Input--text input-text"
-                      name="artist_description" id="artist_description" placeholder="Artist Profile Description"><?php echo $artist[0]->artist_description; ?></textarea>
+                      name="artist_description" id="artist_description" placeholder="Artist Profile Description"><?php if($artist){echo $artist[0]->artist_description;} ?></textarea>
 	
 	</p>
 	<div class="clear"></div>
         <p class="woocommerce-FormRow woocommerce-FormRow--first form-row form-row-first">
             <textarea class="woocommerce-Input woocommerce-Input--text input-text"
-                      name="artist_awards" id="artist_awards" placeholder="Artist Profile Awards"><?php echo $artist[0]->artist_awards; ?></textarea>
+                      name="artist_awards" id="artist_awards" placeholder="Artist Profile Awards"><?php if($artist){ echo $artist[0]->artist_awards;} ?></textarea>
 	
 	</p>
 	<div class="clear"></div>   
