@@ -27,6 +27,7 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
             exit;
         }
 	$user_id = get_current_user_id();
+        $user = get_userdata( $user_id );
 	$artist_type = get_field('artist_type','option');
         $art_cat = get_field('art_category','option');
         $art_sub_cat = get_field('art_sub_category','option');
