@@ -130,6 +130,7 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
                 <label for="file-upload" class="custom-file-upload">
                     Click to upload
                 </label>
+                <input id="file_uploads" name="file_uploads" type="file" multiple="true">
                 <input id="file-upload" name="image" type="file" hidden="true"/>
             </div>
             <div class="clear"></div>

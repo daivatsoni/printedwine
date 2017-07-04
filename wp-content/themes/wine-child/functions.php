@@ -527,12 +527,37 @@ add_action( 'woocommerce_account_my_gallery_endpoint', 'fetch_content_custom_my_
 function fetch_content_custom_artist_profile_endpoint() {
 	wp_enqueue_style("select2", get_stylesheet_directory_uri()."/css/select2.css");
         wp_enqueue_script("select2", get_stylesheet_directory_uri()."/js/select2.js", array('jquery'));
+        wp_enqueue_style("uploadifivecss", get_stylesheet_directory_uri()."/css/uploadifive.css");
+        wp_enqueue_script("uploadifivejs", get_stylesheet_directory_uri()."/js/jquery.uploadifive.min.js", array('jquery'));
         ?>
         <script type='text/javascript'>
         jQuery(document).ready(function ($) {
            $(".js-example-basic-multiple").select2({
                 placeholder: 'Select artist type'
-              }); 
+           }); 
+            <?php 
+                /* 
+                    TODO
+                 
+                 * div per uploadify
+                 * restrict file types
+                 * restrict user to upload only 1 image
+                 * success & failure msg place holder
+                 * get path url and set it to hidden variable
+                 * move file from temp folder to main (uploads/arts/userId/userId_artId.jpg)
+                 * save temp file by timestamp
+                 * added art responce get and display
+                 * new art add
+                 * Category and sub Category solution
+                 * Art save success & failure msg
+                 */
+            ?>
+           $('#file_uploads').uploadifive({
+                'fileType'     : 'image/*',
+                'multi'        : false,
+                'uploadScript' : '<?php echo get_site_url(); ?>/uploadify.php'
+                // Put your options here
+            });
         });
         </script> 
         <?php

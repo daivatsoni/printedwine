@@ -30,6 +30,7 @@ jQuery(document).ready(function ($) {
             }, 3000);
             
         });
+        return false;
     });
     
     /* save artist art data */
@@ -58,5 +59,7 @@ jQuery(document).ready(function ($) {
             }
                        
         });
+        return false;
     });
+    
 });
