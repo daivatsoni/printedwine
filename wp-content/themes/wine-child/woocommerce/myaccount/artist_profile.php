@@ -47,7 +47,7 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
             $selected_type = explode(",", $artist[0]->artist_type);
         }else{
             $name = esc_attr( $user->first_name ).' '.esc_attr( $user->last_name );
-            $selected_type = '';
+            $selected_type = array();
         }
 	
 ?>
