@@ -21,7 +21,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 do_action( 'woocommerce_before_artist_profile_form' ); ?>
 <?php 
-	
+        if ( !is_user_logged_in() && is_page('add page slug or i.d here') && $_SERVER['PHP_SELF'] != '/wp-admin/admin-ajax.php' ) {
+
+            wp_redirect( get_site_url() ); 
+            exit;
+        }
 	$user_id = get_current_user_id();
 	$artist_type = get_field('artist_type','option');
         $art_cat = get_field('art_category','option');
@@ -32,7 +36,7 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
 	
         
         global $wpdb;
-        $category = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."artist_category");
+       // $category = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."artist_category");
         $country = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."country");
        
         $artist = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."artist");
