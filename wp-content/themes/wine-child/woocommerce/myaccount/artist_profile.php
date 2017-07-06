@@ -30,18 +30,16 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
         $user = get_userdata( $user_id );
 	$artist_type = get_field('artist_type','option');
         $art_cat = get_field('art_category','option');
+        //echo "<pre>";print_r($art_cat);exit;
         $art_sub_cat = get_field('art_sub_category','option');
         $colours = get_field('colours','option');
-
-       // echo "<pre>";print_r($art_cat);exit;
-	
         
         global $wpdb;
-       // $category = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."artist_category");
+   
         $country = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."country");
        
         $artist = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."artist");
-       // print_r($artist[0]->artist_name);exit;
+      
         if($artist){
             $name = $artist[0]->artist_name;
             $selected_type = explode(",", $artist[0]->artist_type);
@@ -102,40 +100,24 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
                       name="artist_awards" id="artist_awards" placeholder="Artist Profile Awards"><?php if($artist){ echo $artist[0]->artist_awards;} ?></textarea>
 	
 	</p>
-	<div class="clear"></div>   
-	<?php //do_action( 'woocommerce_artist_profile_form' ); ?>
-
+	<div class="clear"></div> 
 	<p>
-		<?php //wp_nonce_field( 'save_artist_details' ); ?>
             <input type="submit" class="woocommerce-Button button" name="saveDataArtist" id="saveDataArtist" value="<?php esc_attr_e( 'Save', 'woocommerce' ); ?>" />
 		<input type="hidden" name="action" value="saveDataArtist" />
 	</p>
  
- <?php //include 'woocommerce/myaccount/artist_profile_template.php';     ?>
 </form>
 <div class="clear"></div>
-<form class="woocommerce-ArtistArtForm artist_art" id="saveDataArtForm" action="" method="post" enctype="multipart/form-data">
 
     <h1>2. Upload images to your gallary</h1><span>you may click and drag to reorder once you have saved</span>
-	
-	<?php do_action( 'woocommerce_artist_profile_image_form_start' ); ?>
-    <div class="container">
-        <div class="row">
+    <div id="artDataGet">
+        <?php include 'artist_profile_art_template.php';   ?>
+    </div>
+    <form class="woocommerce-ArtistArtForm artist_art" id="saveDataArtForm" action="" method="post" enctype="multipart/form-data">
+        <div class="container">
         <div class="col-md-3">
-            <div class="col-md-12">
-                <image src="<?php echo get_stylesheet_directory_uri(); ?>/images/blank_photo.jpeg" height="150" width="150"/>
-            </div>
-            <div class="clear"></div>
-            <div class="col-md-12">
-                <label for="file-upload" class="custom-file-upload">
-                    Click to upload
-                </label>
-                <input id="file_uploads" name="file_uploads" type="file" multiple="true">
-                <input id="file-upload" name="image" type="file" hidden="true"/>
-            </div>
-            <div class="clear"></div>
+                <input id="file_uploads" name="file_uploads" type="file" />
         </div>
-        <div class="clear"></div>
         <div class="col-md-9">
             <div class="col-md-12">
                 <p class="woocommerce-FormRow woocommerce-FormRow--first form-row form-row-first">
@@ -144,31 +126,27 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
 
                 </p>
             </div>
-	<div class="clear"></div>
 	<div class="col-md-12">
             <p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
-                    <select name="art_category" style="width:20% !important;">
+                <select name="art_category" id="art_category" style="width:20% !important;">
                         <option value="">Category</option>
                         <?php 
                         foreach ($art_cat as $item){ ?>
-                            <option value="<?php echo $item['category'];?>"  ><?php echo $item['category'];?></option>;
+                            <option value="<?php echo $item['category_id'];?>"  ><?php echo $item['category_name'];?></option>;
                         <?php } ?>
                     </select>
-                    <select name="art_sub_category" style="width:20% !important;">
+                <select name="art_sub_category" id="art_sub_category" style="width:20% !important;">
                         <option value="">Sub Category</option>
-                        <?php 
-                        foreach ($art_sub_cat as $item){ ?>
-                            <option value="<?php echo $item['sub_category'];?>" ><?php echo $item['sub_category'];?></option>;
-                        <?php } ?>
+                        
                     </select>
-                    <select name="art_colors" style="width:20% !important;">
+                <select name="art_colors" id="art_colors" style="width:20% !important;">
                         <option value="">Colours</option>
                         <?php 
                         foreach ($colours as $item){ ?>
                             <option value="<?php echo $item['colour'];?>" ><?php echo $item['colour'];?></option>;
                         <?php } ?>
                     </select>
-                    <select name="art_year" style="width:20% !important;">
+                <select name="art_year" id="art_year" style="width:20% !important;">
                         <option value="">Year</option>
                          <?php for($born = date('Y'); $born >= date('Y', strtotime('-100 years')); $born--){?>
                             <option value="<?php echo $born;?>"><?php echo $born;?></option>
@@ -177,30 +155,19 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
               
             </p>
         </div>
-        <div class="clear"></div>
         <div class="col-md-12">
         <p class="woocommerce-FormRow woocommerce-FormRow--first form-row form-row-first">
             <textarea class="woocommerce-Input woocommerce-Input--text input-text"
                       name="art_description" id="art_description" placeholder="Art Description"></textarea>
-	
 	</p>
-    
-	<div class="clear"></div>
-      
-	<?php //do_action( 'woocommerce_artist_profile_image_form' ); ?>
-
 	<p>
-		<?php //wp_nonce_field( 'save_artist_details' ); ?>
+            <input type="hidden" id="image_hidden_path" name="image_hidden_path" value="" />
             <input type="submit" class="woocommerce-Button button" id="saveDataArt" name="saveDataArt" value="<?php esc_attr_e( 'Save', 'woocommerce' ); ?>" />
-		<input type="hidden" name="action" value="save_art" />
+            <input type="hidden" name="action" value="save_art" />
 	</p>
         </div>
         </div>
         </div>
         </div>
    
-	<?php //do_action( 'woocommerce_artist_profile_image_form_end' ); ?>
 </form>
-
-
-<?php //do_action( 'woocommerce_after_artist_profile_form' ); ?>

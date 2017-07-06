@@ -183,16 +183,58 @@ class Artist_db {
 		(user_id, art_title,
                 art_category, art_sub_category,
                 art_colors, art_year, 
-                image_path, art_description, status) 
+                art_description, status) 
 		VALUES (
                 '".$criteria['user_id']."', '".$criteria['art_title']."',"
                 . " '".$criteria['art_category']."', '".$criteria['art_sub_category']."', "
                 . "'".$criteria['art_colors']."', '".$criteria['art_year']."', "
-                . "'".$criteria['image_path']."', '".$criteria['art_description']."', '".$criteria['status']."'
+                . "'".$criteria['art_description']."', '".$criteria['status']."'
 		)";
+                
+		if(is_main_site()){ 
+                    $data = $this->wpdb->query($sql);
+                
+                    $result = $this->wpdb->insert_id;
+                    
+                }
+               return $result;
+	}
+        function update_art_path($img_path,$id) {
+            
+            $sql = "UPDATE $this->table_name_gallery "
+                        . "SET "
+                        . "`image_path` = '".$img_path."' "
+                        . "where `id` = '".$id."'";
+		
+		if(is_main_site()) $this->wpdb->query($sql);
+        }
+        
+        function get_art(){
+		$userId = get_current_user_id();
+                
+		$sql = "SELECT * FROM $this->table_name_gallery WHERE 1";
+		$sql .= " AND user_id='$userId'";
+                
+		$sql .= ' ORDER BY id';
+		
+		$results = $this->wpdb->get_results($sql, 'ARRAY_A');
+		return $results;
+        }
+        
+        function save_art_update($criteria) {
+            
+		$sql = "UPDATE $this->table_name_gallery "
+                        . "SET "
+                        . "`art_title` = '".$criteria['art_title']."',"
+                        . "`art_category` = '".$criteria['art_category']."',"
+                        . "`art_sub_category` = '".$criteria['art_sub_category']."',"
+                        . "`art_colors` = '".$criteria['art_colors']."',"
+                        . "`art_year` = '".$criteria['art_year']."',"
+                        . "`art_description` = '".$criteria['art_description']."' "
+                        . "where `id` = '".$criteria['art_id']."'";
+		echo $sql;exit;
 		if(is_main_site()) $this->wpdb->query($sql);
 	}
-	
 }
 
 ?>

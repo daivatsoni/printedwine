@@ -18,8 +18,10 @@ class Artist {
         
         add_action('wp_enqueue_scripts', array(__CLASS__, 'add_scripts_files'));
         add_action('wp_ajax_save_art', array(__CLASS__, 'save_art'));
+        add_action('wp_ajax_get_art', array(__CLASS__, 'get_art'));
         add_action('wp_ajax_save_artist', array(__CLASS__, 'save_artist'));
-      //  add_action('wp_ajax_createForm', array(__CLASS__, 'createForm'));
+        add_action('wp_ajax_get_subcategories', array(__CLASS__, 'get_subcategories'));
+        add_action('wp_ajax_save_art_update', array(__CLASS__, 'save_art_update'));
         
         if(is_admin()) {
             register_activation_hook(__FILE__, array(__CLASS__, 'on_plugin_activation'));
@@ -72,13 +74,10 @@ class Artist {
          //echo "<pre>";print_r($_FILES);exit;
         // get current user id
         $user_id = get_current_user_id();
-        $uploaddir = get_stylesheet_directory_uri().'/images/arts/'; 
-        $file = $uploaddir . basename($_FILES['image']['name']); 
-        $raw_file_name = $_FILES['image']['tmp_name'];
-        if (move_uploaded_file($_FILES['image']['tmp_name'], $file)) { 
-            echo "success"; 
-        } else {
-            echo "error";
+       
+        $upload_dir = wp_upload_dir(); // Relative to the root
+        if (!file_exists($upload_dir["basedir"].'/arts/'.$user_id)) {
+            mkdir($upload_dir["basedir"].'/arts/'.$user_id, 0777, true);
         }
        // $image_path = get_stylesheet_directory_uri()."/images/arts/blank_photo.jpeg";
         $albumVars = array(
@@ -88,7 +87,6 @@ class Artist {
             "art_sub_category" => $_POST['art_sub_category'],
             "art_colors" => $_POST['art_colors'],
             "art_year" => $_POST['art_year'],
-            "image_path" => $raw_file_name,
             "art_description" => $_POST['art_description'],
             "status" => "Active"
         );
@@ -97,14 +95,58 @@ class Artist {
         $db = new Artist_db();
         
         $status = $db->add_art($albumVars);
+       // echo "<pre>";print_r($status);exit; 
+        //$img_path = $db->update_art_path();
         // at the end stop further execution
         if($status) {
+            $img_path = $upload_dir["basedir"].'/arts_tmp/'.$_POST['image_hidden_path'];
+            $my_path = $upload_dir["basedir"].'/arts/'.$user_id.'/';
+            rename($img_path, $my_path.'/'.$user_id.'_'.$status.'.jpg');
+            unlink($img_path);
+            $str = explode('.',$_POST['image_hidden_path']);
+            $img = $user_id.'_'.$status.'.'.$str[1];
+            $img_path = $db->update_art_path($img,$status);
             $result = array("status"=>1, "message"=>"Artist created successfully.");
             echo json_encode($result);
         } 
         exit;
     }
-
+    
+    function get_art(){
+        $db = new Artist_db();
+        
+        $status = $db->get_art();
+        if($status) {
+            //echo "<pre>";print_r($status);exit;
+            $result = array("status"=>1, "message"=>$status);
+            echo json_encode($result);
+        } 
+        exit;
+    }
+    
+    function save_art_update(){
+        $user_id = get_current_user_id();
+        echo "xyz";exit;
+        $albumVars = array(
+            "art_id"=> $_POST['art_id'],
+            "art_title" => $_POST['art_title'],
+            "art_category" => $_POST['art_category'],
+            "art_sub_category" => $_POST['art_sub_category'],
+            "art_colors" => $_POST['art_colors'],
+            "art_year" => $_POST['art_year'],
+            "art_description" => $_POST['art_description']
+        );
+        echo "<pre>";print_r($albumVars);exit;
+        $db = new Artist_db();
+        $status = $db->save_art_update($albumVars);
+        if($status) {
+            //echo "<pre>";print_r($status);exit;
+            $result = array("status"=>1, "message"=>"Update successful");
+            echo json_encode($result);
+        } 
+        exit;
+    }
+    
     function createForm() {
         ob_start();
         ?>
@@ -168,6 +210,23 @@ class Artist {
             echo $html;
             exit;            
         }
+    }
+    
+    function get_subcategories(){
+        $cat_id = $_GET['art_category'];
+        $art_sub_cat = get_field('art_sub_category','option');
+        //echo "<pre>";print_r($art_sub_cats);exit;
+        $msg = '';
+        foreach ($art_sub_cat as $item){ 
+            if($item['parent_id'] == $cat_id){
+                $msg.= "<option value='".$item['sub_category_id']."'>".$item['sub_category_name']."</option>";
+            }
+        }//echo $msg;exit;
+        if($msg) {
+            $result = array("status"=>1, "message"=>$msg);
+            echo json_encode($result);
+        } 
+        exit;
     }
 }
 

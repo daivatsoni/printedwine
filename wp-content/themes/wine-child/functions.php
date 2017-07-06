@@ -530,6 +530,15 @@ function fetch_content_custom_artist_profile_endpoint() {
         wp_enqueue_style("uploadifivecss", get_stylesheet_directory_uri()."/css/uploadifive.css");
         wp_enqueue_script("uploadifivejs", get_stylesheet_directory_uri()."/js/jquery.uploadifive.min.js", array('jquery'));
         ?>
+        <style>
+            .uploadifiveBtn{
+                background: url('<?php echo get_stylesheet_directory_uri(); ?>/images/blank_photo.jpeg') 0 0 no-repeat !important;
+                border-radius: 0px !important;
+                height: 150px !important;
+                width: 150px !important;
+                line-height: 285px !important;
+            }
+        </style>
         <script type='text/javascript'>
         jQuery(document).ready(function ($) {
            $(".js-example-basic-multiple").select2({
@@ -540,8 +549,8 @@ function fetch_content_custom_artist_profile_endpoint() {
                     TODO
                  
                  * div per uploadify
-                 * restrict file types
-                 * restrict user to upload only 1 image
+                 * restrict file types -- done
+                 * restrict user to upload only 1 image -- done
                  * success & failure msg place holder
                  * get path url and set it to hidden variable
                  * move file from temp folder to main (uploads/arts/userId/userId_artId.jpg)
@@ -552,13 +561,20 @@ function fetch_content_custom_artist_profile_endpoint() {
                  * Art save success & failure msg
                  */
             ?>
-           $('#file_uploads').uploadifive({
+           $('#file_uploads').uploadifive({ 
+                'buttonText'   : 'Click to Upload',
+                'buttonClass'  : 'uploadifiveBtn',
                 'fileType'     : 'image/*',
                 'multi'        : false,
-                'uploadScript' : '<?php echo get_site_url(); ?>/uploadify.php'
+                'uploadScript' : '<?php echo get_site_url(); ?>/uploadify.php',
+                'onUploadComplete' : function(file, data) {
+                    $('#image_hidden_path').val(data);
+                }
                 // Put your options here
             });
         });
+        
+        
         </script> 
         <?php
 	include 'woocommerce/myaccount/artist_profile.php';    
