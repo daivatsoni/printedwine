@@ -16,8 +16,23 @@
     <div class="container">
         <div class="col-md-3">
             <?php $imgpath = $upload_dir['baseurl']."/arts/".$user_id."/".$item_art->image_path; ?>
-                <!-- <input id="file_uploads" name="file_uploads" type="file" />-->
+                
             <img src="<?php echo $imgpath;?>" hight='150' width='150' />
+            <script>
+                jQuery(document).ready(function ($) {
+                    $('#file_uploads_<?php echo $item_art->id; ?>').uploadifive({ 
+                    'buttonText'   : 'Click to Upload',
+                    'fileType'     : 'image/*',
+                    'multi'        : false,
+                    'uploadScript' : '<?php echo get_site_url(); ?>/uploadify.php',
+                    'onUploadComplete' : function(file, data) {
+                        $('#image_hidden_path_<?php echo $item_art->id; ?>').val(data);
+                    }
+                    // Put your options here
+                    });
+                });
+                </script>
+            <input id="file_uploads_<?php echo $item_art->id; ?>" name="file_uploads" type="file" />
             <div class="clearfix"></div>
         </div>
         <div class="col-md-9">
@@ -70,7 +85,7 @@
         <div class="clearfix"></div>
 	<p>
             <input type="hidden" name="form_id" id="form_id" value="<?php echo $item_art->id; ?>" />
-            <input type="hidden" id="image_hidden_path" name="image_hidden_path" value="" />
+            <input type="hidden" id="image_hidden_path_<?php echo $item_art->id; ?>" name="image_hidden_path" value="" />
             <input type="submit" class="sub woocommerce-Button button" id="saveDataArt_<?php echo $item_art->id; ?>" name="saveDataArt" value="<?php esc_attr_e( 'Save', 'woocommerce' ); ?>" />
             <input type="hidden" name="action" value="save_art_update"/>
 	</p>

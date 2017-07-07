@@ -128,7 +128,7 @@ class Artist {
     
     function save_art_update(){
         $user_id = get_current_user_id();
-      
+      $upload_dir = wp_upload_dir(); // Relative to the root
         $albumVars = array(
             "art_id"=> $_POST['art_id'],
             "art_title" => $_POST['art_title'],
@@ -140,6 +140,16 @@ class Artist {
         );
         
         $db = new Artist_db();
+        if($_POST['image_hidden_path']){
+            $img_path = $upload_dir["basedir"].'/arts_tmp/'.$_POST['image_hidden_path'];
+            $my_path = $upload_dir["basedir"].'/arts/'.$user_id.'/';
+            $str = explode('.',$_POST['image_hidden_path']);
+            rename($img_path, $my_path.'/'.$user_id.'_'.$_POST['art_id'].'.'.$str[1]);
+            unlink($img_path);
+            
+            $img = $user_id.'_'.$_POST['art_id'].'.'.$str[1];
+            $img_path = $db->update_art_path($img,$_POST['art_id']);
+        }
         $status = $db->save_art_update($albumVars);
             $result = array("status"=>1, "message"=>"Update successful");
             echo json_encode($result);
@@ -315,6 +325,20 @@ class Artist {
             <?php $imgpath = $upload_dir['baseurl']."/arts/".$user_id."/".$item_art->image_path; ?>
                 <!-- <input id="file_uploads" name="file_uploads" type="file" />-->
             <img src="<?php echo $imgpath;?>" hight='150' width='150' />
+            <script>
+                jQuery(document).ready(function ($) {
+                    $('#file_uploads_<?php echo $item_art->id; ?>').uploadifive({ 
+                    'buttonText'   : 'Click to Upload',
+                    'fileType'     : 'image/*',
+                    'multi'        : false,
+                    'uploadScript' : '<?php echo get_site_url(); ?>/uploadify.php',
+                    'onUploadComplete' : function(file, data) {
+                        $('#image_hidden_path_<?php echo $item_art->id; ?>').val(data);
+                    }
+                    // Put your options here
+                    });
+                });
+                </script>
             <div class="clearfix"></div>
         </div>
         <div class="col-md-9">
@@ -367,7 +391,7 @@ class Artist {
         <div class="clearfix"></div>
 	<p>
             <input type="hidden" name="form_id" id="form_id" value="<?php echo $item_art->id; ?>" />
-            <input type="hidden" id="image_hidden_path" name="image_hidden_path" value="" />
+            <input type="hidden" id="image_hidden_path_<?php echo $item_art->id; ?>" name="image_hidden_path" value="" />
             <input type="submit" class="sub woocommerce-Button button" id="saveDataArt_<?php echo $item_art->id; ?>" name="saveDataArt" value="<?php esc_attr_e( 'Save', 'woocommerce' ); ?>" />
             <input type="hidden" name="action" value="save_art_update"/>
 	</p>

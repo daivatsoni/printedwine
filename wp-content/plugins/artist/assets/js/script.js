@@ -79,6 +79,7 @@ jQuery(document).ready(function ($) {
         var data = {
             'action': 'save_art_update',
             'art_id': artId,
+            'image_hidden_path': $('#image_hidden_path_'+artId).val(),
             'art_title': $('#art_title_'+artId).val(),
             'art_category': $('#art_category_'+artId).val(),
             'art_sub_category': $('#art_sub_category_'+artId).val(),
@@ -118,6 +119,7 @@ jQuery(document).ready(function ($) {
             action: 'save_art_update',
             'art_id': artId,
             'art_title': $('#art_title_'+artId).val(),
+            'image_hidden_path': $('#image_hidden_path_'+artId).val(),
             'art_category': $('#art_category_'+artId).val(),
             'art_sub_category': $('#art_sub_category_'+artId).val(),
             'art_colors': $('#art_colors_'+artId).val(),
