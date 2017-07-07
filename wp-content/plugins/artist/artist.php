@@ -102,9 +102,10 @@ class Artist {
         if($status) {
             $img_path = $upload_dir["basedir"].'/arts_tmp/'.$_POST['image_hidden_path'];
             $my_path = $upload_dir["basedir"].'/arts/'.$user_id.'/';
-            rename($img_path, $my_path.'/'.$user_id.'_'.$status.'.jpg');
-            unlink($img_path);
             $str = explode('.',$_POST['image_hidden_path']);
+            rename($img_path, $my_path.'/'.$user_id.'_'.$status.'.'.$str[1]);
+            unlink($img_path);
+            
             $img = $user_id.'_'.$status.'.'.$str[1];
             $img_path = $db->update_art_path($img,$status);
             $result = array("status"=>1, "message"=>"Artist created successfully.");
