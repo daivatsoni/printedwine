@@ -20,22 +20,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 do_action( 'woocommerce_before_artist_profile_form' ); ?>
+<script>
+    
+    </script>
 <?php 
         if ( !is_user_logged_in() && is_page('add page slug or i.d here') && $_SERVER['PHP_SELF'] != '/wp-admin/admin-ajax.php' ) {
 
             wp_redirect( get_site_url() ); 
             exit;
         }
+         global $wpdb;
+   
 	$user_id = get_current_user_id();
         $user = get_userdata( $user_id );
+        $art_data = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."artist_gallery WHERE `user_id` = '$user_id'");
 	$artist_type = get_field('artist_type','option');
         $art_cat = get_field('art_category','option');
         //echo "<pre>";print_r($art_cat);exit;
         $art_sub_cat = get_field('art_sub_category','option');
         $colours = get_field('colours','option');
         
-        global $wpdb;
-   
+       
         $country = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."country");
        
         $artist = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."artist");
@@ -113,6 +118,7 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
     <div id="artDataGet">
         <?php include 'artist_profile_art_template.php';   ?>
     </div>
+    <div id="artform">
     <form class="woocommerce-ArtistArtForm artist_art" id="saveDataArtForm" action="" method="post" enctype="multipart/form-data">
         <div class="container">
         <div class="col-md-3">
@@ -170,4 +176,5 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
         </div>
         </div>
    
-</form>
+</form></div>
+    <div id="resultMsg"></div>

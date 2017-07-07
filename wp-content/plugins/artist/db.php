@@ -232,7 +232,7 @@ class Artist_db {
                         . "`art_year` = '".$criteria['art_year']."',"
                         . "`art_description` = '".$criteria['art_description']."' "
                         . "where `id` = '".$criteria['art_id']."'";
-		echo $sql;exit;
+		//echo $sql;exit;
 		if(is_main_site()) $this->wpdb->query($sql);
 	}
 }

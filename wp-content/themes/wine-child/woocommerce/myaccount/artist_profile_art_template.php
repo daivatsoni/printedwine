@@ -10,8 +10,9 @@
     $colours = get_field('colours','option');
    // echo "<pre>";print_r($art_data);exit;
 ?>
+
 <?php foreach ($art_data as $item_art){  ?>
-<form class="woocommerce-ArtistArtForm artist_art" id="saveDataArtForm_<?php echo $item_art->id; ?>" action="" method="post" enctype="multipart/form-data" onsubmit="abc('<?php echo $item_art->id; ?>');">
+<form class="woocommerce-ArtistArtForm artist_art" id="saveDataArtForm_<?php echo $item_art->id; ?>" action="" method="post" enctype="multipart/form-data" >
     <div class="container">
         <div class="col-md-3">
             <?php $imgpath = $upload_dir['baseurl']."/arts/".$user_id."/".$item_art->image_path; ?>
@@ -70,7 +71,7 @@
 	<p>
             <input type="hidden" name="form_id" id="form_id" value="<?php echo $item_art->id; ?>" />
             <input type="hidden" id="image_hidden_path" name="image_hidden_path" value="" />
-            <input type="submit" class="woocommerce-Button button" id="saveDataArt_<?php echo $item_art->id; ?>" name="saveDataArt" value="<?php esc_attr_e( 'Save', 'woocommerce' ); ?>" />
+            <input type="submit" class="sub woocommerce-Button button" id="saveDataArt_<?php echo $item_art->id; ?>" name="saveDataArt" value="<?php esc_attr_e( 'Save', 'woocommerce' ); ?>" />
             <input type="hidden" name="action" value="save_art_update"/>
 	</p>
         <div class="clearfix"></div>
@@ -79,6 +80,7 @@
         </div>
         <div class="clearfix"></div>
         </div>
+    <div id="resultMsg_<?php echo $item_art->id; ?>"></div>
         <div class="clearfix"></div>
 </form>
 <?php } ?>

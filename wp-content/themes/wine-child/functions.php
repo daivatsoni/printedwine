@@ -548,17 +548,17 @@ function fetch_content_custom_artist_profile_endpoint() {
                 /* 
                     TODO
                  
-                 * div per uploadify
+                 * div per uploadify --done
                  * restrict file types -- done
                  * restrict user to upload only 1 image -- done
-                 * success & failure msg place holder
-                 * get path url and set it to hidden variable
-                 * move file from temp folder to main (uploads/arts/userId/userId_artId.jpg)
-                 * save temp file by timestamp
-                 * added art responce get and display
-                 * new art add
-                 * Category and sub Category solution
-                 * Art save success & failure msg
+                 * success & failure msg place holder --done
+                 * get path url and set it to hidden variable --done
+                 * move file from temp folder to main (uploads/arts/userId/userId_artId.jpg) --done
+                 * save temp file by timestamp --done
+                 * added art responce get and display --done
+                 * new art add --done
+                 * Category and sub Category solution --done
+                 * Art save success & failure msg --done
                  */
             ?>
            $('#file_uploads').uploadifive({ 
@@ -573,8 +573,7 @@ function fetch_content_custom_artist_profile_endpoint() {
                 // Put your options here
             });
         });
-        
-        
+       
         </script> 
         <?php
 	include 'woocommerce/myaccount/artist_profile.php';    

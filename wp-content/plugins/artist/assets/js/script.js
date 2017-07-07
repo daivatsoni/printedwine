@@ -1,5 +1,6 @@
+
 jQuery(document).ready(function ($) {
-    //abc();
+    
     /* save artist profile data */
     $('#saveDataArtist').live("click", function () {
         var data = {
@@ -51,13 +52,18 @@ jQuery(document).ready(function ($) {
             if($result.status) {
                 $("#resultMsg").addClass("success");
                 var data1 = {
-                    'action': 'get_art'
+                    'action': 'get_art_get'
                 };
-                $.get(THEMEREX_ajax_url, data1, function (msg) {
-                    $result = JSON.parse(msg);
-                    if($result.status) {
-                        // refresh artist_profile_art_template.php
-                    }
+                var data2 = {
+                    'action': 'get_art_form'
+                };
+                $.get(THEMEREX_ajax_url, data1, function (msgss) {
+                    $("artDataGet").html(''); 
+                    $("#artDataGet").html(msgss);  
+                });
+                $.get(THEMEREX_ajax_url, data2, function (msgs) {
+                    $("#artform").html('');  
+                    $("#artform").html(msgs);  
                 });
             } else {
                 $("#resultMsg").addClass("error");
@@ -80,9 +86,7 @@ jQuery(document).ready(function ($) {
             'art_year': $('#art_year_'+artId).val(),
             'art_description': $('#art_description_'+artId).val()
         };
-        alert(data);
         $.post(THEMEREX_ajax_url, data, function (msg) {
-            console.log(msg);
             $result = JSON.parse(msg);
             $("#resultMsg").html($result.message);
             if($result.status) {
@@ -106,25 +110,32 @@ jQuery(document).ready(function ($) {
                 $("#art_sub_category").html($result.message);
         });
     });
-    function abc(id){
-        var artId = id;
+    $('.sub').click(function(){
+        var form = $(this);
+        var id = form.attr('id').split('_');
+        var artId = id[1];
         var data = {
-            'action': 'save_art_update',
+            action: 'save_art_update',
             'art_id': artId,
-            'art_title': jQuery('#art_title_'+artId).val(),
-            'art_category': jQuery('#art_category_'+artId).val(),
-            'art_sub_category': jQuery('#art_sub_category_'+artId).val(),
-            'art_colors': jQuery('#art_colors_'+artId).val(),
-            'art_year': jQuery('#art_year_'+artId).val(),
-            'art_description': jQuery('#art_description_'+artId).val()
+            'art_title': $('#art_title_'+artId).val(),
+            'art_category': $('#art_category_'+artId).val(),
+            'art_sub_category': $('#art_sub_category_'+artId).val(),
+            'art_colors': $('#art_colors_'+artId).val(),
+            'art_year': $('#art_year_'+artId).val(),
+            'art_description': $('#art_description_'+artId).val()
         };
-        alert(jQuery('#art_title_'+artId).val());
-        jQuery.post(THEMEREX_ajax_url, data, function (msg) {
-            alert(msg);
-            console.log(msg);
-            
-                       
+
+        $.post(THEMEREX_ajax_url, data,  function(msg) {
+           
+            var result = $.parseJSON(msg);
+        
+            $("#resultMsg_"+artId).html(result.message);
+            if(result.status) {
+                $("#resultMsg_"+artId).addClass("success");
+            } else {
+                $("#resultMsg_"+artId).addClass("error");
+            }
         });
-        return false;
-        }
+        return false;   
+    });
 });
