@@ -518,8 +518,18 @@ function fetch_content_custom_printed_wine_endpoint() {
 }
 add_action( 'woocommerce_account_printed-wine-credits_endpoint', 'fetch_content_custom_printed_wine_endpoint' );
 function fetch_content_custom_my_gallery_endpoint() {
-	
-	include 'woocommerce/myaccount/my_gallery.php';    
+       wp_enqueue_style("flexslider", get_stylesheet_directory_uri()."/css/flexslider.css");
+       wp_enqueue_script("flexslider", get_stylesheet_directory_uri()."/js/jquery.flexslider.js");
+    ?>
+    <script type='text/javascript'>
+        jQuery(document).ready(function ($) {
+            $('.flexslider').flexslider({
+            animation: "slide"
+          });
+        });
+        </script>
+        <?php
+    include 'woocommerce/myaccount/my_gallery.php';    
 	
 }
 add_action( 'woocommerce_account_my_gallery_endpoint', 'fetch_content_custom_my_gallery_endpoint' );

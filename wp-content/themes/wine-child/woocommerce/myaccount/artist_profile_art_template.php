@@ -17,7 +17,7 @@
         <div class="col-md-3">
             <?php $imgpath = $upload_dir['baseurl']."/arts/".$user_id."/".$item_art->image_path; ?>
                 
-            <img src="<?php echo $imgpath;?>" hight='150' width='150' />
+            <img src="<?php echo $imgpath;?>"  style="height:150px;width:150px;" />
             <script>
                 jQuery(document).ready(function ($) {
                     $('#file_uploads_<?php echo $item_art->id; ?>').uploadifive({ 
