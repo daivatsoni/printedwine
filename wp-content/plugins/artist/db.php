@@ -235,6 +235,15 @@ class Artist_db {
 		//echo $sql;exit;
 		if(is_main_site()) $this->wpdb->query($sql);
 	}
+        
+        function update_art_order($id, $row){
+            $sql = "UPDATE $this->table_name_gallery "
+                        . "SET "
+                        . "`art_order` = '".$row."' "
+                        . "where `id` = '".$id."'";
+		//echo $sql;exit;
+		if(is_main_site()) $this->wpdb->query($sql);
+        }
 }
 
 ?>

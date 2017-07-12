@@ -119,12 +119,14 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
         <?php include 'artist_profile_art_template.php';   ?>
     </div>
     <div id="artform">
+        <ul>
+        <li style="list-style: none;border: 1px dotted #000;padding: 5px;float: left;margin-bottom: 5px;">
     <form class="woocommerce-ArtistArtForm artist_art" id="saveDataArtForm" action="" method="post" enctype="multipart/form-data">
         <div class="container">
-        <div class="col-md-3">
+        <div class="col-md-3" style="width: 30%;float: left;">
                 <input id="file_uploads" name="file_uploads" type="file" />
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9" style="width: 70%;float: right;">
             <div class="col-md-12">
                 <p class="woocommerce-FormRow woocommerce-FormRow--first form-row form-row-first">
                         <input type="text" class="woocommerce-Input woocommerce-Input--text input-text"
@@ -132,7 +134,7 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
 
                 </p>
             </div>
-	<div class="col-md-12">
+	<div class="col-md-12" >
             <p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
                 <select name="art_category" id="art_category" style="width:20% !important;">
                         <option value="">Category</option>
@@ -176,5 +178,6 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
         </div>
         </div>
    
-</form></div>
+</form>
+        </li>        </ul></div>
     <div id="resultMsg"></div>

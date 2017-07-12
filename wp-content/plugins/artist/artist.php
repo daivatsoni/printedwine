@@ -24,6 +24,7 @@ class Artist {
         add_action('wp_ajax_save_art_update', array(__CLASS__, 'save_art_update'));
         add_action('wp_ajax_get_art_form', array(__CLASS__, 'get_art_form'));  
         add_action('wp_ajax_get_art_get', array(__CLASS__, 'get_art_get'));
+        add_action('wp_ajax_set_art_order', array(__CLASS__, 'set_art_order'));
         if(is_admin()) {
             register_activation_hook(__FILE__, array(__CLASS__, 'on_plugin_activation'));
         }                
@@ -242,6 +243,8 @@ class Artist {
     function get_art_form(){
         ob_start();
         ?>
+<ul>
+        <li style="list-style: none;border: 1px dotted #000;padding: 5px;float: left;margin-bottom: 5px;">
         <form class="woocommerce-ArtistArtForm artist_art" id="saveDataArtForm" action="" method="post" enctype="multipart/form-data">
         <div class="container">
         <div class="col-md-3">
@@ -299,7 +302,7 @@ class Artist {
         </div>
         </div>
    
-</form>
+        </form></li></ul>
         <?php
         $formHtml = ob_get_clean();
         echo $formHtml;
@@ -312,16 +315,19 @@ class Artist {
     global $wpdb;
    $upload_dir = wp_upload_dir(); // Relative to the root
    //echo "<pre>";print_r($upload_dir);exit;
-    $art_data = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."artist_gallery WHERE `user_id` = '$user_id'");
+    $art_data = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."artist_gallery WHERE `user_id` = '$user_id' ORDER BY `art_order` ASC");
     $art_cat = get_field('art_category','option');
     $art_sub_cat = get_field('art_sub_category','option');
     $art_sub_cat = get_field('art_sub_category','option');
     $colours = get_field('colours','option');
         ?>
+<ul id="sortable-row">
         <?php foreach ($art_data as $item_art){  ?>
+    <li style="list-style: none;border: 1px dotted #000;padding: 5px;float: left;margin-bottom: 5px;" id="<?php echo $item_art->id; ?>">
 <form class="woocommerce-ArtistArtForm artist_art" id="saveDataArtForm_<?php echo $item_art->id; ?>" action="" method="post" enctype="multipart/form-data" >
+    
     <div class="container">
-        <div class="col-md-3">
+        <div class="col-md-3" style="width: 30%;float: left;">
             <?php $imgpath = $upload_dir['baseurl']."/arts/".$user_id."/".$item_art->image_path; ?>
                 <!-- <input id="file_uploads" name="file_uploads" type="file" />-->
             <img src="<?php echo $imgpath;?>"  style="height:150px;width:150px;" />
@@ -339,9 +345,10 @@ class Artist {
                     });
                 });
                 </script>
+                <input id="file_uploads_<?php echo $item_art->id; ?>" name="file_uploads" type="file" />
             <div class="clearfix"></div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9"  style="width: 70%;float: right;">
             <div class="col-md-12">
                 <p class="woocommerce-FormRow woocommerce-FormRow--first form-row form-row-first">
                         <input type="text" class="woocommerce-Input woocommerce-Input--text input-text"
@@ -403,12 +410,26 @@ class Artist {
         </div>
     <div id="resultMsg_<?php echo $item_art->id; ?>"></div>
         <div class="clearfix"></div>
-</form>
-<?php } ?>
+</form></li>
+    <?php } ?></ul>
         <?php
         $formHtml = ob_get_clean();
         echo $formHtml;
         exit; //When no return msg than use exit;
+    }
+    
+    function set_art_order(){
+        //echo $_POST["art_order"];exit;
+        $id_ary = explode(",",$_POST["art_order"]);
+        $db = new Artist_db();
+        
+        
+        for($i=0;$i<count($id_ary);$i++) {
+            $status = $db->update_art_order($id_ary[$i], $i);
+        }
+        $result = array("status"=>1, "message"=>"Order Updated Successfully");
+        echo "Order Updated Successfully";
+        exit;
     }
 }
 

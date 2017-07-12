@@ -3,18 +3,19 @@
     global $wpdb;
    $upload_dir = wp_upload_dir(); // Relative to the root
    //echo "<pre>";print_r($upload_dir);exit;
-    $art_data = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."artist_gallery WHERE `user_id` = '$user_id'");
+    $art_data = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix."artist_gallery WHERE `user_id` = '$user_id' ORDER BY art_order ASC");
     $art_cat = get_field('art_category','option');
     $art_sub_cat = get_field('art_sub_category','option');
     $art_sub_cat = get_field('art_sub_category','option');
     $colours = get_field('colours','option');
    // echo "<pre>";print_r($art_data);exit;
 ?>
-
+<ul id="sortable-row">
 <?php foreach ($art_data as $item_art){  ?>
+    <li style="list-style: none;border: 1px dotted #000;padding: 5px;float: left;margin-bottom: 5px;" id="<?php echo $item_art->id; ?>">
 <form class="woocommerce-ArtistArtForm artist_art" id="saveDataArtForm_<?php echo $item_art->id; ?>" action="" method="post" enctype="multipart/form-data" >
     <div class="container">
-        <div class="col-md-3">
+        <div class="col-md-3" style="width: 30%;float: left;">
             <?php $imgpath = $upload_dir['baseurl']."/arts/".$user_id."/".$item_art->image_path; ?>
                 
             <img src="<?php echo $imgpath;?>"  style="height:150px;width:150px;" />
@@ -35,7 +36,7 @@
             <input id="file_uploads_<?php echo $item_art->id; ?>" name="file_uploads" type="file" />
             <div class="clearfix"></div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9"  style="width: 70%;float: right;">
             <div class="col-md-12">
                 <p class="woocommerce-FormRow woocommerce-FormRow--first form-row form-row-first">
                         <input type="text" class="woocommerce-Input woocommerce-Input--text input-text"
@@ -98,4 +99,7 @@
     <div id="resultMsg_<?php echo $item_art->id; ?>"></div>
         <div class="clearfix"></div>
 </form>
+    </li>
 <?php } ?>
+</ul>
+<input type = "hidden" name="row_order" id="row_order" />

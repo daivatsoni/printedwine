@@ -37,7 +37,7 @@
                         <div class="flexslider">
                             <ul class="slides">
                                 <?php foreach ($art_data as $item){ ?>
-                                <li>
+                                <li style="list-style: none;">
                                     <img src="<?php echo $upload_dir['baseurl']."/arts/".$user_id."/".$item->image_path; ?>" style="height:150px;width:400px;" > 
                                     <p class="flex-caption"><?php echo $item->art_title; ?></p>
                                 </li>
