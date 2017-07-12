@@ -155,7 +155,7 @@ jQuery(document).ready(function ($) {
                 };
                 $.post(THEMEREX_ajax_url, data, function (msg) { 
                     //var result = $.parseJSON(msg);
-                    alert(msg);
+                    //alert(msg);
                     $("#resultMsg").html(msg);
                     $("#resultMsg").addClass("success");
                     var data1 = {
