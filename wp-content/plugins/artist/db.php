@@ -178,19 +178,24 @@ class Artist_db {
 	}
 	
 	function add_art($criteria=array()) {
+		$sql1 = "SELECT max(`art_order`) max FROM `pw_artist_gallery` WHERE `user_id` = '".$criteria['user_id']."'";
 		
+		$results1 = $this->wpdb->get_results($sql1, 'ARRAY_A');
+                
+                //echo "<pre>";print_r($results1[0]['max']+1);exit;
+                
 		$sql = "INSERT INTO $this->table_name_gallery 
 		(user_id, art_title,
                 art_category, art_sub_category,
                 art_colors, art_year, 
-                art_description, status) 
+                art_description, art_order, status) 
 		VALUES (
                 '".$criteria['user_id']."', '".$criteria['art_title']."',"
                 . " '".$criteria['art_category']."', '".$criteria['art_sub_category']."', "
                 . "'".$criteria['art_colors']."', '".$criteria['art_year']."', "
-                . "'".$criteria['art_description']."', '".$criteria['status']."'
+                . "'".$criteria['art_description']."', '".($results1[0]['max']+1)."', '".$criteria['status']."'
 		)";
-                
+               // echo $sql;exit;
 		if(is_main_site()){ 
                     $data = $this->wpdb->query($sql);
                 
@@ -215,7 +220,7 @@ class Artist_db {
 		$sql = "SELECT * FROM $this->table_name_gallery WHERE 1";
 		$sql .= " AND user_id='$userId'";
                 
-		$sql .= ' ORDER BY id';
+		$sql .= ' ORDER BY art_order';
 		
 		$results = $this->wpdb->get_results($sql, 'ARRAY_A');
 		return $results;

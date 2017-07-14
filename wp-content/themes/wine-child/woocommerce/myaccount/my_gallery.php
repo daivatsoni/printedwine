@@ -24,6 +24,7 @@
     $art_sub_cat = get_field('art_sub_category','option');
     $art_sub_cat = get_field('art_sub_category','option');
     $colours = get_field('colours','option');
+    
  ?>
 
 <div class="row">
@@ -39,7 +40,7 @@
                                 <?php foreach ($art_data as $item){ ?>
                                 <li style="list-style: none;">
                                     <img src="<?php echo $upload_dir['baseurl']."/arts/".$user_id."/".$item->image_path; ?>" style="height:150px;width:400px;" > 
-                                    <p class="flex-caption"><?php echo $item->art_title; ?></p>
+                                    <p class="flex-caption"><a href="<?php echo get_site_url(); ?>/member-dashboard/art_detail/?id=<?php echo $item->id;?>"><?php echo $item->art_title; ?></a></p>
                                 </li>
                                 <?php } ?>
                             </ul>
@@ -64,10 +65,11 @@
                       //  for($i=1;$i<=5;$i++){
                     ?>
                     <img src="<?php echo $upload_dir['baseurl']."/arts/".$user_id."/".$item->image_path; ?>" style="height:150px;width:150px;" > 
-                    <?php echo $item->art_title; ?>
+                    <span><a href="<?php echo get_site_url(); ?>/member-dashboard/art_detail/?id=<?php echo $item->id;?>"><?php echo $item->art_title; ?></a></span>
                     <?php
                        }
                     ?>
+                    
                 </div> 
             </div>
 		   

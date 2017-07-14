@@ -52,7 +52,7 @@ do_action( 'woocommerce_before_artist_profile_form' ); ?>
             $name = esc_attr( $user->first_name ).' '.esc_attr( $user->last_name );
             $selected_type = array();
         }
-	
+ 
 ?>
 
 <form class="woocommerce-artist_form artist_form" action="" method="post">

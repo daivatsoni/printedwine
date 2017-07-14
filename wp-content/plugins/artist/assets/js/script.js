@@ -140,7 +140,7 @@ jQuery(document).ready(function ($) {
         });
         return false;   
     });
-    
+    //$("#sortable-row").live('sortable',function() {
     $("#sortable-row" ).sortable({
         change: function( event, ui ) {
                 var selectedLanguage = new Array();
