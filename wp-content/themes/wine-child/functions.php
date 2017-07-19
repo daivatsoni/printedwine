@@ -585,8 +585,42 @@ function fetch_content_custom_artist_profile_endpoint() {
                 }
                 // Put your options here
             });
-        });
        
+       $("#sortable-row").sortable({
+        change: function( event, ui ) {
+                var selectedLanguage = new Array();
+                $('ul#sortable-row li').each(function() {
+                    selectedLanguage.push($(this).attr("id"));
+                }); 
+                document.getElementById("row_order").value = selectedLanguage;
+                //alert(("#row_order").val());
+                var data = {
+                    'action': 'set_art_order',
+                    'art_order': document.getElementById("row_order").value 
+                };
+                $.post(THEMEREX_ajax_url, data, function (msg) { 
+                    //var result = $.parseJSON(msg);
+                    //alert(msg);
+                    $("#resultMsg").html(msg);
+                    $("#resultMsg").addClass("success");
+                    var data1 = {
+                        'action': 'get_art_get'
+                    };
+                    var data2 = {
+                        'action': 'get_art_form'
+                    };
+                    $.get(THEMEREX_ajax_url, data1, function (msgss) {
+                        $("artDataGet").html(''); 
+                        $("#artDataGet").html(msgss);  
+                    });
+                    $.get(THEMEREX_ajax_url, data2, function (msgs) {
+                        $("#artform").html('');  
+                        $("#artform").html(msgs);  
+                    });
+                });
+                return false;
+        }
+    }); });
         </script> 
       <?php 
 	include 'woocommerce/myaccount/artist_profile.php';    

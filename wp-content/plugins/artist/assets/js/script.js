@@ -159,7 +159,7 @@ jQuery(document).ready(function ($) {
     });
     
     //*$("#sortable-row").live('sortable',function() {*/
-    $("#sortable-row").sortable({
+   /* $("#sortable-row").sortable({
         change: function( event, ui ) {
                 var selectedLanguage = new Array();
                 $('ul#sortable-row li').each(function() {
@@ -193,5 +193,5 @@ jQuery(document).ready(function ($) {
                 });
                 return false;
         }
-    });
+    });*/
 });

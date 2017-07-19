@@ -19,11 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-do_action( 'woocommerce_before_artist_profile_form' ); ?>
-<script>
-    
-    </script>
-<?php 
+do_action( 'woocommerce_before_artist_profile_form' ); 
         if ( !is_user_logged_in() && is_page('add page slug or i.d here') && $_SERVER['PHP_SELF'] != '/wp-admin/admin-ajax.php' ) {
 
             wp_redirect( get_site_url() ); 
