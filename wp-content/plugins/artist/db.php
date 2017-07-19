@@ -249,6 +249,33 @@ class Artist_db {
 		//echo $sql;exit;
 		if(is_main_site()) $this->wpdb->query($sql);
         }
+        function update_art_fav($id){
+            $userId = get_current_user_id();
+            
+            $sql = "SELECT * FROM pw_art_favourite WHERE 1";
+		$sql .= " AND art_id='$id'";
+                $sql .= " AND user_id='$userId'";
+		
+		$results = $this->wpdb->get_results($sql, 'ARRAY_A');
+            if($results){
+                $sql = "DELETE FROM pw_art_favourite "
+                            . "where `art_id` = '".$id."' AND `user_id` = '".$userId."'";
+                    //echo $sql;exit;
+                if(is_main_site()) $this->wpdb->query($sql);
+                $result = "Delete";
+                return $result;
+            }else{
+                $sql = "INSERT INTO `pw_art_favourite`"
+                        . "( `art_id`, `user_id`) "
+                        . "VALUES ("
+                        . "'".$id."','".$userId."'"
+                        . ")";
+                    //echo $sql;exit;
+                if(is_main_site()) $this->wpdb->query($sql);
+                $result = "Insert";
+                return $result;
+            }
+        }
 }
 
 ?>

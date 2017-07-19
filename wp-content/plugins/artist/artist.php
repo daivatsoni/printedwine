@@ -25,6 +25,7 @@ class Artist {
         add_action('wp_ajax_get_art_form', array(__CLASS__, 'get_art_form'));  
         add_action('wp_ajax_get_art_get', array(__CLASS__, 'get_art_get'));
         add_action('wp_ajax_set_art_order', array(__CLASS__, 'set_art_order'));
+        add_action('wp_ajax_fav_status', array(__CLASS__, 'fav_status'));
         if(is_admin()) {
             register_activation_hook(__FILE__, array(__CLASS__, 'on_plugin_activation'));
         }                
@@ -429,6 +430,21 @@ class Artist {
         }
         $result = array("status"=>1, "message"=>"Order Updated Successfully");
         echo "Order Updated Successfully";
+        exit;
+    }
+    
+    function fav_status(){
+        $user_id = get_current_user_id();
+       // echo "<pre>";print_r($_POST);exit;
+        $id = $_POST['artId'];
+        $db = new Artist_db();
+        $status = $db->update_art_fav($id);
+        if($status == 'Insert'){
+           $src = get_template_directory_uri()."-child/images/star-one-2.png"; 
+        }else{
+           $src = get_template_directory_uri()."-child/images/star-no-1.png";  
+        }
+        echo $src;
         exit;
     }
 }

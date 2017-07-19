@@ -39,7 +39,8 @@
                             <ul class="slides">
                                 <?php foreach ($art_data as $item){ ?>
                                 <li style="list-style: none;">
-                                    <img src="<?php echo $upload_dir['baseurl']."/arts/".$user_id."/".$item->image_path; ?>" style="height:150px;width:400px;" > 
+                                    <img src="<?php echo $upload_dir['baseurl']."/arts/".$user_id."/".$item->image_path; ?>" style="height:150px;width:400px;" >
+                                    
                                     <p class="flex-caption"><a href="<?php echo get_site_url(); ?>/member-dashboard/art_detail/?id=<?php echo $item->id;?>"><?php echo $item->art_title; ?></a></p>
                                 </li>
                                 <?php } ?>
@@ -57,15 +58,25 @@
                     
                 </div>
                 <div class="col-lg-12" style="width:980px;float: left">
-                    <?php
+                    <?php //echo get_template();
                     foreach ($art_data as $item){
-                              // echo "<pre>";print_r($item->image_path);exit;
-
-                       // $i = 1;
-                      //  for($i=1;$i<=5;$i++){
+                             
+                            // echo "<pre>";print_r($fv_data->art_id.' art id = '.$item->id);
                     ?>
-                    <img src="<?php echo $upload_dir['baseurl']."/arts/".$user_id."/".$item->image_path; ?>" style="height:150px;width:150px;" > 
-                    <span><a href="<?php echo get_site_url(); ?>/member-dashboard/art_detail/?id=<?php echo $item->id;?>"><?php echo $item->art_title; ?></a></span>
+                    <img src="<?php echo $upload_dir['baseurl']."/arts/".$user_id."/".$item->image_path; ?>" style="height:150px;width:150px;float: left" > 
+                    <p><?php 
+                    $sql = "SELECT * FROM pw_art_favourite WHERE 1";
+		$sql .= " AND art_id='$item->id'";
+                $sql .= " AND user_id='$user_id'";
+		
+		$results = $wpdb->get_results($sql, 'ARRAY_A');
+                    if($results){ 
+                        ?>
+                            <img src="<?php echo get_template_directory_uri();?>-child/images/star-one-2.png" style="float:left" id="favId_<?php echo $item->id ?>" class="fvclick">
+                        <?php }else{ ?>
+                            <img src="<?php echo get_template_directory_uri();?>-child/images/star-no-1.png" style="float:left" id="favId_<?php echo $item->id ?>" class="fvclick">
+                                <?php }?></p>
+                    <span><a href="<?php echo get_site_url(); ?>/member-dashboard/art_detail/?id=<?php echo $item->id;?>" style="float: left"><?php echo $item->art_title; ?></a></span>
                     <?php
                        }
                     ?>

@@ -140,8 +140,26 @@ jQuery(document).ready(function ($) {
         });
         return false;   
     });
-    //$("#sortable-row").live('sortable',function() {
-    $("#sortable-row" ).sortable({
+    
+    $(".fvclick").live("click", function(){
+        var form = $(this);
+        var id = form.attr('id').split('_');
+        var artId = id[1];
+        alert(artId);
+        var data = {
+            action: 'fav_status',
+            'artId': artId
+        };
+        $.post(THEMEREX_ajax_url, data,  function(msg) {
+                   alert(msg);
+                    $("#favId_"+artId).attr('src',msg);
+        });
+        return false;   
+        
+    });
+    
+    //*$("#sortable-row").live('sortable',function() {*/
+    $("#sortable-row").sortable({
         change: function( event, ui ) {
                 var selectedLanguage = new Array();
                 $('ul#sortable-row li').each(function() {
