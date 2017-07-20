@@ -276,6 +276,32 @@ class Artist_db {
                 return $result;
             }
         }
+        
+        function get_search_art($title,$category,$clr,$yr){
+            $userId = get_current_user_id();
+                
+		$sql = "SELECT pwa.artist_name,pwag.* 
+                        FROM `pw_artist_gallery` pwag LEFT JOIN `pw_artist` pwa on pwag.`user_id` = pwa.`user_id`
+                        WHERE 1 ";
+                if($title != ""){
+                    $sql .= "AND pwag.art_title LIKE '".$title."%' ";
+                }
+                if($category != ""){
+                    $sql .= "AND pwag.`art_category` = '".$category."' ";
+                }
+                if($clr != ""){
+                    $sql .= "AND pwag.`art_colors` = '".$clr."' ";
+                }
+                if($yr != ""){
+                    $sql .= "AND pwag.`art_year` = '".$yr."' ";
+                }
+                $sql .= "AND pwag.`user_id` = '".$userId."'";
+                  
+		$results = $this->wpdb->get_results($sql, 'ARRAY_A');
+               
+		return $results;
+            
+        }
 }
 
 ?>

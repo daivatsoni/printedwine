@@ -145,17 +145,37 @@ jQuery(document).ready(function ($) {
         var form = $(this);
         var id = form.attr('id').split('_');
         var artId = id[1];
-        alert(artId);
+        //alert(artId);
         var data = {
             action: 'fav_status',
             'artId': artId
         };
         $.post(THEMEREX_ajax_url, data,  function(msg) {
-                   alert(msg);
+                   //alert(msg);
                     $("#favId_"+artId).attr('src',msg);
         });
         return false;   
         
+    });
+    /**
+     * search art by filteration
+     */
+    
+    $("#search_art").live("click", function(){
+                
+        var data = {
+            action: 'search_art',
+            's_category': $('#s_category').val(),
+            's_color': $('#s_color').val(),
+            's_year': $('#s_year').val(),
+            'art_title': $('#art_title').val()
+        };
+        $.post(THEMEREX_ajax_url, data,  function(msg) {
+                   //alert(msg);
+                    $("#searchResult").html(msg);
+        });        
+        
+        return false;
     });
     
     //*$("#sortable-row").live('sortable',function() {*/

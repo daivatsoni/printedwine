@@ -26,6 +26,8 @@ class Artist {
         add_action('wp_ajax_get_art_get', array(__CLASS__, 'get_art_get'));
         add_action('wp_ajax_set_art_order', array(__CLASS__, 'set_art_order'));
         add_action('wp_ajax_fav_status', array(__CLASS__, 'fav_status'));
+        add_action('wp_ajax_search_art', array(__CLASS__, 'search_art'));
+
         if(is_admin()) {
             register_activation_hook(__FILE__, array(__CLASS__, 'on_plugin_activation'));
         }                
@@ -446,6 +448,23 @@ class Artist {
         }
         echo $src;
         exit;
+    }
+    function search_art(){
+        ob_start();
+        $user_id = get_current_user_id();
+        $upload_dir = wp_upload_dir(); 
+        $db = new Artist_db();  
+        $art_data1 = $db->get_search_art($_POST['art_title'],$_POST['s_category'],$_POST['s_color'],$_POST['s_year']);
+     //echo "<pre>";print_r($art_data1);exit;
+        foreach ($art_data1 as $item){ 
+        ?>
+        <img src="<?php echo $upload_dir['baseurl']."/arts/".$user_id."/".$item['image_path']; ?>" style="height:150px;width:150px;" > 
+        <a href="<?php echo get_site_url(); ?>/member-dashboard/art_detail/?id=<?php echo $item['id'];?>"><?php echo $item['art_title']; ?></a>
+        <?php
+       }
+       $formHtml = ob_get_clean();
+        echo $formHtml;
+        exit; //When no return msg than use exit;
     }
 }
 
